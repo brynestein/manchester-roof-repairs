@@ -1,0 +1,241 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FloatingCTA from '../components/FloatingCTA.astro';
+
+const projects = [
+  { category: "New Roof", title: "Victorian Terrace Re-Roof", location: "Didsbury" },
+  { category: "Roof Repair", title: "Storm Damage Repair", location: "Chorlton" },
+  { category: "Flat Roof", title: "GRP Fibreglass Flat Roof", location: "Sale" },
+  { category: "Chimney", title: "Chimney Stack Rebuild", location: "Altrincham" },
+  { category: "New Roof", title: "Slate Roof Installation", location: "Stockport" },
+  { category: "Roof Repair", title: "Tile Replacement & Repointing", location: "Salford" },
+  { category: "Guttering", title: "Full Gutter & Fascia Replacement", location: "Stretford" },
+  { category: "Flat Roof", title: "EPDM Rubber Roof", location: "Levenshulme" },
+  { category: "New Roof", title: "Modern Roof with Velux Windows", location: "Prestwich" },
+  { category: "Roof Repair", title: "Lead Flashing Renewal", location: "Bolton" },
+  { category: "Chimney", title: "Chimney Repointing & Cowl", location: "Urmston" },
+  { category: "Emergency", title: "Emergency Storm Tarpaulin", location: "Bury" },
+];
+
+const categories = ["All", ...new Set(projects.map(p => p.category))];
+---
+
+<Layout title="Project Gallery | Roof Repairs Manchester" description="Browse our gallery of completed roofing projects across Manchester. See the quality of our roof repairs, new roofs, flat roofing and chimney work.">
+  <Header />
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Our Work</h1>
+      <p>Browse our completed roofing projects across Greater Manchester</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <!-- Filter Buttons -->
+      <div class="filter-bar">
+        {categories.map(cat => (
+          <button class:list={["filter-btn", { active: cat === "All" }]} data-filter={cat}>{cat}</button>
+        ))}
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid" id="gallery-grid">
+        {projects.map(project => (
+          <div class="gallery-item" data-category={project.category}>
+            <div class="gallery-image">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
+            </div>
+            <div class="gallery-overlay">
+              <span class="gallery-category">{project.category}</span>
+              <h3>{project.title}</h3>
+              <p>{project.location}, Manchester</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="container" style="text-align: center;">
+      <h2 style="color: var(--white); font-size: 2rem; text-transform: uppercase; margin-bottom: 10px;">Like What You See?</h2>
+      <p style="color: rgba(255,255,255,0.8); margin-bottom: 25px;">Get in touch for a free quote on your roofing project</p>
+      <a href="/contact/" class="btn btn-primary">Get Your Free Quote</a>
+    </div>
+  </section>
+
+  <Footer />
+  <FloatingCTA />
+</Layout>
+
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.gallery-item');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.getAttribute('data-filter');
+      items.forEach(item => {
+        if (filter === 'All' || item.getAttribute('data-category') === filter) {
+          (item as HTMLElement).style.display = 'block';
+        } else {
+          (item as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, #1a1a2e, #0f3460);
+    padding: 80px 0 60px;
+    text-align: center;
+    color: var(--white);
+  }
+
+  .page-hero h1 {
+    font-size: 2.8rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .page-hero p {
+    font-size: 1.15rem;
+    color: #ccc;
+  }
+
+  .filter-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 10px 22px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 2px solid var(--medium-gray);
+    border-radius: 4px;
+    background: var(--white);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .filter-btn:hover,
+  .filter-btn.active {
+    background: var(--red);
+    color: var(--white);
+    border-color: var(--red);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .gallery-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .gallery-image {
+    height: 260px;
+    background: linear-gradient(135deg, #e8e8e8, #d0d0d0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s;
+  }
+
+  .gallery-item:hover .gallery-image {
+    transform: scale(1.05);
+  }
+
+  .gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+    padding: 30px 20px 20px;
+    color: var(--white);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s;
+  }
+
+  .gallery-item:hover .gallery-overlay {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .gallery-category {
+    display: inline-block;
+    background: var(--red);
+    color: var(--white);
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-bottom: 8px;
+  }
+
+  .gallery-overlay h3 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .gallery-overlay p {
+    font-size: 0.8rem;
+    color: #ccc;
+  }
+
+  .cta-banner {
+    background: var(--red);
+    padding: 60px 0;
+  }
+
+  @media (max-width: 900px) {
+    .gallery-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-image {
+      height: 180px;
+    }
+
+    .page-hero h1 {
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
