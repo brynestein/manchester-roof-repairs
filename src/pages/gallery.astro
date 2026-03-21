@@ -5,18 +5,18 @@ import Footer from '../components/Footer.astro';
 import FloatingCTA from '../components/FloatingCTA.astro';
 
 const projects = [
-  { category: "New Roof", title: "Victorian Terrace Re-Roof", location: "Didsbury" },
-  { category: "Roof Repair", title: "Storm Damage Repair", location: "Chorlton" },
-  { category: "Flat Roof", title: "GRP Fibreglass Flat Roof", location: "Sale" },
-  { category: "Chimney", title: "Chimney Stack Rebuild", location: "Altrincham" },
-  { category: "New Roof", title: "Slate Roof Installation", location: "Stockport" },
-  { category: "Roof Repair", title: "Tile Replacement & Repointing", location: "Salford" },
-  { category: "Guttering", title: "Full Gutter & Fascia Replacement", location: "Stretford" },
-  { category: "Flat Roof", title: "EPDM Rubber Roof", location: "Levenshulme" },
-  { category: "New Roof", title: "Modern Roof with Velux Windows", location: "Prestwich" },
-  { category: "Roof Repair", title: "Lead Flashing Renewal", location: "Bolton" },
-  { category: "Chimney", title: "Chimney Repointing & Cowl", location: "Urmston" },
-  { category: "Emergency", title: "Emergency Storm Tarpaulin", location: "Bury" },
+  { category: "New Roof", title: "Victorian Terrace Re-Roof", location: "Didsbury", image: "/images/gallery-1.webp" },
+  { category: "Roof Repair", title: "Storm Damage Repair", location: "Chorlton", image: "/images/gallery-2.webp" },
+  { category: "Flat Roof", title: "GRP Fibreglass Flat Roof", location: "Sale", image: "/images/gallery-3.webp" },
+  { category: "Chimney", title: "Chimney Stack Rebuild", location: "Altrincham", image: "/images/gallery-4.webp" },
+  { category: "New Roof", title: "Slate Roof Installation", location: "Stockport", image: "/images/gallery-5.webp" },
+  { category: "Roof Repair", title: "Tile Replacement & Repointing", location: "Salford", image: "/images/gallery-6.webp" },
+  { category: "Guttering", title: "Full Gutter & Fascia Replacement", location: "Stretford", image: "/images/gallery-7.webp" },
+  { category: "Flat Roof", title: "EPDM Rubber Roof", location: "Levenshulme", image: "/images/gallery-8.webp" },
+  { category: "New Roof", title: "Modern Roof with Velux Windows", location: "Prestwich", image: "/images/gallery-9.webp" },
+  { category: "Roof Repair", title: "Lead Flashing Renewal", location: "Bolton", image: "/images/gallery-10.webp" },
+  { category: "Chimney", title: "Chimney Repointing & Cowl", location: "Urmston", image: "/images/gallery-11.webp" },
+  { category: "Emergency", title: "Emergency Storm Tarpaulin", location: "Bury", image: "/images/gallery-12.webp" },
 ];
 
 const categories = ["All", ...new Set(projects.map(p => p.category))];
@@ -46,7 +46,10 @@ const categories = ["All", ...new Set(projects.map(p => p.category))];
         {projects.map(project => (
           <div class="gallery-item" data-category={project.category}>
             <div class="gallery-image">
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
+              <img src={project.image} alt={project.title} loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+              <div class="gallery-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
+              </div>
             </div>
             <div class="gallery-overlay">
               <span class="gallery-category">{project.category}</span>
@@ -160,6 +163,21 @@ const categories = ["All", ...new Set(projects.map(p => p.category))];
     align-items: center;
     justify-content: center;
     transition: transform 0.5s;
+    overflow: hidden;
+  }
+
+  .gallery-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .gallery-placeholder {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
   }
 
   .gallery-item:hover .gallery-image {
