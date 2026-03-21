@@ -20,9 +20,21 @@ const projects = [
 ];
 
 const categories = ["All", ...new Set(projects.map(p => p.category))];
+
+const gallerySchema = {
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "name": "Manchester Gutters Project Gallery",
+  "url": "https://manchestergutters.co.uk/gallery/",
+  "description": "Browse our gallery of completed roofing projects across Manchester.",
+  "about": {
+    "@type": "RoofingContractor",
+    "name": "Manchester Gutters"
+  }
+};
 ---
 
-<Layout title="Project Gallery | Manchester Gutters" description="Browse our gallery of completed roofing projects across Manchester. See the quality of our roof repairs, new roofs, flat roofing and chimney work.">
+<Layout title="Project Gallery | Manchester Gutters" description="Browse our gallery of completed roofing projects across Manchester. See the quality of our roof repairs, new roofs, flat roofing and chimney work." schema={gallerySchema}>
   <Header />
 
   <section class="page-hero">

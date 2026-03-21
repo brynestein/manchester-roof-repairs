@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://manchestergutters.co.uk/sitemap-index.xml

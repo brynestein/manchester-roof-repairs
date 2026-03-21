@@ -3,9 +3,37 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FloatingCTA from '../components/FloatingCTA.astro';
+
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Manchester Gutters",
+  "url": "https://manchestergutters.co.uk/contact/",
+  "mainEntity": {
+    "@type": "RoofingContractor",
+    "name": "Manchester Gutters",
+    "telephone": "0161 234 5678",
+    "email": "info@manchestergutters.co.uk",
+    "url": "https://manchestergutters.co.uk",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Manchester",
+      "addressRegion": "Greater Manchester",
+      "addressCountry": "GB"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      }
+    ]
+  }
+};
 ---
 
-<Layout title="Contact Us | Manchester Gutters | Free Quotes" description="Get in touch with Manchester Gutters for a free, no-obligation roofing quote. Call 0161 234 5678 or fill in our contact form. We respond within 2 hours.">
+<Layout title="Contact Us | Manchester Gutters | Free Quotes" description="Get in touch with Manchester Gutters for a free, no-obligation roofing quote. Call 0161 234 5678 or fill in our contact form. We respond within 2 hours." schema={contactSchema}>
   <Header />
 
   <section class="page-hero">

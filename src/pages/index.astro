@@ -3,9 +3,79 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FloatingCTA from '../components/FloatingCTA.astro';
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "RoofingContractor",
+  "name": "Manchester Gutters",
+  "url": "https://manchestergutters.co.uk",
+  "logo": "https://manchestergutters.co.uk/favicon.svg",
+  "image": "https://manchestergutters.co.uk/images/hero-bg.jpg",
+  "description": "Professional roof repairs and guttering in Manchester. Fully insured, local roofers with 10-year guarantees. Emergency call-outs, new roofs, flat roofs & more.",
+  "telephone": "0161 234 5678",
+  "email": "info@manchestergutters.co.uk",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Manchester",
+    "addressRegion": "Greater Manchester",
+    "addressCountry": "GB"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 53.4808,
+    "longitude": -2.2426
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Manchester" },
+    { "@type": "City", "name": "Salford" },
+    { "@type": "City", "name": "Stockport" },
+    { "@type": "City", "name": "Bolton" },
+    { "@type": "City", "name": "Bury" },
+    { "@type": "City", "name": "Rochdale" },
+    { "@type": "City", "name": "Oldham" },
+    { "@type": "City", "name": "Wigan" },
+    { "@type": "City", "name": "Trafford" },
+    { "@type": "City", "name": "Tameside" }
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    }
+  ],
+  "priceRange": "$$",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "200",
+    "bestRating": "5"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Roofing Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Roof Repairs" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "New Roof Installation" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Flat Roofing" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Chimney Repairs" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Guttering & Drainage" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Emergency Roofing" } }
+    ]
+  },
+  "sameAs": []
+};
+
+const webSiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Manchester Gutters",
+  "url": "https://manchestergutters.co.uk"
+};
 ---
 
-<Layout>
+<Layout schema={[localBusinessSchema, webSiteSchema]}>
   <Header />
 
   <!-- Hero Section -->

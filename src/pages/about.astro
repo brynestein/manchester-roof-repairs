@@ -3,9 +3,26 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FloatingCTA from '../components/FloatingCTA.astro';
+
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About Manchester Gutters",
+  "url": "https://manchestergutters.co.uk/about/",
+  "mainEntity": {
+    "@type": "RoofingContractor",
+    "name": "Manchester Gutters",
+    "url": "https://manchestergutters.co.uk",
+    "foundingDate": "2014",
+    "description": "Family-run roofing company serving Manchester and Greater Manchester with over 10 years experience.",
+    "knowsAbout": ["Roof Repairs", "New Roof Installation", "Flat Roofing", "Chimney Repairs", "Guttering & Drainage", "Emergency Roofing"],
+    "numberOfEmployees": { "@type": "QuantitativeValue", "value": "10+" },
+    "areaServed": { "@type": "City", "name": "Manchester" }
+  }
+};
 ---
 
-<Layout title="About Us | Manchester Gutters" description="Learn about Manchester Gutters — trusted local roofers with 10+ years experience, fully insured and committed to quality across Greater Manchester.">
+<Layout title="About Us | Manchester Gutters" description="Learn about Manchester Gutters — trusted local roofers with 10+ years experience, fully insured and committed to quality across Greater Manchester." schema={aboutSchema}>
   <Header />
 
   <!-- Page Hero -->

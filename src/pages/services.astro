@@ -48,9 +48,33 @@ const services = [
     features: ["60-minute response time", "Temporary weatherproofing", "Storm damage repair", "Emergency tarpaulin", "Insurance claim support", "Same-day permanent fix"]
   }
 ];
+
+const servicesSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Roofing Services by Manchester Gutters",
+  "itemListElement": services.map((service, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "item": {
+      "@type": "Service",
+      "name": service.title,
+      "description": service.description,
+      "provider": {
+        "@type": "RoofingContractor",
+        "name": "Manchester Gutters",
+        "url": "https://manchestergutters.co.uk"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Manchester"
+      }
+    }
+  }))
+};
 ---
 
-<Layout title="Roofing Services Manchester | Manchester Gutters" description="Full range of roofing services in Manchester: repairs, new roofs, flat roofing, chimney repairs, guttering & emergency call-outs. Free quotes available.">
+<Layout title="Roofing Services Manchester | Manchester Gutters" description="Full range of roofing services in Manchester: repairs, new roofs, flat roofing, chimney repairs, guttering & emergency call-outs. Free quotes available." schema={servicesSchema}>
   <Header />
 
   <!-- Page Hero -->

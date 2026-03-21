@@ -18,9 +18,29 @@ const reviews = [
   { initials: "TB", name: "Tom B.", location: "Bolton", text: "Emergency call-out on a Sunday morning — they were here within 45 minutes. Sorted the leak and tidied up perfectly. Can't ask for more than that." },
   { initials: "EM", name: "Emma M.", location: "Bury", text: "From the initial inspection to the final clean-up, everything was handled professionally. Fair price, great work, and a proper guarantee. What more could you want?" },
 ];
+
+const reviewsSchema = {
+  "@context": "https://schema.org",
+  "@type": "RoofingContractor",
+  "name": "Manchester Gutters",
+  "url": "https://manchestergutters.co.uk",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "200",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": reviews.map(r => ({
+    "@type": "Review",
+    "author": { "@type": "Person", "name": r.name },
+    "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+    "reviewBody": r.text
+  }))
+};
 ---
 
-<Layout title="Customer Reviews | Manchester Gutters" description="Read genuine reviews from Manchester homeowners. 4.8 star Google rating with 200+ reviews. See why we're Manchester's most trusted roofers.">
+<Layout title="Customer Reviews | Manchester Gutters" description="Read genuine reviews from Manchester homeowners. 4.8 star Google rating with 200+ reviews. See why we're Manchester's most trusted roofers." schema={reviewsSchema}>
   <Header />
 
   <section class="page-hero">
