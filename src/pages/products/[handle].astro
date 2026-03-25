@@ -1,0 +1,536 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getProductByHandle, formatPrice } from '../../lib/shopify';
+
+const { handle } = Astro.params;
+
+if (!handle) {
+  return Astro.redirect('/collections');
+}
+
+let product: Awaited<ReturnType<typeof getProductByHandle>> = null;
+let error = '';
+
+try {
+  product = await getProductByHandle(handle);
+} catch (e) {
+  error = 'Unable to load this product.';
+  console.error('Shopify API error:', e);
+}
+
+if (!product && !error) {
+  return Astro.redirect('/collections');
+}
+
+const images = product?.images.edges.map((e) => e.node) || [];
+const variants = product?.variants.edges.map((e) => e.node) || [];
+const options = product?.options || [];
+const title = product?.seo?.title || product?.title || 'Product';
+const description = product?.seo?.description || product?.description || '';
+
+const jsonLd = product ? {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: product.title,
+  description: product.description,
+  image: images.map((img) => img.url),
+  url: `https://kitchingart.com/products/${handle}`,
+  brand: {
+    '@type': 'Brand',
+    name: 'KitchingArt',
+  },
+  offers: {
+    '@type': 'AggregateOffer',
+    lowPrice: product.priceRange.minVariantPrice.amount,
+    highPrice: product.priceRange.maxVariantPrice.amount,
+    priceCurrency: product.priceRange.minVariantPrice.currencyCode,
+    availability: variants.some((v) => v.availableForSale) ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+  },
+} : undefined;
+---
+
+<Layout title={`${title} – KitchingArt`} description={description} jsonLd={jsonLd}>
+  <section class="product-page section">
+    <div class="container">
+      {error ? (
+        <div class="error-message">
+          <p>{error}</p>
+        </div>
+      ) : product && (
+        <div class="product-layout">
+          <!-- Image gallery -->
+          <div class="product-gallery">
+            <div class="product-gallery__main" id="main-image">
+              {images[0] ? (
+                <img
+                  src={images[0].url}
+                  alt={images[0].altText || product.title}
+                  width={images[0].width}
+                  height={images[0].height}
+                  id="main-image-el"
+                />
+              ) : (
+                <div class="product-gallery__placeholder">No image available</div>
+              )}
+            </div>
+            {images.length > 1 && (
+              <div class="product-gallery__thumbnails">
+                {images.map((img, i) => (
+                  <button
+                    class={`product-gallery__thumb ${i === 0 ? 'active' : ''}`}
+                    data-image-url={img.url}
+                    data-image-alt={img.altText || product.title}
+                    aria-label={`View image ${i + 1}`}
+                  >
+                    <img src={img.url} alt={img.altText || `${product.title} - ${i + 1}`} loading="lazy" />
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <!-- Product info -->
+          <div class="product-info">
+            <h1>{product.title}</h1>
+
+            <p class="product-info__price" id="product-price">
+              {formatPrice(product.priceRange.minVariantPrice)}
+            </p>
+            <p class="product-info__tax">Taxes included.</p>
+
+            <!-- Variant selectors -->
+            <form class="product-form" id="product-form">
+              {options.map((option) => (
+                <div class="product-option">
+                  <label class="product-option__label">{option.name}</label>
+                  <div class="product-option__values">
+                    {option.values.map((value, i) => (
+                      <label class="pill-selector">
+                        <input
+                          type="radio"
+                          name={option.name}
+                          value={value}
+                          checked={i === 0}
+                          class="pill-selector__input"
+                        />
+                        <span class="pill-selector__label">{value}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              ))}
+
+              <!-- Quantity -->
+              <div class="product-option">
+                <label class="product-option__label">Quantity</label>
+                <div class="quantity-selector">
+                  <button type="button" class="quantity-btn" id="qty-minus" aria-label="Decrease quantity">−</button>
+                  <input type="number" id="qty-input" value="1" min="1" max="10" class="quantity-input" />
+                  <button type="button" class="quantity-btn" id="qty-plus" aria-label="Increase quantity">+</button>
+                </div>
+              </div>
+
+              <button type="submit" class="add-to-cart-btn" id="add-to-cart">
+                Add to cart
+              </button>
+            </form>
+
+            <!-- Description -->
+            {product.descriptionHtml && (
+              <div class="product-description" set:html={product.descriptionHtml} />
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Pass variant data to client -->
+  {product && (
+    <script define:vars={{ variants: JSON.stringify(variants), options: JSON.stringify(options) }}>
+      window.__productVariants = JSON.parse(variants);
+      window.__productOptions = JSON.parse(options);
+    </script>
+  )}
+</Layout>
+
+<style>
+  .product-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  /* Gallery */
+  .product-gallery__main {
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 2px;
+    background: var(--color-surface);
+    margin-bottom: 1rem;
+  }
+
+  .product-gallery__main img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .product-gallery__placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-body-text);
+  }
+
+  .product-gallery__thumbnails {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+
+  .product-gallery__thumb {
+    width: 64px;
+    height: 64px;
+    border-radius: 2px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    padding: 0;
+    flex-shrink: 0;
+    transition: border-color 0.15s;
+  }
+
+  .product-gallery__thumb.active {
+    border-color: var(--color-heading-text);
+  }
+
+  .product-gallery__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Product info */
+  .product-info h1 {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+  }
+
+  .product-info__price {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-heading-text);
+    margin-bottom: 0.25rem;
+  }
+
+  .product-info__tax {
+    font-size: 0.8rem;
+    color: var(--color-body-text);
+    margin-bottom: 1.5rem;
+  }
+
+  /* Option groups */
+  .product-option {
+    margin-bottom: 1.25rem;
+  }
+
+  .product-option__label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-heading-text);
+  }
+
+  .product-option__values {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* Pill selector */
+  .pill-selector {
+    cursor: pointer;
+  }
+
+  .pill-selector__input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .pill-selector__label {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 30px;
+    font-size: 0.85rem;
+    transition: all 0.15s;
+    color: var(--color-body-text);
+  }
+
+  .pill-selector__input:checked + .pill-selector__label {
+    border-color: var(--color-heading-text);
+    color: var(--color-heading-text);
+    font-weight: 600;
+  }
+
+  .pill-selector:hover .pill-selector__label {
+    border-color: var(--color-heading-text);
+  }
+
+  /* Quantity */
+  .quantity-selector {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+  }
+
+  .quantity-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--color-body-text);
+    transition: color 0.15s;
+  }
+
+  .quantity-btn:hover {
+    color: var(--color-heading-text);
+  }
+
+  .quantity-input {
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    border: none;
+    border-left: 1px solid var(--color-border);
+    border-right: 1px solid var(--color-border);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    -moz-appearance: textfield;
+  }
+
+  .quantity-input::-webkit-outer-spin-button,
+  .quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  /* Add to cart */
+  .add-to-cart-btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 1px solid var(--color-heading-text);
+    background: transparent;
+    color: var(--color-heading-text);
+    border-radius: 4px;
+    transition: all 0.2s;
+    margin-top: 0.5rem;
+    letter-spacing: 0.02em;
+  }
+
+  .add-to-cart-btn:hover {
+    background: var(--color-heading-text);
+    color: white;
+  }
+
+  /* Description */
+  .product-description {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+    line-height: 1.7;
+  }
+
+  .product-description :global(p) {
+    margin-bottom: 1rem;
+  }
+
+  .error-message {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 4px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .product-layout {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>
+
+<script>
+  // Image gallery
+  document.querySelectorAll('.product-gallery__thumb').forEach((thumb) => {
+    thumb.addEventListener('click', () => {
+      const url = thumb.getAttribute('data-image-url');
+      const alt = thumb.getAttribute('data-image-alt');
+      const mainImg = document.getElementById('main-image-el') as HTMLImageElement;
+      if (mainImg && url) {
+        mainImg.src = url;
+        mainImg.alt = alt || '';
+      }
+      document.querySelectorAll('.product-gallery__thumb').forEach((t) => t.classList.remove('active'));
+      thumb.classList.add('active');
+    });
+  });
+
+  // Quantity controls
+  const qtyInput = document.getElementById('qty-input') as HTMLInputElement;
+  document.getElementById('qty-minus')?.addEventListener('click', () => {
+    const val = parseInt(qtyInput.value);
+    if (val > 1) qtyInput.value = String(val - 1);
+  });
+  document.getElementById('qty-plus')?.addEventListener('click', () => {
+    const val = parseInt(qtyInput.value);
+    if (val < 10) qtyInput.value = String(val + 1);
+  });
+
+  // Variant selection and price update
+  const variants = (window as any).__productVariants || [];
+  const productForm = document.getElementById('product-form');
+  const priceEl = document.getElementById('product-price');
+
+  function getSelectedOptions(): Record<string, string> {
+    const opts: Record<string, string> = {};
+    productForm?.querySelectorAll('input[type="radio"]:checked').forEach((input) => {
+      const el = input as HTMLInputElement;
+      opts[el.name] = el.value;
+    });
+    return opts;
+  }
+
+  function findMatchingVariant(selected: Record<string, string>) {
+    return variants.find((v: any) =>
+      v.selectedOptions.every((opt: any) => selected[opt.name] === opt.value)
+    );
+  }
+
+  function updatePrice() {
+    const selected = getSelectedOptions();
+    const variant = findMatchingVariant(selected);
+    if (variant && priceEl) {
+      const amount = parseFloat(variant.price.amount);
+      priceEl.textContent = new Intl.NumberFormat('en-GB', {
+        style: 'currency',
+        currency: variant.price.currencyCode,
+      }).format(amount);
+    }
+  }
+
+  productForm?.querySelectorAll('input[type="radio"]').forEach((input) => {
+    input.addEventListener('change', updatePrice);
+  });
+
+  // Add to cart
+  productForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const selected = getSelectedOptions();
+    const variant = findMatchingVariant(selected);
+    if (!variant) return alert('Please select all options');
+
+    const quantity = parseInt(qtyInput.value) || 1;
+    const btn = document.getElementById('add-to-cart') as HTMLButtonElement;
+    btn.textContent = 'Adding...';
+    btn.disabled = true;
+
+    try {
+      const shopify = (window as any).__shopify;
+      if (!shopify?.apiUrl || !shopify?.token) {
+        alert('Store configuration missing');
+        return;
+      }
+
+      let cartId = localStorage.getItem('kitchingart_cart_id');
+
+      if (cartId) {
+        // Add to existing cart
+        const res = await fetch(shopify.apiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Shopify-Storefront-Access-Token': shopify.token,
+          },
+          body: JSON.stringify({
+            query: `mutation CartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!) {
+              cartLinesAdd(cartId: $cartId, lines: $lines) {
+                cart { id totalQuantity checkoutUrl }
+                userErrors { field message }
+              }
+            }`,
+            variables: {
+              cartId,
+              lines: [{ merchandiseId: variant.id, quantity }],
+            },
+          }),
+        });
+        const data = await res.json();
+        if (data.data?.cartLinesAdd?.cart) {
+          const cart = data.data.cartLinesAdd.cart;
+          updateCartCount(cart.totalQuantity);
+        }
+      } else {
+        // Create new cart
+        const res = await fetch(shopify.apiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Shopify-Storefront-Access-Token': shopify.token,
+          },
+          body: JSON.stringify({
+            query: `mutation CartCreate($input: CartInput!) {
+              cartCreate(input: $input) {
+                cart { id totalQuantity checkoutUrl }
+                userErrors { field message }
+              }
+            }`,
+            variables: {
+              input: {
+                lines: [{ merchandiseId: variant.id, quantity }],
+              },
+            },
+          }),
+        });
+        const data = await res.json();
+        if (data.data?.cartCreate?.cart) {
+          const cart = data.data.cartCreate.cart;
+          localStorage.setItem('kitchingart_cart_id', cart.id);
+          localStorage.setItem('kitchingart_checkout_url', cart.checkoutUrl);
+          updateCartCount(cart.totalQuantity);
+        }
+      }
+
+      btn.textContent = 'Added!';
+      setTimeout(() => {
+        btn.textContent = 'Add to cart';
+        btn.disabled = false;
+      }, 1500);
+    } catch (err) {
+      console.error('Cart error:', err);
+      btn.textContent = 'Add to cart';
+      btn.disabled = false;
+      alert('Failed to add to cart. Please try again.');
+    }
+  });
+
+  function updateCartCount(count: number) {
+    const badge = document.getElementById('cart-count');
+    if (badge) {
+      badge.textContent = String(count);
+      badge.style.display = count > 0 ? 'flex' : 'none';
+    }
+  }
+</script>

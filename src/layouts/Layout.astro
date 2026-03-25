@@ -1,219 +1,76 @@
 ---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import AnnouncementBar from '../components/AnnouncementBar.astro';
+import '../styles/global.css';
+
 interface Props {
-  title?: string;
+  title: string;
   description?: string;
   ogImage?: string;
-  schema?: object | object[];
+  jsonLd?: Record<string, unknown>;
 }
 
-const siteUrl = 'https://manchestergutters.co.uk';
-const {
-  title = "Manchester Gutters | Trusted Local Roofers | Free Quotes",
-  description = "Professional roof repairs and guttering in Manchester. Fully insured, local roofers with 10-year guarantees. Emergency call-outs, new roofs, flat roofs & more. Free quotes — call today!",
-  ogImage = "/images/hero-bg.jpg",
-  schema,
-} = Astro.props;
-
-const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
-const ogImageUrl = new URL(ogImage, siteUrl).href;
+const { title, description = 'Original giclee art prints by David Kitching. Abstract, interpretive and photographic canvas art.', ogImage, jsonLd } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site || 'https://kitchingart.com');
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href={canonicalUrl} />
+    <link rel="canonical" href={canonicalUrl.toString()} />
 
-    <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImageUrl} />
-    <meta property="og:locale" content="en_GB" />
-    <meta property="og:site_name" content="Manchester Gutters" />
+    <meta property="og:url" content={canonicalUrl.toString()} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta property="og:site_name" content="KitchingArt" />
 
-    <!-- Twitter Card -->
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImageUrl} />
-
-    <!-- Geo tags for local SEO -->
-    <meta name="geo.region" content="GB-MAN" />
-    <meta name="geo.placename" content="Manchester" />
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-    <!-- Schema / Structured Data (JSON-LD) -->
-    {schema && (
-      Array.isArray(schema)
-        ? schema.map(s => <script type="application/ld+json" set:html={JSON.stringify(s)} />)
-        : <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- JSON-LD -->
+    {jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     )}
   </head>
   <body>
-    <slot />
+    <AnnouncementBar />
+    <Header />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+
+    <!-- Cart state script -->
+    <script>
+      const STOREFRONT_API_URL = `https://${import.meta.env.PUBLIC_SHOPIFY_STORE_DOMAIN || 'kitchingart.myshopify.com'}/api/2024-10/graphql.json`;
+      const STOREFRONT_TOKEN = import.meta.env.PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN || '';
+
+      window.__shopify = {
+        apiUrl: STOREFRONT_API_URL,
+        token: STOREFRONT_TOKEN,
+      };
+    </script>
   </body>
 </html>
-
-<style is:global>
-  *,
-  *::before,
-  *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  :root {
-    --red: #C8102E;
-    --red-dark: #A00D24;
-    --dark: #1A1A1A;
-    --dark-bg: #111111;
-    --yellow: #FBBC04;
-    --yellow-hover: #E5A800;
-    --light-gray: #F5F5F5;
-    --medium-gray: #E0E0E0;
-    --text-gray: #555555;
-    --white: #FFFFFF;
-    --green: #25D366;
-    --max-width: 1200px;
-    --header-height: 80px;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    font-family: 'Roboto', Arial, sans-serif;
-    color: var(--dark);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Oswald', sans-serif;
-    font-weight: 700;
-    line-height: 1.2;
-  }
-
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-
-  ul {
-    list-style: none;
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  .container {
-    width: 100%;
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
-  .section {
-    padding: 80px 0;
-  }
-
-  .section-header {
-    text-align: center;
-    margin-bottom: 50px;
-  }
-
-  .section-header h2 {
-    font-size: 2.5rem;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-
-  .section-header .red-line {
-    width: 60px;
-    height: 4px;
-    background: var(--red);
-    margin: 15px auto;
-    border-radius: 2px;
-  }
-
-  .section-header p {
-    color: var(--text-gray);
-    font-size: 1.1rem;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .btn {
-    display: inline-block;
-    padding: 14px 32px;
-    font-family: 'Oswald', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .btn-primary {
-    background: var(--yellow);
-    color: var(--dark);
-  }
-
-  .btn-primary:hover {
-    background: var(--yellow-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(251, 188, 4, 0.4);
-  }
-
-  .btn-red {
-    background: var(--red);
-    color: var(--white);
-  }
-
-  .btn-red:hover {
-    background: var(--red-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(200, 16, 46, 0.4);
-  }
-
-  .btn-outline {
-    background: transparent;
-    color: var(--white);
-    border: 2px solid var(--white);
-  }
-
-  .btn-outline:hover {
-    background: var(--white);
-    color: var(--dark);
-  }
-
-  @media (max-width: 768px) {
-    .section {
-      padding: 50px 0;
-    }
-
-    .section-header h2 {
-      font-size: 1.8rem;
-    }
-  }
-</style>

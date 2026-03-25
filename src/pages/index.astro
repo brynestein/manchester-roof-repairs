@@ -1,1118 +1,376 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import FloatingCTA from '../components/FloatingCTA.astro';
 
-const localBusinessSchema = {
-  "@context": "https://schema.org",
-  "@type": "RoofingContractor",
-  "name": "Manchester Gutters",
-  "url": "https://manchestergutters.co.uk",
-  "logo": "https://manchestergutters.co.uk/favicon.svg",
-  "image": "https://manchestergutters.co.uk/images/hero-bg.jpg",
-  "description": "Professional roof repairs and guttering in Manchester. Fully insured, local roofers with 10-year guarantees. Emergency call-outs, new roofs, flat roofs & more.",
-  "telephone": "0161 234 5678",
-  "email": "info@manchestergutters.co.uk",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Manchester",
-    "addressRegion": "Greater Manchester",
-    "addressCountry": "GB"
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'KitchingArt',
+  description: 'Original giclee art prints by David Kitching',
+  url: 'https://kitchingart.com',
+  logo: 'https://kitchingart.com/logo.png',
+  founder: {
+    '@type': 'Person',
+    name: 'David Kitching',
   },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 53.4808,
-    "longitude": -2.2426
-  },
-  "areaServed": [
-    { "@type": "City", "name": "Manchester" },
-    { "@type": "City", "name": "Salford" },
-    { "@type": "City", "name": "Stockport" },
-    { "@type": "City", "name": "Bolton" },
-    { "@type": "City", "name": "Bury" },
-    { "@type": "City", "name": "Rochdale" },
-    { "@type": "City", "name": "Oldham" },
-    { "@type": "City", "name": "Wigan" },
-    { "@type": "City", "name": "Trafford" },
-    { "@type": "City", "name": "Tameside" }
+  sameAs: [
+    'https://facebook.com/kitchingart',
+    'https://instagram.com/kitchingart',
   ],
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      "opens": "08:00",
-      "closes": "18:00"
-    }
-  ],
-  "priceRange": "$$",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "reviewCount": "200",
-    "bestRating": "5"
-  },
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Roofing Services",
-    "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Roof Repairs" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "New Roof Installation" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Flat Roofing" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Chimney Repairs" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Guttering & Drainage" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Emergency Roofing" } }
-    ]
-  },
-  "sameAs": []
-};
-
-const webSiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Manchester Gutters",
-  "url": "https://manchestergutters.co.uk"
 };
 ---
 
-<Layout schema={[localBusinessSchema, webSiteSchema]}>
-  <Header />
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="container hero-inner">
-      <div class="hero-content">
-        <h1>Stop Your Roof Leaking — Fixed Right, First Time</h1>
-        <ul class="hero-checks">
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--yellow)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Fully Insured &amp; Certified Roofers
-          </li>
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--yellow)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            10-Year Written Guarantee on All Work
-          </li>
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--yellow)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Free No-Obligation Quotes
-          </li>
-        </ul>
-        <div class="hero-buttons">
-          <a href="tel:01612345678" class="btn btn-primary">Call Us Now</a>
-          <a href="/services/" class="btn btn-outline">Our Services</a>
-        </div>
-        <div class="hero-stats">
-          <div class="stat">
-            <span class="stat-number">10+</span>
-            <span class="stat-label">Years Experience</span>
-          </div>
-          <div class="stat">
-            <span class="stat-number">2,500+</span>
-            <span class="stat-label">Roofs Completed</span>
-          </div>
-          <div class="stat">
-            <span class="stat-number">4.8</span>
-            <span class="stat-label">Google Rating</span>
-          </div>
-        </div>
-      </div>
-      <div class="hero-form-card">
-        <h3>Get Your Free Quote</h3>
-        <p>No obligation — we'll get back to you within 2 hours</p>
-        <form action="/contact/" method="GET">
-          <input type="text" name="name" placeholder="Your Name" required />
-          <input type="email" name="email" placeholder="Email Address" required />
-          <input type="tel" name="phone" placeholder="Phone Number" required />
-          <select name="service">
-            <option value="">Select Service</option>
-            <option value="roof-repair">Roof Repair</option>
-            <option value="new-roof">New Roof Installation</option>
-            <option value="flat-roof">Flat Roofing</option>
-            <option value="chimney">Chimney Repairs</option>
-            <option value="guttering">Guttering</option>
-            <option value="emergency">Emergency Roofing</option>
-          </select>
-          <textarea name="message" placeholder="Describe your roofing issue..." rows="3"></textarea>
-          <button type="submit" class="btn btn-primary" style="width: 100%; text-align: center;">Request Free Quote</button>
-        </form>
-        <p class="form-trust">All work backed by our 10-year guarantee</p>
-      </div>
-    </div>
-    <div class="hero-red-line"></div>
-  </section>
-
-  <!-- Trust Bar -->
-  <section class="trust-bar">
+<Layout
+  title="Original Canvas Art Prints by David Kitching - KitchingArt"
+  description="Original giclee canvas art prints from the artist's own website. Abstract, interpretive and photographic works by David Kitching."
+  jsonLd={jsonLd}
+>
+  <!-- Heading section -->
+  <section class="hero-heading">
     <div class="container">
-      <div class="trust-grid">
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          </div>
-          <div>
-            <strong>Fully Insured</strong>
-            <span>£5M Public Liability</span>
-          </div>
+      <h1>David Kitching | KitchingArt</h1>
+      <p class="hero-heading__subtitle">Original giclee art prints from the artist's own website</p>
+    </div>
+  </section>
+
+  <!-- Hero slideshow -->
+  <section class="hero-slideshow" aria-label="Featured artwork slideshow">
+    <div class="slideshow" id="slideshow">
+      <div class="slideshow__track">
+        <div class="slideshow__slide active" data-slide="0">
+          <img src="https://kitchingart.com/cdn/shop/files/Running_through_autumnn_leaves._Large_giclee_canvas..jpg?v=1774296742&width=1920" alt="Running through autumn leaves - Large giclee canvas art print" loading="eager" />
         </div>
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </div>
-          <div>
-            <strong>TrustMark Registered</strong>
-            <span>Government-Endorsed</span>
-          </div>
+        <div class="slideshow__slide" data-slide="1">
+          <img src="https://kitchingart.com/cdn/shop/files/Waterfall_s_edge._Large_giclee_art_canvas._Carousel..jpg?v=1774297293&width=1920" alt="Waterfall's edge - Large giclee art canvas" loading="lazy" />
         </div>
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
-          </div>
-          <div>
-            <strong>Checkatrade Approved</strong>
-            <span>Vetted &amp; Reviewed</span>
-          </div>
+        <div class="slideshow__slide" data-slide="2">
+          <img src="https://kitchingart.com/cdn/shop/files/The_Organic_Seer._Giclee_art_canvas._Carousel..jpg?v=1774297504&width=1920" alt="The Organic Seer - Giclee art canvas" loading="lazy" />
         </div>
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
-          </div>
-          <div>
-            <strong>10-Year Guarantee</strong>
-            <span>Written Warranty</span>
-          </div>
+        <div class="slideshow__slide" data-slide="3">
+          <img src="https://kitchingart.com/cdn/shop/files/Information_verification._Art_canvas._Carousel..jpg?v=1774297684&width=1920" alt="Information verification - Art canvas" loading="lazy" />
+        </div>
+        <div class="slideshow__slide" data-slide="4">
+          <img src="https://kitchingart.com/cdn/shop/files/Echoes_in_a_ballroom._Giclee_art_canvas._Carousel..jpg?v=1774297886&width=1920" alt="Echoes in a ballroom - Giclee art canvas" loading="lazy" />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Why Choose Us -->
-  <section class="section why-us" id="about">
+  <!-- Tagline -->
+  <section class="tagline">
     <div class="container">
-      <div class="why-us-grid">
-        <div class="why-us-image">
-          <div class="why-us-image-placeholder">
-            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
-            <span>Professional Roofing</span>
-          </div>
-          <div class="experience-badge">
-            <span class="badge-number">10+</span>
-            <span class="badge-text">Years of<br/>Experience</span>
-          </div>
-        </div>
-        <div class="why-us-content">
-          <h2>Why Manchester Trusts Us With Their Roofs</h2>
-          <div class="red-line"></div>
-          <p class="why-us-intro">We're not just roofers — we're your neighbours. As a local Manchester roofing company, we take pride in protecting the homes and businesses in our community.</p>
+      <p class="tagline__text">Art for your heart and for your mind</p>
+    </div>
+  </section>
 
-          <div class="outcome-blocks">
-            <div class="outcome">
-              <div class="outcome-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-              </div>
-              <div>
-                <h4>Permanent Solutions</h4>
-                <p>We fix the root cause — not just the symptoms. No quick patches that fail next winter.</p>
-              </div>
-            </div>
-            <div class="outcome">
-              <div class="outcome-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-              </div>
-              <div>
-                <h4>Transparent Pricing</h4>
-                <p>Detailed written quotes before any work starts. No hidden costs, no surprises.</p>
-              </div>
-            </div>
-            <div class="outcome">
-              <div class="outcome-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              </div>
-              <div>
-                <h4>Rapid Response</h4>
-                <p>Emergency call-outs within 60 minutes. We're always ready when Manchester weather strikes.</p>
-              </div>
-            </div>
-            <div class="outcome">
-              <div class="outcome-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
-              </div>
-              <div>
-                <h4>Guaranteed Quality</h4>
-                <p>Every job backed by our 10-year written guarantee for complete peace of mind.</p>
-              </div>
-            </div>
-          </div>
-        </div>
+  <!-- Abstract collection preview -->
+  <section class="collection-preview section">
+    <div class="container collection-preview__grid">
+      <div class="collection-preview__image">
+        <img src="https://kitchingart.com/cdn/shop/files/KitchingArt_home_page_abstract_banner.jpg?v=1774295299&width=800" alt="Abstract art collection by David Kitching" loading="lazy" />
+      </div>
+      <div class="collection-preview__content">
+        <h2>Abstract</h2>
+        <p>Various takes from just pretty colours to pondering the meaning of life. Bold shapes and colours with different variants to match your existing decor... frameless or with one of two frame styles.</p>
+        <a href="/collections?category=abstracts" class="collection-preview__link">More...</a>
       </div>
     </div>
   </section>
 
-  <!-- Services Preview -->
-  <section class="section services-preview" style="background: var(--light-gray);">
+  <!-- Interpretive collection preview -->
+  <section class="collection-preview collection-preview--reversed section">
+    <div class="container collection-preview__grid collection-preview__grid--reversed">
+      <div class="collection-preview__content">
+        <h2>Interpretive</h2>
+        <p>Interpretations of aspects of life and our world.</p>
+        <a href="/collections?category=interpretations" class="collection-preview__link">More...</a>
+      </div>
+      <div class="collection-preview__image">
+        <img src="https://kitchingart.com/cdn/shop/files/KitchingArt_David_Kitching_Home_page_Interpretations_banner.jpg?v=1774295426&width=800" alt="Interpretive art collection by David Kitching" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- New Collection (Photographs) -->
+  <section class="collection-preview section">
+    <div class="container collection-preview__grid">
+      <div class="collection-preview__image">
+        <img src="https://kitchingart.com/cdn/shop/files/Liberty_statue_Budapest_4.jpg?v=1774296060&width=800" alt="Images of Budapest photography collection" loading="lazy" />
+      </div>
+      <div class="collection-preview__content">
+        <h2>New Collection</h2>
+        <p>I've decided to issue my original photographs as canvases too. As of now, the Budapest Collection is the first. But more will follow.</p>
+        <p>It's fairly unusual I think, to issue photographs as large giclee prints. Usually they are sold as conventional, framed prints. So I hope you see value in this.</p>
+        <a href="/collections/the-images-of-budapest-collection" class="collection-preview__link">Images of Budapest</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer testimonial -->
+  <section class="testimonial section">
     <div class="container">
-      <div class="section-header">
-        <h2>Our Roofing Services</h2>
-        <div class="red-line"></div>
-        <p>From small repairs to complete new roofs — we handle it all across Manchester</p>
-      </div>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
-          </div>
-          <h3>Roof Repairs</h3>
-          <p>Expert repairs for leaks, damaged tiles, flashing issues, and storm damage across Manchester.</p>
-          <a href="/services/" class="service-link">Learn More &rarr;</a>
+      <div class="testimonial__content">
+        <div class="testimonial__image">
+          <img src="https://kitchingart.com/cdn/shop/files/Seer_of_the_Matrices_banner_home_page.jpg?v=1774296284&width=800" alt="Seer of the Matrices - canvas art print" loading="lazy" />
         </div>
-        <div class="service-card">
-          <div class="service-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
-          </div>
-          <h3>New Roof Installation</h3>
-          <p>Complete new roof installations using premium materials with a 10-year workmanship guarantee.</p>
-          <a href="/services/" class="service-link">Learn More &rarr;</a>
+        <div class="testimonial__text">
+          <p class="testimonial__quote">One customer's response to receiving his picture (posted on a public board):</p>
+          <blockquote>
+            "Just got home and found my picture. It is brilliant, and the packaging superb. If you were thinking of buying something I recommend you do, as they are better in real life than on the website. Thanks David."
+          </blockquote>
+          <p class="testimonial__author">J.S., Surrey, England.</p>
+          <p class="testimonial__artwork">Seer of the Matrices</p>
         </div>
-        <div class="service-card">
-          <div class="service-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect></svg>
-          </div>
-          <h3>Flat Roofing</h3>
-          <p>EPDM rubber, GRP fibreglass, and felt flat roof specialists. Long-lasting waterproof solutions.</p>
-          <a href="/services/" class="service-link">Learn More &rarr;</a>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
-          </div>
-          <h3>Emergency Roofing</h3>
-          <p>24/7 emergency roof repairs. We respond within 60 minutes to protect your property.</p>
-          <a href="/services/" class="service-link">Learn More &rarr;</a>
-        </div>
-      </div>
-      <div style="text-align: center; margin-top: 40px;">
-        <a href="/services/" class="btn btn-red">View All Services</a>
       </div>
     </div>
   </section>
 
-  <!-- Process Section -->
-  <section class="section process-section">
+  <!-- Shipping/tariff info -->
+  <section class="info-banner section">
     <div class="container">
-      <div class="section-header">
-        <h2 style="color: var(--white);">How It Works</h2>
-        <div class="red-line"></div>
-        <p style="color: #ccc;">Getting your roof fixed is simple — here's our proven 4-step process</p>
-      </div>
-      <div class="process-grid">
-        <div class="process-step">
-          <div class="process-number">1</div>
-          <h3>Get in Touch</h3>
-          <p>Call us or fill in our online form. We'll discuss your roofing needs and arrange a convenient time to visit.</p>
-        </div>
-        <div class="process-step">
-          <div class="process-number">2</div>
-          <h3>Free Roof Inspection</h3>
-          <p>Our experienced roofer will inspect your roof, identify all issues, and provide a detailed written quote.</p>
-        </div>
-        <div class="process-step">
-          <div class="process-number">3</div>
-          <h3>Expert Roofing Work</h3>
-          <p>Our skilled team completes the work to the highest standards, keeping your property clean and tidy.</p>
-        </div>
-        <div class="process-step">
-          <div class="process-number">4</div>
-          <h3>10-Year Guarantee</h3>
-          <p>Receive your written guarantee and enjoy total peace of mind knowing your roof is fully protected.</p>
-        </div>
-      </div>
+      <p class="info-banner__main">No import taxes or tariffs in the US, Canada, the UK, the EU, GCC countries, Singapore or Australia. <a href="/shipping">More on shipping destinations here.</a></p>
+      <p class="info-banner__detail">Your picture will be produced on demand according to your specification in either the US, Canada, the UK, the EU, Dubai, Singapore or Australia, depending on where you're located.</p>
+      <p class="info-banner__personal">(Yes this is still just me. One person. Not a big company.)</p>
     </div>
   </section>
 
-  <!-- Reviews Preview -->
-  <section class="section" style="background: var(--light-gray);">
+  <!-- Trust section -->
+  <section class="trust section--large">
     <div class="container">
-      <div class="section-header">
-        <h2>What Our Customers Say</h2>
-        <div class="red-line"></div>
-        <p>Don't just take our word for it — read reviews from real Manchester homeowners</p>
-      </div>
-      <div class="reviews-grid">
-        <div class="review-card">
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">"Fantastic service from start to finish. They fixed our leaking roof quickly and the price was very fair. Highly recommend to anyone in Manchester."</p>
-          <div class="review-author">
-            <div class="review-avatar">JB</div>
-            <div>
-              <strong>James B.</strong>
-              <span>Didsbury, Manchester</span>
-            </div>
-          </div>
-        </div>
-        <div class="review-card">
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">"Called them for an emergency leak during a storm. They arrived within the hour and had it sorted the same day. Brilliant team — can't fault them."</p>
-          <div class="review-author">
-            <div class="review-avatar">SK</div>
-            <div>
-              <strong>Sarah K.</strong>
-              <span>Chorlton, Manchester</span>
-            </div>
-          </div>
-        </div>
-        <div class="review-card">
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">"Had a complete new roof fitted. The quality of workmanship is excellent and they left the site spotless. Very professional outfit."</p>
-          <div class="review-author">
-            <div class="review-avatar">MP</div>
-            <div>
-              <strong>Mark P.</strong>
-              <span>Sale, Manchester</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div style="text-align: center; margin-top: 40px;">
-        <a href="/reviews/" class="btn btn-red">Read All Reviews</a>
+      <h2>Trust</h2>
+      <div class="trust__content">
+        <p>I'm a one man band. Some of my Collections have taken years to finish whilst others were finished in weeks. Most are unrepeatable as they are the result of myriad processes that I could not repeat correctly.</p>
+        <p>I want to you to be happy with what arrives at your home. Both the quality and also that you like it and that it becomes a welcoming part of your home, promoting wellbeing and good thoughts for many years to come.</p>
+        <p>So yes, I want this quality/ordering/shipping/etc process to go as well as possible for you, because that way I feel good too, and I'm doing my best to ensure this. You can always talk directly to me if you have a problem.</p>
+        <p class="trust__signature">David Kitching</p>
       </div>
     </div>
   </section>
-
-  <!-- Service Areas -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Areas We Cover</h2>
-        <div class="red-line"></div>
-        <p>Providing professional roofing services across Greater Manchester</p>
-      </div>
-      <div class="areas-grid">
-        {["Manchester City Centre", "Didsbury", "Chorlton", "Sale", "Altrincham", "Stockport", "Stretford", "Trafford", "Salford", "Bolton", "Bury", "Rochdale", "Oldham", "Wigan", "Tameside", "Ashton-under-Lyne", "Levenshulme", "Withington", "Fallowfield", "Prestwich", "Eccles", "Urmston", "Denton", "Hyde"].map(area => (
-          <span class="area-tag">{area}</span>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ Section -->
-  <section class="section faq-section" style="background: var(--light-gray);">
-    <div class="container">
-      <div class="section-header">
-        <h2>Frequently Asked Questions</h2>
-        <div class="red-line"></div>
-      </div>
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            How much does roof repair cost in Manchester?
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <div class="faq-answer">
-            <p>Roof repair costs vary depending on the extent of damage. Minor repairs typically start from £150, while larger jobs can range from £500–£2,000+. We provide free, no-obligation quotes so you know exactly what to expect before any work begins.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            Are you fully insured?
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <div class="faq-answer">
-            <p>Yes, we carry £5 million public liability insurance and full employer's liability cover. We're also TrustMark registered and Checkatrade approved, so you can be confident you're in safe hands.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            Do you offer emergency roofing services?
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <div class="faq-answer">
-            <p>Absolutely. We offer 24/7 emergency roof repair services across Manchester. In most cases, we can be with you within 60 minutes of your call to make your property safe and watertight.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            What guarantee do you provide?
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <div class="faq-answer">
-            <p>All our work comes with a 10-year written guarantee on workmanship. We also use manufacturer-backed materials with their own warranties, giving you double protection and complete peace of mind.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            What areas of Manchester do you cover?
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <div class="faq-answer">
-            <p>We cover all of Greater Manchester including Manchester city centre, Didsbury, Chorlton, Sale, Altrincham, Stockport, Salford, Bolton, Bury, Rochdale, Oldham, and all surrounding areas within a 25-mile radius.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Banner -->
-  <section class="cta-banner">
-    <div class="container cta-inner">
-      <div class="cta-text">
-        <h2>Need a Roofer in Manchester? Get a Free Quote Today</h2>
-        <p>Our friendly team is ready to help — no obligation, no pressure</p>
-      </div>
-      <div class="cta-actions">
-        <a href="tel:01612345678" class="btn btn-primary">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;vertical-align:middle;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          0161 234 5678
-        </a>
-        <a href="/contact/" class="btn btn-outline">Request a Quote</a>
-      </div>
-    </div>
-  </section>
-
-  <Footer />
-  <FloatingCTA />
 </Layout>
 
 <style>
-  /* Hero */
-  .hero {
-    position: relative;
-    min-height: 600px;
-    background: url('/images/hero-bg.webp') center/cover no-repeat, url('/images/hero-bg.jpg') center/cover no-repeat, linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-    display: flex;
-    align-items: center;
+  /* Hero heading */
+  .hero-heading {
+    background: var(--color-surface);
+    text-align: right;
+    padding: 1rem 0;
+  }
+
+  .hero-heading h1 {
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: rgba(18, 18, 18, 0.55);
+    margin-bottom: 0.25rem;
+  }
+
+  .hero-heading__subtitle {
+    font-size: 1rem;
+    color: rgba(18, 18, 18, 0.45);
+  }
+
+  /* Slideshow */
+  .hero-slideshow {
+    width: 100%;
     overflow: hidden;
   }
 
-  .hero-overlay {
+  .slideshow__track {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1.93 / 1;
+  }
+
+  .slideshow__slide {
     position: absolute;
     inset: 0;
-    background: rgba(10, 10, 30, 0.7);
-    z-index: 1;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
   }
 
-  .hero-inner {
-    position: relative;
-    z-index: 2;
-    display: grid;
-    grid-template-columns: 1fr 400px;
-    gap: 60px;
-    align-items: center;
-    padding-top: 60px;
-    padding-bottom: 60px;
+  .slideshow__slide.active {
+    opacity: 1;
   }
 
-  .hero-content {
-    color: var(--white);
-  }
-
-  .hero h1 {
-    font-size: 3rem;
-    margin-bottom: 25px;
-    text-transform: uppercase;
-  }
-
-  .hero-checks {
-    margin-bottom: 30px;
-  }
-
-  .hero-checks li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.05rem;
-    margin-bottom: 10px;
-    color: #e0e0e0;
-  }
-
-  .hero-buttons {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
-  }
-
-  .hero-stats {
-    display: flex;
-    gap: 40px;
-  }
-
-  .stat {
-    text-align: center;
-  }
-
-  .stat-number {
-    display: block;
-    font-family: 'Oswald', sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--yellow);
-  }
-
-  .stat-label {
-    font-size: 0.85rem;
-    color: #aaa;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  .hero-form-card {
-    background: var(--white);
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  }
-
-  .hero-form-card h3 {
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    color: var(--dark);
-    margin-bottom: 5px;
-  }
-
-  .hero-form-card > p {
-    font-size: 0.85rem;
-    color: var(--text-gray);
-    margin-bottom: 20px;
-  }
-
-  .hero-form-card form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .hero-form-card input,
-  .hero-form-card select,
-  .hero-form-card textarea {
-    padding: 12px 15px;
-    border: 1px solid var(--medium-gray);
-    border-radius: 6px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.95rem;
-    transition: border-color 0.3s;
+  .slideshow__slide img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
-  .hero-form-card input:focus,
-  .hero-form-card select:focus,
-  .hero-form-card textarea:focus {
-    outline: none;
-    border-color: var(--red);
-  }
-
-  .form-trust {
+  /* Tagline */
+  .tagline {
     text-align: center;
-    font-size: 0.8rem;
-    color: var(--text-gray);
-    margin-top: 10px;
+    padding: 1rem 0;
   }
 
-  .hero-red-line {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: var(--red);
+  .tagline__text {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(18, 18, 18, 0.6);
   }
 
-  /* Trust Bar */
-  .trust-bar {
-    padding: 30px 0;
-    background: var(--white);
-    border-bottom: 1px solid var(--medium-gray);
-  }
-
-  .trust-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-  }
-
-  .trust-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
-
-  .trust-icon {
-    color: var(--red);
-    flex-shrink: 0;
-  }
-
-  .trust-item strong {
-    display: block;
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.95rem;
-    text-transform: uppercase;
-  }
-
-  .trust-item span {
-    font-size: 0.8rem;
-    color: var(--text-gray);
-  }
-
-  /* Why Choose Us */
-  .why-us-grid {
+  /* Collection preview */
+  .collection-preview__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 3rem;
     align-items: center;
   }
 
-  .why-us-image {
-    position: relative;
+  .collection-preview__grid--reversed {
+    direction: rtl;
   }
 
-  .why-us-image-placeholder {
-    background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
-    border-radius: 12px;
-    height: 450px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
+  .collection-preview__grid--reversed > * {
+    direction: ltr;
   }
 
-  .why-us-image-placeholder span {
-    font-family: 'Oswald', sans-serif;
-    color: var(--text-gray);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-
-  .experience-badge {
-    position: absolute;
-    bottom: -20px;
-    right: -20px;
-    background: var(--red);
-    color: var(--white);
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 20px rgba(200, 16, 46, 0.4);
-  }
-
-  .badge-number {
-    font-family: 'Oswald', sans-serif;
-    font-size: 2.2rem;
-    font-weight: 700;
-    line-height: 1;
-  }
-
-  .badge-text {
-    font-size: 0.7rem;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    line-height: 1.3;
-  }
-
-  .why-us-content h2 {
-    font-size: 2.2rem;
-    text-transform: uppercase;
-  }
-
-  .red-line {
-    width: 60px;
-    height: 4px;
-    background: var(--red);
-    margin: 15px 0;
-    border-radius: 2px;
-  }
-
-  .why-us-intro {
-    color: var(--text-gray);
-    margin-bottom: 30px;
-    font-size: 1.05rem;
-    line-height: 1.7;
-  }
-
-  .outcome-blocks {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-  }
-
-  .outcome {
-    display: flex;
-    gap: 15px;
-    align-items: flex-start;
-  }
-
-  .outcome-icon {
-    flex-shrink: 0;
-    width: 50px;
-    height: 50px;
-    background: #fef2f2;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .outcome h4 {
-    font-size: 1.1rem;
-    margin-bottom: 5px;
-  }
-
-  .outcome p {
-    font-size: 0.9rem;
-    color: var(--text-gray);
-  }
-
-  /* Services Grid */
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-  }
-
-  .service-card {
-    background: var(--white);
-    border-radius: 12px;
-    padding: 35px 25px;
-    text-align: center;
-    transition: all 0.3s;
-    border-top: 4px solid transparent;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
-  }
-
-  .service-card:hover {
-    transform: translateY(-5px);
-    border-top-color: var(--red);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-  }
-
-  .service-icon {
-    color: var(--red);
-    margin-bottom: 20px;
-  }
-
-  .service-card h3 {
-    font-size: 1.15rem;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-
-  .service-card p {
-    font-size: 0.9rem;
-    color: var(--text-gray);
-    margin-bottom: 15px;
-    line-height: 1.6;
-  }
-
-  .service-link {
-    font-family: 'Oswald', sans-serif;
-    color: var(--red);
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    transition: color 0.3s;
-  }
-
-  .service-link:hover {
-    color: var(--red-dark);
-  }
-
-  /* Process */
-  .process-section {
-    background: var(--dark-bg);
-    color: var(--white);
-  }
-
-  .process-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-  }
-
-  .process-step {
-    text-align: center;
-    padding: 25px;
-  }
-
-  .process-number {
-    width: 60px;
-    height: 60px;
-    background: var(--red);
-    color: var(--white);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin: 0 auto 20px;
-  }
-
-  .process-step h3 {
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-
-  .process-step p {
-    font-size: 0.9rem;
-    color: #aaa;
-    line-height: 1.6;
-  }
-
-  /* Reviews */
-  .reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-  }
-
-  .review-card {
-    background: var(--white);
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
-    transition: transform 0.3s;
-  }
-
-  .review-card:hover {
-    transform: translateY(-3px);
-  }
-
-  .review-stars {
-    color: var(--yellow);
-    font-size: 1.3rem;
-    margin-bottom: 15px;
-    letter-spacing: 2px;
-  }
-
-  .review-text {
-    font-style: italic;
-    color: var(--text-gray);
-    margin-bottom: 20px;
-    line-height: 1.7;
-    font-size: 0.95rem;
-  }
-
-  .review-author {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .review-avatar {
-    width: 45px;
-    height: 45px;
-    background: var(--red);
-    color: var(--white);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Oswald', sans-serif;
-    font-weight: 700;
-    font-size: 0.9rem;
-  }
-
-  .review-author strong {
-    display: block;
-    font-size: 0.95rem;
-  }
-
-  .review-author span {
-    font-size: 0.8rem;
-    color: var(--text-gray);
-  }
-
-  /* Areas */
-  .areas-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-  }
-
-  .area-tag {
-    background: var(--light-gray);
-    padding: 8px 18px;
-    border-radius: 25px;
-    font-size: 0.9rem;
-    color: var(--dark);
-    transition: all 0.3s;
-    border: 1px solid var(--medium-gray);
-  }
-
-  .area-tag:hover {
-    background: var(--red);
-    color: var(--white);
-    border-color: var(--red);
-  }
-
-  /* FAQ */
-  .faq-list {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .faq-item {
-    background: var(--white);
-    border-radius: 8px;
-    margin-bottom: 10px;
-    overflow: hidden;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-  }
-
-  .faq-question {
-    width: 100%;
-    padding: 18px 25px;
-    background: none;
-    border: none;
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.05rem;
-    font-weight: 500;
-    text-align: left;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: color 0.3s;
-  }
-
-  .faq-question:hover {
-    color: var(--red);
-  }
-
-  .faq-question svg {
-    transition: transform 0.3s;
-    flex-shrink: 0;
-  }
-
-  .faq-item.open .faq-question svg {
-    transform: rotate(180deg);
-  }
-
-  .faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-  }
-
-  .faq-item.open .faq-answer {
-    max-height: 300px;
-  }
-
-  .faq-answer p {
-    padding: 0 25px 20px;
-    color: var(--text-gray);
-    line-height: 1.7;
-    font-size: 0.95rem;
-  }
-
-  /* CTA Banner */
-  .cta-banner {
-    background: var(--red);
-    padding: 60px 0;
-  }
-
-  .cta-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-    flex-wrap: wrap;
-  }
-
-  .cta-text h2 {
-    color: var(--white);
+  .collection-preview__content h2 {
     font-size: 2rem;
-    text-transform: uppercase;
+    margin-bottom: 1rem;
   }
 
-  .cta-text p {
-    color: rgba(255, 255, 255, 0.8);
-    margin-top: 5px;
+  .collection-preview__content p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
   }
 
-  .cta-actions {
+  .collection-preview__link {
+    display: inline-block;
+    color: var(--color-heading-text);
+    text-decoration: underline;
+    font-weight: 600;
+    transition: opacity 0.15s;
+  }
+
+  .collection-preview__link:hover {
+    opacity: 0.7;
+  }
+
+  .collection-preview__placeholder {
+    width: 100%;
     display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
   }
 
-  /* Responsive */
-  @media (max-width: 1024px) {
-    .hero-inner {
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
+  /* Testimonial */
+  .testimonial__content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+    align-items: center;
+  }
 
-    .hero-form-card {
-      max-width: 500px;
-    }
+  .testimonial__quote {
+    font-style: italic;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+  }
 
-    .hero h1 {
-      font-size: 2.2rem;
-    }
+  blockquote {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    border-left: 3px solid var(--color-border);
+  }
 
-    .services-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+  .testimonial__author {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
 
-    .process-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+  .testimonial__artwork {
+    font-style: italic;
+    font-size: 0.85rem;
+    color: rgba(18, 18, 18, 0.5);
+  }
 
-    .why-us-grid {
-      grid-template-columns: 1fr;
-    }
+  /* Info banner */
+  .info-banner {
+    text-align: center;
+    padding: 2rem 0;
+  }
 
-    .why-us-image {
-      order: -1;
-    }
+  .info-banner__main {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .info-banner__main a {
+    text-decoration: underline;
+  }
+
+  .info-banner__detail {
+    margin-bottom: 0.5rem;
+  }
+
+  .info-banner__personal {
+    font-style: italic;
+    font-size: 0.9rem;
+  }
+
+  /* Trust */
+  .trust {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  .trust h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .trust__content p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+
+  .trust__signature {
+    font-style: italic;
+    font-weight: 600;
+    margin-top: 1.5rem;
   }
 
   @media (max-width: 768px) {
-    .trust-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .reviews-grid {
+    .collection-preview__grid,
+    .collection-preview__grid--reversed,
+    .testimonial__content {
       grid-template-columns: 1fr;
+      gap: 1.5rem;
     }
 
-    .hero h1 {
-      font-size: 1.8rem;
+    .collection-preview__grid--reversed {
+      direction: ltr;
     }
 
-    .hero-stats {
-      gap: 25px;
+    .hero-heading h1 {
+      font-size: 1.5rem;
     }
 
-    .cta-inner {
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .cta-actions {
-      justify-content: center;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .services-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .process-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .trust-grid {
-      grid-template-columns: 1fr;
+    .tagline__text {
+      font-size: 1.2rem;
     }
   }
 </style>
+
+<script>
+  // Simple slideshow
+  const slides = document.querySelectorAll('.slideshow__slide');
+  let current = 0;
+
+  if (slides.length > 1) {
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 5000);
+  }
+</script>

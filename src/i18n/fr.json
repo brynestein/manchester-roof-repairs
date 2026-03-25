@@ -1,0 +1,59 @@
+{
+  "nav": {
+    "abstracts": "Abstraits",
+    "interpretations": "Interprétations",
+    "photographs": "Photographies",
+    "everything": "Tout",
+    "info": "Info",
+    "aboutMe": "À propos de moi",
+    "contact": "Contact",
+    "shipping": "Livraison, retours etc.",
+    "whyCanvas": "Pourquoi des impressions sur toile?",
+    "allAbstracts": "Toutes les collections abstraites",
+    "allInterpretations": "Toutes les collections d'interprétations",
+    "search": "Recherche",
+    "cart": "Panier",
+    "account": "Compte"
+  },
+  "home": {
+    "tagline": "De l'art pour votre cœur et votre esprit",
+    "heading": "David Kitching | KitchingArt",
+    "subtitle": "Impressions giclée originales du site web de l'artiste",
+    "abstractTitle": "Abstrait",
+    "abstractDesc": "Diverses interprétations, des jolies couleurs à la réflexion sur le sens de la vie. Formes et couleurs audacieuses avec différentes variantes.",
+    "interpretiveTitle": "Interprétatif",
+    "interpretiveDesc": "Interprétations d'aspects de la vie et de notre monde.",
+    "more": "Plus...",
+    "newCollection": "Nouvelle collection",
+    "noTariffs": "Pas de taxes d'importation ni de droits de douane aux États-Unis, au Canada, au Royaume-Uni, dans l'UE, dans les pays du CCG, à Singapour ou en Australie.",
+    "shippingLink": "En savoir plus sur les destinations de livraison ici.",
+    "trustTitle": "Confiance",
+    "subscribeAlerts": "Abonnez-vous aux alertes sur les nouvelles collections"
+  },
+  "product": {
+    "addToCart": "Ajouter au panier",
+    "size": "Taille",
+    "frame": "Cadre",
+    "quantity": "Quantité",
+    "from": "À partir de",
+    "taxesIncluded": "Taxes incluses.",
+    "soldOut": "Épuisé"
+  },
+  "cart": {
+    "title": "Panier",
+    "empty": "Votre panier est vide",
+    "checkout": "Passer à la caisse",
+    "continueShopping": "Continuer vos achats",
+    "remove": "Supprimer",
+    "total": "Total"
+  },
+  "footer": {
+    "quickLinks": "Liens rapides",
+    "subscribe": "Abonnez-vous aux alertes sur les nouvelles collections",
+    "emailPlaceholder": "E-mail",
+    "subscribeBtn": "S'abonner",
+    "copyright": "KitchingArt",
+    "rights": "Tous droits réservés."
+  },
+  "announcement": "Disponible aux États-Unis, au Canada, au Royaume-Uni, dans l'UE (y compris l'EEE), dans les pays du CCG, à Singapour et en Australie."
+}

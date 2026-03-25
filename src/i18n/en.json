@@ -1,0 +1,61 @@
+{
+  "nav": {
+    "abstracts": "Abstracts",
+    "interpretations": "Interpretations",
+    "photographs": "Photographs",
+    "everything": "Everything",
+    "info": "Info",
+    "aboutMe": "About me",
+    "contact": "Contact",
+    "shipping": "Shipping, returns etc",
+    "whyCanvas": "Why canvas prints?",
+    "allAbstracts": "All Abstract Collections",
+    "allInterpretations": "All Interpretations Collections",
+    "search": "Search",
+    "cart": "Cart",
+    "account": "Account"
+  },
+  "home": {
+    "tagline": "Art for your heart and for your mind",
+    "heading": "David Kitching | KitchingArt",
+    "subtitle": "Original giclee art prints from the artist's own website",
+    "abstractTitle": "Abstract",
+    "abstractDesc": "Various takes from just pretty colours to pondering the meaning of life. Bold shapes and colours with different variants to match your existing decor... frameless or with one of two frame styles.",
+    "interpretiveTitle": "Interpretive",
+    "interpretiveDesc": "Interpretations of aspects of life and our world.",
+    "more": "More...",
+    "newCollection": "New Collection",
+    "noTariffs": "No import taxes or tariffs in the US, Canada, the UK, the EU, GCC countries, Singapore or Australia.",
+    "shippingLink": "More on shipping destinations here.",
+    "onDemand": "Your picture will be produced on demand according to your specification in either the US, Canada, the UK, the EU, Dubai, Singapore or Australia, depending on where you're located.",
+    "oneManBand": "(Yes this is still just me. One person. Not a big company.)",
+    "trustTitle": "Trust",
+    "subscribeAlerts": "Subscribe for alerts about new Collections"
+  },
+  "product": {
+    "addToCart": "Add to cart",
+    "size": "Size",
+    "frame": "Frame",
+    "quantity": "Quantity",
+    "from": "From",
+    "taxesIncluded": "Taxes included.",
+    "soldOut": "Sold out"
+  },
+  "cart": {
+    "title": "Cart",
+    "empty": "Your cart is empty",
+    "checkout": "Check out",
+    "continueShopping": "Continue shopping",
+    "remove": "Remove",
+    "total": "Total"
+  },
+  "footer": {
+    "quickLinks": "Quick links",
+    "subscribe": "Subscribe for alerts about new Collections",
+    "emailPlaceholder": "Email",
+    "subscribeBtn": "Subscribe",
+    "copyright": "KitchingArt",
+    "rights": "All rights reserved."
+  },
+  "announcement": "Available in the US, Canada, the UK, the EU (inc EEA), the GCC countries, Singapore and Australia."
+}

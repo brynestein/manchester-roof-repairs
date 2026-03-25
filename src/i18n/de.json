@@ -1,0 +1,59 @@
+{
+  "nav": {
+    "abstracts": "Abstrakte",
+    "interpretations": "Interpretationen",
+    "photographs": "Fotografien",
+    "everything": "Alles",
+    "info": "Info",
+    "aboutMe": "Über mich",
+    "contact": "Kontakt",
+    "shipping": "Versand, Rückgabe etc.",
+    "whyCanvas": "Warum Leinwanddrucke?",
+    "allAbstracts": "Alle abstrakten Sammlungen",
+    "allInterpretations": "Alle Interpretationssammlungen",
+    "search": "Suche",
+    "cart": "Warenkorb",
+    "account": "Konto"
+  },
+  "home": {
+    "tagline": "Kunst für Ihr Herz und Ihren Verstand",
+    "heading": "David Kitching | KitchingArt",
+    "subtitle": "Original Giclée-Kunstdrucke von der eigenen Website des Künstlers",
+    "abstractTitle": "Abstrakt",
+    "abstractDesc": "Verschiedene Interpretationen von hübschen Farben bis zum Nachdenken über den Sinn des Lebens. Kräftige Formen und Farben mit verschiedenen Varianten.",
+    "interpretiveTitle": "Interpretativ",
+    "interpretiveDesc": "Interpretationen von Aspekten des Lebens und unserer Welt.",
+    "more": "Mehr...",
+    "newCollection": "Neue Sammlung",
+    "noTariffs": "Keine Einfuhrzölle oder Zollgebühren in den USA, Kanada, Großbritannien, der EU, den GCC-Ländern, Singapur oder Australien.",
+    "shippingLink": "Mehr zu Versandzielen hier.",
+    "trustTitle": "Vertrauen",
+    "subscribeAlerts": "Abonnieren Sie Benachrichtigungen über neue Sammlungen"
+  },
+  "product": {
+    "addToCart": "In den Warenkorb",
+    "size": "Größe",
+    "frame": "Rahmen",
+    "quantity": "Menge",
+    "from": "Ab",
+    "taxesIncluded": "Steuern inbegriffen.",
+    "soldOut": "Ausverkauft"
+  },
+  "cart": {
+    "title": "Warenkorb",
+    "empty": "Ihr Warenkorb ist leer",
+    "checkout": "Zur Kasse",
+    "continueShopping": "Weiter einkaufen",
+    "remove": "Entfernen",
+    "total": "Gesamt"
+  },
+  "footer": {
+    "quickLinks": "Schnelllinks",
+    "subscribe": "Abonnieren Sie Benachrichtigungen über neue Sammlungen",
+    "emailPlaceholder": "E-Mail",
+    "subscribeBtn": "Abonnieren",
+    "copyright": "KitchingArt",
+    "rights": "Alle Rechte vorbehalten."
+  },
+  "announcement": "Verfügbar in den USA, Kanada, Großbritannien, der EU (inkl. EWR), den GCC-Ländern, Singapur und Australien."
+}

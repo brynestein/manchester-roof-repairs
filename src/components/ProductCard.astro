@@ -1,0 +1,92 @@
+---
+import type { ShopifyProduct, ShopifyMoney } from '../lib/shopify';
+import { formatPrice } from '../lib/shopify';
+
+interface Props {
+  product: ShopifyProduct;
+}
+
+const { product } = Astro.props;
+const imageUrl = product.featuredImage?.url || '';
+const imageAlt = product.featuredImage?.altText || product.title;
+const minPrice = product.priceRange.minVariantPrice;
+---
+
+<a href={`/products/${product.handle}`} class="product-card">
+  <div class="product-card__image-wrapper">
+    {imageUrl ? (
+      <img
+        src={imageUrl}
+        alt={imageAlt}
+        width={product.featuredImage?.width || 600}
+        height={product.featuredImage?.height || 600}
+        loading="lazy"
+        class="product-card__image"
+      />
+    ) : (
+      <div class="product-card__placeholder">
+        <span>No image</span>
+      </div>
+    )}
+  </div>
+  <div class="product-card__info">
+    <h3 class="product-card__title">{product.title}</h3>
+    <p class="product-card__price">From {formatPrice(minPrice)}</p>
+  </div>
+</a>
+
+<style>
+  .product-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s;
+  }
+
+  .product-card:hover {
+    opacity: 0.85;
+  }
+
+  .product-card__image-wrapper {
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 2px;
+    background: var(--color-surface);
+    margin-bottom: 0.75rem;
+  }
+
+  .product-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .product-card:hover .product-card__image {
+    transform: scale(1.03);
+  }
+
+  .product-card__placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-body-text);
+    font-size: 0.85rem;
+  }
+
+  .product-card__title {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--color-body-text);
+    margin-bottom: 0.25rem;
+  }
+
+  .product-card__price {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-heading-text);
+  }
+</style>
