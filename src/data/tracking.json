@@ -9,7 +9,7 @@
   },
   "clarity": {
     "projectId": "wd65h860xv",
-    "enabled": true
+    "enabled": false
   },
   "callTracker": {
     "enabled": false,
