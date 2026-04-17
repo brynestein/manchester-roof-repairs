@@ -7,50 +7,22 @@ import seoData from '../data/seo.json';
 
 const { title, description } = seoData.services;
 
-const services = [
-  {
-    title: "Roof Repairs",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>`,
-    image: "/images/service-roof-repairs.webp",
-    description: "From missing slates and cracked tiles to damaged flashing and valley repairs — we diagnose and fix all roof issues quickly and permanently.",
-    features: ["Slate & tile replacement", "Lead flashing repairs", "Ridge tile repointing", "Valley gutter repairs", "Storm damage repair", "Leak detection & fix"]
-  },
-  {
-    title: "New Roof Installation",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>`,
-    image: "/images/service-new-roof.webp",
-    description: "Complete new roof installations for residential and commercial properties. We use only the highest-quality materials and skilled tradespeople.",
-    features: ["Pitched roof installation", "Natural slate roofing", "Concrete & clay tiles", "Timber roof structure", "Breathable membrane", "Full scaffolding included"]
-  },
-  {
-    title: "Flat Roofing",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect></svg>`,
-    image: "/images/service-flat-roof.webp",
-    description: "Specialist flat roof installation and repair using the latest materials including EPDM rubber, GRP fibreglass, and high-performance felt systems.",
-    features: ["EPDM rubber roofing", "GRP fibreglass roofing", "Torch-on felt roofing", "Flat roof repairs", "Warm roof systems", "Green roof options"]
-  },
-  {
-    title: "Chimney Repairs",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="2" width="8" height="6"></rect><path d="M4 22V10l8-6 8 6v12H4z"></path></svg>`,
-    image: "/images/service-chimney.webp",
-    description: "Complete chimney repair services including repointing, rebuilding, flashing, and cowl installation to prevent leaks and structural damage.",
-    features: ["Chimney repointing", "Chimney rebuilding", "Lead flashing renewal", "Chimney cowl fitting", "Stack weatherproofing", "Chimney removal"]
-  },
-  {
-    title: "Guttering & Drainage",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>`,
-    image: "/images/service-guttering.webp",
-    description: "Professional gutter installation, repair, and cleaning services. Protect your property from water damage with properly functioning drainage.",
-    features: ["Gutter replacement", "Gutter repair & sealing", "Downpipe installation", "Fascia & soffit boards", "Gutter cleaning", "Cast iron guttering"]
-  },
-  {
-    title: "Emergency Roofing",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>`,
-    image: "/images/service-emergency.webp",
-    description: "24/7 emergency roofing services across Manchester. Storm damage, sudden leaks, or structural concerns — we respond within 60 minutes.",
-    features: ["60-minute response time", "Temporary weatherproofing", "Storm damage repair", "Emergency tarpaulin", "Insurance claim support", "Same-day permanent fix"]
-  }
-];
+import servicesData from '../data/services.json';
+
+const serviceIcons: Record<string, string> = {
+  "Roof Repairs": `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>`,
+  "New Roof Installation": `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>`,
+  "Flat Roofing": `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect></svg>`,
+  "Chimney Repairs": `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="2" width="8" height="6"></rect><path d="M4 22V10l8-6 8 6v12H4z"></path></svg>`,
+  "Guttering & Drainage": `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>`,
+  "Emergency Roofing": `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>`,
+};
+
+const services = servicesData.map((s: { title: string; description: string; features: string[] }) => ({
+  ...s,
+  icon: serviceIcons[s.title] || serviceIcons["Roof Repairs"],
+  image: `/images/service-${s.title.toLowerCase().replace(/[^a-z]+/g, '-')}.webp`,
+}));
 
 const servicesSchema = {
   "@context": "https://schema.org",

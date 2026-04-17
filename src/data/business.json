@@ -1,0 +1,24 @@
+{
+  "companyName": "Manchester Gutters",
+  "phone": "0161 234 5678",
+  "phoneRaw": "01612345678",
+  "email": "info@manchestergutters.co.uk",
+  "whatsapp": "441612345678",
+  "address": {
+    "street": "",
+    "city": "Manchester",
+    "region": "Greater Manchester",
+    "postcode": "",
+    "country": "GB"
+  },
+  "hours": {
+    "weekdays": "08:00 - 18:00",
+    "saturday": "08:00 - 18:00",
+    "sunday": "Closed"
+  },
+  "social": {
+    "google": "",
+    "facebook": "",
+    "instagram": ""
+  }
+}

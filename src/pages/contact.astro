@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FloatingCTA from '../components/FloatingCTA.astro';
 import seoData from '../data/seo.json';
+import business from '../data/business.json';
 
 const { title, description } = seoData.contact;
 
@@ -108,7 +109,7 @@ const contactSchema = {
                 </div>
                 <div>
                   <strong>Phone</strong>
-                  <a href="tel:01612345678">0161 234 5678</a>
+                  <a href={`tel:${business.phoneRaw}`}>{business.phone}</a>
                 </div>
               </li>
               <li>
@@ -117,7 +118,7 @@ const contactSchema = {
                 </div>
                 <div>
                   <strong>Email</strong>
-                  <a href="mailto:info@manchestergutters.co.uk">info@manchestergutters.co.uk</a>
+                  <a href={`mailto:${business.email}`}>{business.email}</a>
                 </div>
               </li>
               <li>
@@ -126,7 +127,7 @@ const contactSchema = {
                 </div>
                 <div>
                   <strong>Address</strong>
-                  <span>Manchester, Greater Manchester</span>
+                  <span>{business.address.city}, {business.address.region}</span>
                 </div>
               </li>
               <li>
@@ -145,8 +146,8 @@ const contactSchema = {
           <div class="info-card emergency-card">
             <h3>Emergency?</h3>
             <p>If you have an urgent roofing emergency, call us now — we're available 24/7 and respond within 60 minutes.</p>
-            <a href="tel:01612345678" class="btn btn-primary" style="width: 100%; text-align: center;">
-              Call Now: 0161 234 5678
+            <a href={`tel:${business.phoneRaw}`} class="btn btn-primary" style="width: 100%; text-align: center;">
+              Call Now: {business.phone}
             </a>
           </div>
         </div>

@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Roof Repairs",
+    "description": "From missing slates and cracked tiles to damaged flashing and valley repairs — we diagnose and fix all roof issues quickly and permanently.",
+    "features": ["Slate & tile replacement", "Lead flashing repairs", "Ridge tile repointing", "Valley gutter repairs", "Storm damage repair", "Leak detection & fix"]
+  },
+  {
+    "title": "New Roof Installation",
+    "description": "Complete new roof installations for residential and commercial properties. We use only the highest-quality materials and skilled tradespeople.",
+    "features": ["Pitched roof installation", "Natural slate roofing", "Concrete & clay tiles", "Timber roof structure", "Breathable membrane", "Full scaffolding included"]
+  },
+  {
+    "title": "Flat Roofing",
+    "description": "Specialist flat roof installation and repair using the latest materials including EPDM rubber, GRP fibreglass, and high-performance felt systems.",
+    "features": ["EPDM rubber roofing", "GRP fibreglass roofing", "Torch-on felt roofing", "Flat roof repairs", "Warm roof systems", "Green roof options"]
+  },
+  {
+    "title": "Chimney Repairs",
+    "description": "Complete chimney repair services including repointing, rebuilding, flashing, and cowl installation to prevent leaks and structural damage.",
+    "features": ["Chimney repointing", "Chimney rebuilding", "Lead flashing renewal", "Chimney cowl fitting", "Stack weatherproofing", "Chimney removal"]
+  },
+  {
+    "title": "Guttering & Drainage",
+    "description": "Professional gutter installation, repair, and cleaning services. Protect your property from water damage with properly functioning drainage.",
+    "features": ["Gutter replacement", "Gutter repair & sealing", "Downpipe installation", "Fascia & soffit boards", "Gutter cleaning", "Cast iron guttering"]
+  },
+  {
+    "title": "Emergency Roofing",
+    "description": "24/7 emergency roofing services across Manchester. Storm damage, sudden leaks, or structural concerns — we respond within 60 minutes.",
+    "features": ["60-minute response time", "Temporary weatherproofing", "Storm damage repair", "Emergency tarpaulin", "Insurance claim support", "Same-day permanent fix"]
+  }
+]

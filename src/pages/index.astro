@@ -4,6 +4,9 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FloatingCTA from '../components/FloatingCTA.astro';
 import seoData from '../data/seo.json';
+import business from '../data/business.json';
+import faqs from '../data/faqs.json';
+import areas from '../data/areas.json';
 
 const { title, description } = seoData.index;
 
@@ -15,7 +18,7 @@ const localBusinessSchema = {
   "logo": "https://manchestergutters.co.uk/favicon.svg",
   "image": "https://manchestergutters.co.uk/images/hero-bg.jpg",
   "description": "Professional roof repairs and guttering in Manchester. Fully insured, local roofers with 10-year guarantees. Emergency call-outs, new roofs, flat roofs & more.",
-  "telephone": "0161 234 5678",
+  "telephone": "{business.phone}",
   "email": "info@manchestergutters.co.uk",
   "address": {
     "@type": "PostalAddress",
@@ -102,7 +105,7 @@ const webSiteSchema = {
           </li>
         </ul>
         <div class="hero-buttons">
-          <a href="tel:01612345678" class="btn btn-primary">Call Us Now</a>
+          <a href={`tel:${business.phoneRaw}`} class="btn btn-primary">Call Us Now</a>
           <a href="/services/" class="btn btn-outline">Our Services</a>
         </div>
         <div class="hero-stats">
@@ -390,7 +393,7 @@ const webSiteSchema = {
         <p>Providing professional roofing services across Greater Manchester</p>
       </div>
       <div class="areas-grid">
-        {["Manchester City Centre", "Didsbury", "Chorlton", "Sale", "Altrincham", "Stockport", "Stretford", "Trafford", "Salford", "Bolton", "Bury", "Rochdale", "Oldham", "Wigan", "Tameside", "Ashton-under-Lyne", "Levenshulme", "Withington", "Fallowfield", "Prestwich", "Eccles", "Urmston", "Denton", "Hyde"].map(area => (
+        {areas.map(area => (
           <span class="area-tag">{area}</span>
         ))}
       </div>
@@ -405,51 +408,17 @@ const webSiteSchema = {
         <div class="red-line"></div>
       </div>
       <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            How much does roof repair cost in Manchester?
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <div class="faq-answer">
-            <p>Roof repair costs vary depending on the extent of damage. Minor repairs typically start from £150, while larger jobs can range from £500–£2,000+. We provide free, no-obligation quotes so you know exactly what to expect before any work begins.</p>
+        {faqs.map(faq => (
+          <div class="faq-item">
+            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+              {faq.question}
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
           </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            Are you fully insured?
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <div class="faq-answer">
-            <p>Yes, we carry £5 million public liability insurance and full employer's liability cover. We're also TrustMark registered and Checkatrade approved, so you can be confident you're in safe hands.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            Do you offer emergency roofing services?
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <div class="faq-answer">
-            <p>Absolutely. We offer 24/7 emergency roof repair services across Manchester. In most cases, we can be with you within 60 minutes of your call to make your property safe and watertight.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            What guarantee do you provide?
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <div class="faq-answer">
-            <p>All our work comes with a 10-year written guarantee on workmanship. We also use manufacturer-backed materials with their own warranties, giving you double protection and complete peace of mind.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-            What areas of Manchester do you cover?
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <div class="faq-answer">
-            <p>We cover all of Greater Manchester including Manchester city centre, Didsbury, Chorlton, Sale, Altrincham, Stockport, Salford, Bolton, Bury, Rochdale, Oldham, and all surrounding areas within a 25-mile radius.</p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
@@ -462,9 +431,9 @@ const webSiteSchema = {
         <p>Our friendly team is ready to help — no obligation, no pressure</p>
       </div>
       <div class="cta-actions">
-        <a href="tel:01612345678" class="btn btn-primary">
+        <a href={`tel:${business.phoneRaw}`} class="btn btn-primary">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;vertical-align:middle;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          0161 234 5678
+          {business.phone}
         </a>
         <a href="/contact/" class="btn btn-outline">Request a Quote</a>
       </div>
