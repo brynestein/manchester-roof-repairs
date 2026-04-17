@@ -1,0 +1,20 @@
+{
+  "ga4": {
+    "measurementId": "G-M5SETBBHNQ",
+    "enabled": false
+  },
+  "gtm": {
+    "containerId": "GTM-N89JRGWH",
+    "enabled": true
+  },
+  "clarity": {
+    "projectId": "",
+    "enabled": false
+  },
+  "callTracker": {
+    "enabled": false,
+    "scriptUrl": "https://call-tracker-app-production.up.railway.app/static/dni.js",
+    "trackingNumber": "",
+    "displayNumber": "0161 234 5678"
+  }
+}
