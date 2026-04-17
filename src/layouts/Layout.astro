@@ -52,10 +52,11 @@ const ogImageUrl = new URL(ogImage, siteUrl).href;
     <meta name="geo.region" content="GB-MAN" />
     <meta name="geo.placename" content="Manchester" />
 
-    <!-- Fonts -->
+    <!-- Fonts (reduced weights, swap for faster LCP) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;700&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 
     {/* GTM — managed from Site Manager tracking.json */}
     {tracking.gtm.enabled && tracking.gtm.containerId && (
