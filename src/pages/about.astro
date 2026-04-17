@@ -3,6 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FloatingCTA from '../components/FloatingCTA.astro';
+import seoData from '../data/seo.json';
+
+const { title, description } = seoData.about;
 
 const aboutSchema = {
   "@context": "https://schema.org",
@@ -22,7 +25,7 @@ const aboutSchema = {
 };
 ---
 
-<Layout title="About Us | Manchester Gutters" description="Learn about Manchester Gutters — trusted local roofers with 10+ years experience, fully insured and committed to quality across Greater Manchester." schema={aboutSchema}>
+<Layout title={title} description={description} schema={aboutSchema}>
   <Header />
 
   <!-- Page Hero -->

@@ -3,6 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FloatingCTA from '../components/FloatingCTA.astro';
+import seoData from '../data/seo.json';
+
+const { title, description } = seoData.gallery;
 
 const projects = [
   { category: "New Roof", title: "Victorian Terrace Re-Roof", location: "Didsbury", image: "/images/gallery-1.webp" },
@@ -34,7 +37,7 @@ const gallerySchema = {
 };
 ---
 
-<Layout title="Project Gallery | Manchester Gutters" description="Browse our gallery of completed roofing projects across Manchester. See the quality of our roof repairs, new roofs, flat roofing and chimney work." schema={gallerySchema}>
+<Layout title={title} description={description} schema={gallerySchema}>
   <Header />
 
   <section class="page-hero">

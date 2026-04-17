@@ -3,6 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FloatingCTA from '../components/FloatingCTA.astro';
+import seoData from '../data/seo.json';
+
+const { title, description } = seoData.reviews;
 
 const reviews = [
   { initials: "JB", name: "James B.", location: "Didsbury", text: "Fantastic service from start to finish. They fixed our leaking roof quickly and the price was very fair. Highly recommend to anyone in Manchester." },
@@ -40,7 +43,7 @@ const reviewsSchema = {
 };
 ---
 
-<Layout title="Customer Reviews | Manchester Gutters" description="Read genuine reviews from Manchester homeowners. 4.8 star Google rating with 200+ reviews. See why we're Manchester's most trusted roofers." schema={reviewsSchema}>
+<Layout title={title} description={description} schema={reviewsSchema}>
   <Header />
 
   <section class="page-hero">

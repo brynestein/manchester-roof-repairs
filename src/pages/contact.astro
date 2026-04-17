@@ -3,6 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FloatingCTA from '../components/FloatingCTA.astro';
+import seoData from '../data/seo.json';
+
+const { title, description } = seoData.contact;
 
 const contactSchema = {
   "@context": "https://schema.org",
@@ -33,7 +36,7 @@ const contactSchema = {
 };
 ---
 
-<Layout title="Contact Us | Manchester Gutters | Free Quotes" description="Get in touch with Manchester Gutters for a free, no-obligation roofing quote. Call 0161 234 5678 or fill in our contact form. We respond within 2 hours." schema={contactSchema}>
+<Layout title={title} description={description} schema={contactSchema}>
   <Header />
 
   <section class="page-hero">

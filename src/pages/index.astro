@@ -3,6 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FloatingCTA from '../components/FloatingCTA.astro';
+import seoData from '../data/seo.json';
+
+const { title, description } = seoData.index;
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
@@ -75,7 +78,7 @@ const webSiteSchema = {
 };
 ---
 
-<Layout schema={[localBusinessSchema, webSiteSchema]}>
+<Layout title={title} description={description} schema={[localBusinessSchema, webSiteSchema]}>
   <Header />
 
   <!-- Hero Section -->

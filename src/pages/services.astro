@@ -3,6 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FloatingCTA from '../components/FloatingCTA.astro';
+import seoData from '../data/seo.json';
+
+const { title, description } = seoData.services;
 
 const services = [
   {
@@ -74,7 +77,7 @@ const servicesSchema = {
 };
 ---
 
-<Layout title="Roofing Services Manchester | Manchester Gutters" description="Full range of roofing services in Manchester: repairs, new roofs, flat roofing, chimney repairs, guttering & emergency call-outs. Free quotes available." schema={servicesSchema}>
+<Layout title={title} description={description} schema={servicesSchema}>
   <Header />
 
   <!-- Page Hero -->
