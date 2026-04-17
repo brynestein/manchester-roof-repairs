@@ -8,8 +8,8 @@
     "enabled": true
   },
   "clarity": {
-    "projectId": "",
-    "enabled": false
+    "projectId": "wd65h860xv",
+    "enabled": true
   },
   "callTracker": {
     "enabled": false,
