@@ -1,7 +1,7 @@
 {
   "ga4": {
     "measurementId": "G-M5SETBBHNQ",
-    "enabled": false
+    "enabled": true
   },
   "gtm": {
     "containerId": "GTM-N89JRGWH",
