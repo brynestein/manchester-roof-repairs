@@ -9,12 +9,18 @@
   },
   "clarity": {
     "projectId": "wd65h860xv",
-    "enabled": false
+    "enabled": true
   },
   "callTracker": {
     "enabled": false,
     "scriptUrl": "https://call-tracker-app-production.up.railway.app/static/dni.js",
     "trackingNumber": "",
     "displayNumber": "0161 234 5678"
+  },
+  "ghl": {
+    "enabled": false,
+    "apiKey": "",
+    "locationId": "",
+    "webhookUrl": ""
   }
 }
