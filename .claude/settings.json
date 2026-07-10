@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+
+  "_description": "Project-level Claude Code settings for roof-repairs-manchester (Astro brochure site, push = Cloudflare Pages deploy). Pre-approves safe local Astro commands. `git push` requires explicit Andrew approval per CLAUDE.md §1.",
+
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "Bash(npm install:*)",
+      "Bash(npm ci)",
+      "Bash(npm ci:*)",
+      "Bash(npm run dev)",
+      "Bash(npm run dev:*)",
+      "Bash(npm run build)",
+      "Bash(npm run build:*)",
+      "Bash(npm run preview)",
+      "Bash(npm run preview:*)",
+      "Bash(npm run astro)",
+      "Bash(npm run astro:*)",
+      "Bash(npx astro check)",
+      "Bash(npx astro check:*)",
+      "Bash(npm list)",
+      "Bash(npm list:*)",
+      "Bash(npm outdated)",
+      "Bash(npm outdated:*)",
+      "Bash(npm audit)",
+      "Bash(npm audit:*)",
+
+      "Bash(git status)",
+      "Bash(git status:*)",
+      "Bash(git log)",
+      "Bash(git log:*)",
+      "Bash(git diff)",
+      "Bash(git diff:*)",
+      "Bash(git show)",
+      "Bash(git show:*)",
+      "Bash(git branch)",
+      "Bash(git branch:*)",
+      "Bash(git remote)",
+      "Bash(git remote:*)",
+      "Bash(git fetch)",
+      "Bash(git fetch:*)",
+      "Bash(git stash)",
+      "Bash(git stash:*)",
+      "Bash(git config user.*)",
+
+      "Bash(gh auth status)",
+      "Bash(gh repo view:*)",
+      "Bash(gh pr list:*)",
+      "Bash(gh pr view:*)",
+
+      "Bash(netstat:*)",
+      "Bash(tasklist:*)"
+    ],
+
+    "deny": [
+      "Bash(git push)",
+      "Bash(git push:*)",
+      "Bash(git reset --hard)",
+      "Bash(git reset --hard:*)",
+      "Bash(git clean -fd)",
+      "Bash(git clean -fd:*)",
+      "Bash(git clean -fdx)",
+      "Bash(git clean -fdx:*)",
+      "Bash(git checkout --)",
+      "Bash(git restore .)",
+      "Bash(git restore --:*)",
+      "Bash(git commit --amend)",
+      "Bash(git commit --amend:*)",
+      "Bash(git rebase:*)",
+      "Bash(git filter-branch:*)",
+      "Bash(git branch -D:*)",
+
+      "Bash(rm -rf /:*)",
+      "Bash(rm -rf /*:*)",
+      "Bash(rm -rf ~)",
+      "Bash(rm -rf ~/*)",
+      "Bash(rm -rf $HOME:*)",
+
+      "Bash(npm publish)",
+      "Bash(npm publish:*)",
+
+      "Bash(gh repo delete:*)",
+      "Bash(gh repo archive:*)",
+      "Bash(gh pr merge:*)",
+      "Bash(gh pr close:*)"
+    ]
+  }
+}
