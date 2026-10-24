@@ -6,6 +6,7 @@ interface Props {
   description?: string;
   ogImage?: string;
   schema?: object | object[];
+  noindex?: boolean;
 }
 
 const siteUrl = 'https://manchestergutters.co.uk';
@@ -14,6 +15,7 @@ const {
   description = "Professional roof repairs and guttering in Manchester. Fully insured, local roofers with 10-year guarantees. Emergency call-outs, new roofs, flat roofs & more. Free quotes — call today!",
   ogImage = "/images/hero-bg.jpg",
   schema,
+  noindex = false,
 } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
@@ -29,7 +31,7 @@ const ogImageUrl = new URL(ogImage, siteUrl).href;
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"} />
     <meta name="google-site-verification" content="Gb9qIsbU0dDuIJlImjHpvlxi8EoEFt91qSHtzzWgsg0" />
     <link rel="canonical" href={canonicalUrl} />
 
