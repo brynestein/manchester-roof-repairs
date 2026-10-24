@@ -44,9 +44,29 @@ Open Claude Code in the project folder and describe what you want changed. Claud
 | About page text | `src/pages/about.astro` |
 | Contact form / details | `src/pages/contact.astro` |
 
+## Site Checks and SEO Plumbing
+
+| What | Where |
+|------|-------|
+| Run all checks (build, then check `dist/`) | `npm run check` |
+| Check the live site | `NODE_USE_ENV_PROXY=1 node scripts/check-site.mjs --live https://manchestergutters.co.uk` |
+| Checker and its config | `scripts/check-site.mjs`, `site-checks.config.json` |
+| Content and SEO rules (for Claude and humans) | `.claude/skills/site-content/SKILL.md` |
+| CI | `.github/workflows/site-checks.yml` runs the checker on every PR and push to master |
+| 404 page | `src/pages/404.astro` (Cloudflare Pages serves it with a real 404 status) |
+| Sitemap at `/sitemap.xml` (single file; `astro.config.mjs` renames the integration's output) | `astro.config.mjs`; old `/sitemap-index.xml` redirects via `public/_redirects` |
+| `llms.txt` for AI crawlers | `public/llms.txt` (update when services or areas change; no phone or email until real) |
+| Sitemap `lastmod` | `astro.config.mjs`: last git commit date per page; omitted in shallow clones |
+
+The checker fails on `block` findings and only prints `warn` findings. `P-img-missing` is set to `warn` in `site-checks.config.json` while the site uses placeholder images; remove that line once real photos are in.
+
 ## Outstanding Tasks
-- [ ] Fix domain connection (add manchestergutters.co.uk as custom domain in Cloudflare Pages project)
-- [ ] Replace placeholder images with real photos
-- [ ] Update contact details with real phone/email
+- [x] Domain connection: manchestergutters.co.uk serves the site (verified 2026-10-24)
+- [ ] Submit `https://manchestergutters.co.uk/sitemap.xml` in Google Search Console (nothing was submitted as of 2026-10-23)
+- [ ] Replace placeholder images with real photos, then remove the `P-img-missing` override from `site-checks.config.json`
+- [ ] Update contact details with real phone/email/WhatsApp (also fill `llms.txt` and `business.json`)
 - [ ] Choose and set up a CMS (TinaCMS, Decap CMS, etc.)
-- [ ] Add schema markup for local business SEO
+- [x] LocalBusiness-family JSON-LD on every page (checked by `P-schema-identity`)
+- [ ] Add real Google reviews / AggregateRating schema (only from verified data)
+- [ ] Work through remaining checker warnings: skipped heading levels, generic nav labels, footer links repeating nav labels, header CTA pointing at /contact, image dimensions, 6-page count
+- [ ] After the first deploy of the 404 and redirect changes, re-run the live check: the `S-soft404` finding should be gone, and confirm whether sitemap `lastmod` appears in production

@@ -23,5 +23,6 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-# Claude Code
-.claude/
+# Claude Code (project skills are tracked, local state is not)
+.claude/*
+!.claude/skills/

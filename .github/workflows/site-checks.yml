@@ -1,0 +1,19 @@
+name: Site checks
+on:
+  pull_request:
+  push:
+    branches: [master]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history so sitemap lastmod can read git dates
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: node scripts/check-site.mjs --dist dist
