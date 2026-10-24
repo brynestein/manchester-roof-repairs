@@ -74,6 +74,13 @@ These are house defaults taken from a competitor teardown; they are strong defau
 - Every image referenced must exist (P-img-missing), have meaningful alt text, explicit dimensions and a modern format.
 - Core Web Vitals targets (LCP under 2.5s, INP under 200ms, CLS under 0.1) are checked in Site Manager's page-speed tool, not here.
 
+## Security header and tracking (S-csp-inline, S-csp-host)
+
+- The site's security header (`public/_headers`, Content-Security-Policy) must allow everything the pages load. A header that is too strict fails silently in the browser: tracking stops and menus and buttons do nothing, while the page still looks fine in a screenshot.
+- No inline JavaScript: no `onclick`/`onerror` attributes, and no `<script>` with code in it (JSON-LD is fine). Put code in an Astro `<script>` block (built out to a file) or under `public/js/`.
+- Adding a third-party tag means adding its hosts to the header in the same change. The checker blocks when GTM/GA4, Clarity or Google Fonts are used but not allowed.
+- Tracking loads through `public/js/consent-tracking.js`, behind the cookie banner. Never add a tag that sets cookies or records sessions outside it, and never inside GTM without a consent check on the tag.
+
 ## Out of scope for this skill
 
 Google Business Profile and citation work (use the `gbp-signal-audit` skill and the local-presence gate), rank and traffic analysis (Search Console, Site Manager), and anything needing the client's decision (pricing, guarantees, claims). Raise those in the PR.

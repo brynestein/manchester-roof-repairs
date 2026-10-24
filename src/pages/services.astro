@@ -68,7 +68,7 @@ const servicesSchema = {
       {services.map((service, i) => (
         <div class:list={["service-detail", { reverse: i % 2 !== 0 }]}>
           <div class="service-detail-image">
-            <img src={service.image} alt={service.title} class="service-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <img src={service.image} alt={service.title} class="service-photo" loading="lazy" data-fallback />
             <div class="service-placeholder" style="display:none;">
               <Fragment set:html={service.icon} />
               <span>{service.title}</span>

@@ -77,6 +77,7 @@ const BASE_SEV = {
   "S-orphans": "block", "S-hub-ratio": "warn", "S-dir-service-location": "block", "S-dir-service-post": "block",
   "S-slug-format": "warn", "S-slug-geo": "warn", "S-footer-variance": "warn", "S-nap": "warn",
   "S-cta-contact": "warn", "S-trailing-slash": "warn", "S-generic-nav": "warn", "S-pages-min": "warn",
+  "S-csp-inline": "block", "S-csp-host": "block",
 };
 function add(id, page, msg) {
   if (cfg.disable.includes(id)) return;
@@ -459,6 +460,63 @@ if (homeM) {
   if (generic.length) add("S-generic-nav", "/", `generic nav labels: ${[...new Set(generic.map((a) => a.label))].join(", ")}; use the target query phrase`);
   const cta = hdr.find((a) => /(^|\/)contact\/?$/i.test(a.href) && /quote|call|book|get|free/i.test(a.label));
   if (cta) add("S-cta-contact", "/", `header CTA "${cta.label}" links to /contact; use an on-page anchor or tel: link`);
+}
+
+// Security header vs what the pages actually load. A strict header that blocks the site's
+// own scripts fails silently in the browser: tracking stops and buttons do nothing.
+async function readCsp() {
+  if (MODE_LIVE) {
+    try { const r = await fetch(MODE_LIVE.replace(/\/$/, "") + "/", { redirect: "follow" }); return r.headers.get("content-security-policy"); } catch { return null; }
+  }
+  const h = await src.get("/_headers");
+  if (h.status !== 200) return null;
+  return (h.body.match(/^\s*Content-Security-Policy:\s*(.+)$/im) || [])[1] || null;
+}
+const cspRaw = await readCsp();
+if (cspRaw) {
+  const csp = {};
+  for (const part of cspRaw.split(";")) { const [k, ...v] = part.trim().split(/\s+/); if (k) csp[k.toLowerCase()] = v; }
+  const list = (d) => csp[d] || csp["default-src"] || null;
+  const allows = (sources, url) => {
+    if (!sources) return true;
+    let u; try { u = new URL(url, siteUrl || "https://x.invalid"); } catch { return true; }
+    return sources.some((t) => {
+      if (t === "*") return true;
+      if (t === "'self'") return !siteHost || u.host.replace(/^www\./, "") === siteHost;
+      if (/^[a-z]+:$/.test(t)) return u.protocol === t;
+      const m = t.match(/^(?:([a-z]+):\/\/)?(\*\.)?([^/:]+)/i);
+      if (!m || t.startsWith("'")) return false;
+      if (m[1] && m[1] + ":" !== u.protocol) return false;
+      return m[2] ? u.host.endsWith("." + m[3]) : u.host === m[3];
+    });
+  };
+  const scriptSrc = list("script-src"), styleSrc = list("style-src"), connectSrc = list("connect-src"), fontSrc = list("font-src");
+  const inlineOk = !scriptSrc || scriptSrc.some((t) => t === "'unsafe-inline'" || /^'(nonce|sha256|sha384|sha512)-/.test(t));
+  const seen = new Set();
+  const flag = (id, page, msg) => { if (!seen.has(id + msg)) { seen.add(id + msg); add(id, page, msg); } };
+  for (const p of model) {
+    for (const m of p.html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
+      const a = attrs(m[1]);
+      if (a.src) { if (!allows(scriptSrc, a.src)) flag("S-csp-host", p.path, `script from ${new URL(a.src, siteUrl || "https://x.invalid").host} is not allowed by script-src`); continue; }
+      if (/json/i.test(a.type || "") || !m[2].trim()) continue;
+      if (!inlineOk) flag("S-csp-inline", p.path, "inline script would be blocked by script-src (move it to a file)");
+    }
+    if (!inlineOk && /<[a-z][^>]*\son[a-z]+\s*=/i.test(p.html)) flag("S-csp-inline", p.path, "inline event handler (onclick, onerror, ...) would be blocked by script-src");
+    for (const m of p.html.matchAll(/<link\b([^>]*)>/gi)) {
+      const a = attrs(m[1]);
+      if ((a.rel || "").toLowerCase() === "stylesheet" && a.href && !allows(styleSrc, a.href)) flag("S-csp-host", p.path, `stylesheet from ${new URL(a.href, siteUrl || "https://x.invalid").host} is not allowed by style-src`);
+      if ((a.rel || "").toLowerCase() === "stylesheet" && /fonts\.googleapis\.com/.test(a.href || "") && !allows(fontSrc, "https://fonts.gstatic.com/x.woff2")) flag("S-csp-host", p.path, "Google Fonts files are not allowed by font-src (fonts.gstatic.com)");
+    }
+    // Tags injected at run time are invisible in the HTML, so check by what the page asks for.
+    if (/GTM-[A-Z0-9]+|googletagmanager\.com/.test(p.html)) {
+      if (!allows(scriptSrc, "https://www.googletagmanager.com/gtm.js")) flag("S-csp-host", p.path, "GTM/GA4 is used but www.googletagmanager.com is not allowed by script-src");
+      if (!allows(connectSrc, "https://region1.google-analytics.com/g/collect")) flag("S-csp-host", p.path, "GA4 is used but *.google-analytics.com is not allowed by connect-src");
+    }
+    if (/data-clarity=|clarity\.ms/.test(p.html)) {
+      if (!allows(scriptSrc, "https://www.clarity.ms/tag/x")) flag("S-csp-host", p.path, "Clarity is used but www.clarity.ms is not allowed by script-src");
+      if (!allows(connectSrc, "https://k.clarity.ms/collect")) flag("S-csp-host", p.path, "Clarity is used but *.clarity.ms is not allowed by connect-src");
+    }
+  }
 }
 
 // NAP consistency

@@ -33,6 +33,11 @@
 - **Fonts**: Oswald (headings), Roboto (body) via Google Fonts
 - **Style**: Similar to recommendedroofers.ie — professional trade site with trust signals
 
+## Tracking and Consent
+- GTM `GTM-N89JRGWH` carries GA4 (`G-M5SETBBHNQ`) and Microsoft Clarity. IDs live in `src/data/tracking.json`.
+- Everything loads through `public/js/consent-tracking.js`. Consent Mode defaults are denied, and in `basic` mode nothing from Google or Clarity loads until the visitor accepts the cookie banner.
+- The security header in `public/_headers` allows only the hosts these tags use. Adding a tag means updating the header in the same change; `npm run check` blocks if they disagree. No inline scripts or `on*=` attributes.
+
 ## Placeholder Contact Details (need updating)
 - Phone: 0161 234 5678
 - Email: info@manchestergutters.co.uk

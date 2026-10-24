@@ -412,7 +412,7 @@ const webSiteSchema = {
       <div class="faq-list">
         {faqs.map(faq => (
           <div class="faq-item">
-            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <button class="faq-question" type="button" aria-expanded="false">
               {faq.question}
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
@@ -447,6 +447,16 @@ const webSiteSchema = {
   <Footer />
   <FloatingCTA />
 </Layout>
+
+<script>
+  // FAQ accordion. A listener here, not an inline onclick, which the security header blocks.
+  document.querySelectorAll<HTMLButtonElement>('.faq-question').forEach((button) => {
+    button.addEventListener('click', () => {
+      const open = button.parentElement?.classList.toggle('open') ?? false;
+      button.setAttribute('aria-expanded', String(open));
+    });
+  });
+</script>
 
 <style>
   /* Hero */

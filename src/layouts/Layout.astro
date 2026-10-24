@@ -19,6 +19,11 @@ const {
 } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+const gtmOn = Boolean(tracking.gtm.enabled && tracking.gtm.containerId);
+// GTM carries GA4 when it is on, so GA4 loads directly only without GTM.
+const ga4On = Boolean(!gtmOn && tracking.ga4.enabled && tracking.ga4.measurementId);
+// Clarity is a tag inside the GTM container; loading it here as well would run it twice.
+const clarityOn = Boolean(!gtmOn && tracking.clarity.enabled && tracking.clarity.projectId);
 const ogImageUrl = new URL(ogImage, siteUrl).href;
 ---
 
@@ -60,38 +65,18 @@ const ogImageUrl = new URL(ogImage, siteUrl).href;
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;700&display=swap" />
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 
-    {/* GTM — managed from Site Manager tracking.json */}
-    {tracking.gtm.enabled && tracking.gtm.containerId && (
-      <script is:inline define:vars={{ gtmId: tracking.gtm.containerId }}>
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer',gtmId);
-      </script>
-    )}
-
-    {/* GA4 direct — only if GTM is disabled (GTM manages GA4 when active) */}
-    {tracking.ga4.enabled && !tracking.gtm.enabled && tracking.ga4.measurementId && (
-      <>
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${tracking.ga4.measurementId}`}></script>
-        <script is:inline define:vars={{ gaId: tracking.ga4.measurementId }}>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', gaId);
-        </script>
-      </>
-    )}
-
-    {/* Microsoft Clarity — only if not managed through GTM */}
-    {tracking.clarity.enabled && tracking.clarity.projectId && (
-      <script is:inline define:vars={{ clarityId: tracking.clarity.projectId }}>
-        (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window,document,"clarity","script",clarityId);
-      </script>
+    {/* Tracking: one external file sets consent defaults first, then loads GTM (or GA4) and,
+        only after a yes, Clarity. IDs come from tracking.json. No inline scripts: the security
+        header in public/_headers blocks them. */}
+    {(gtmOn || ga4On || clarityOn) && (
+      <script
+        is:inline
+        src="/js/consent-tracking.js"
+        data-gtm={gtmOn ? tracking.gtm.containerId : undefined}
+        data-ga4={ga4On ? tracking.ga4.measurementId : undefined}
+        data-clarity={clarityOn ? tracking.clarity.projectId : undefined}
+        data-mode={tracking.consent?.mode ?? 'basic'}
+      ></script>
     )}
 
     <!-- Schema / Structured Data (JSON-LD) -->
@@ -102,15 +87,65 @@ const ogImageUrl = new URL(ogImage, siteUrl).href;
     )}
   </head>
   <body>
-    {tracking.gtm.enabled && tracking.gtm.containerId && (
-      <noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${tracking.gtm.containerId}`}
-      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    )}
     <slot />
+    <script>
+      // Shows the placeholder beside any photo that fails to load (some project photos are
+      // still to come). Replaces inline onerror handlers, which the security header blocks.
+      function showFallback(img: HTMLImageElement) {
+        img.style.display = 'none';
+        const placeholder = img.nextElementSibling as HTMLElement | null;
+        if (placeholder) placeholder.style.display = 'flex';
+      }
+      document.querySelectorAll<HTMLImageElement>('img[data-fallback]').forEach((img) => {
+        if (img.complete && img.naturalWidth === 0) showFallback(img);
+        else img.addEventListener('error', () => showFallback(img));
+      });
+    </script>
   </body>
 </html>
 
 <style is:global>
+  .cookie-banner {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    z-index: 1000;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 16px 20px;
+    background: #1a1a1a;
+    color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .cookie-banner[hidden] { display: none; }
+  .cookie-banner__actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  .cookie-banner__btn {
+    min-width: 140px;
+    padding: 10px 16px;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    background: transparent;
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .cookie-banner__btn:hover,
+  .cookie-banner__btn:focus-visible {
+    background: #fff;
+    color: #1a1a1a;
+  }
+
   *,
   *::before,
   *::after {
