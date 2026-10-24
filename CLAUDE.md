@@ -3,6 +3,7 @@
 ## Project Overview
 - **Domain**: manchestergutters.co.uk
 - **GitHub Repo**: https://github.com/brynestein/manchester-roof-repairs
+- **Repo name is legacy**: this repo is the website for manchestergutters.co.uk. The name `manchester-roof-repairs` dates from the original "Roof Repairs Manchester" build, before the rebrand. It is referenced by Site Manager (`sites.ts`), Cloudflare Pages and command-center, so do not rename it on its own; if the site is ever rebuilt on the base theme, create a correctly named repo and move all three together.
 - **Hosting**: Cloudflare Pages (auto-deploys from GitHub on push)
 - **Pages.dev URL**: https://manchester-roof-repairs.pages.dev
 - **Framework**: Astro (static site, no React/Tailwind — pure Astro + scoped CSS)
