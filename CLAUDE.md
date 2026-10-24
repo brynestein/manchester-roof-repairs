@@ -49,7 +49,7 @@ Follow `.claude/skills/site-content/SKILL.md` when writing or editing any page. 
 
 ## Status / TODO
 - [x] Domain connection fixed (manchestergutters.co.uk serves the site)
-- [ ] Submit `sitemap-index.xml` in Google Search Console (the sitemap exists; it had not been submitted as of 2026-10-23)
+- [ ] Submit `sitemap.xml` in Google Search Console (the sitemap exists; it had not been submitted as of 2026-10-23)
 - [ ] Replace placeholder images with real project photos (then remove the `P-img-missing` override in `site-checks.config.json`)
 - [ ] Update phone number, email, and WhatsApp with real details (also `public/llms.txt`)
 - [ ] Evaluate CMS options (TinaCMS, Decap CMS, Payload, Storyblok) for content management

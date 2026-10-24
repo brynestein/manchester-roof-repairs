@@ -69,7 +69,7 @@ These are house defaults taken from a competitor teardown; they are strong defau
 ## Technical and AI-search plumbing (S-sitemap-*, S-robots*, S-llms, S-404, S-soft404, P-img-*)
 
 - Pages are statically generated: the full text must be in the HTML response. No content that appears only after client-side JavaScript.
-- A real 404 page that is served with HTTP 404 (S-404, S-soft404). A sitemap index that lists every indexable page with `lastmod`, referenced from `robots.txt`, and submitted in Search Console. `robots.txt` does not block AI crawlers unless the client asks.
+- A real 404 page that is served with HTTP 404 (S-404, S-soft404). A sitemap (conventionally `/sitemap.xml`; an index only when the site needs several files) that lists every indexable page, with `lastmod` only where the date is real, referenced from `robots.txt` and submitted in Search Console. `robots.txt` does not block AI crawlers unless the client asks.
 - A real `/llms.txt` (plain text, short site summary and key URLs).
 - Every image referenced must exist (P-img-missing), have meaningful alt text, explicit dimensions and a modern format.
 - Core Web Vitals targets (LCP under 2.5s, INP under 200ms, CLS under 0.1) are checked in Site Manager's page-speed tool, not here.

@@ -54,7 +54,7 @@ Open Claude Code in the project folder and describe what you want changed. Claud
 | Content and SEO rules (for Claude and humans) | `.claude/skills/site-content/SKILL.md` |
 | CI | `.github/workflows/site-checks.yml` runs the checker on every PR and push to master |
 | 404 page | `src/pages/404.astro` (Cloudflare Pages serves it with a real 404 status) |
-| `/sitemap.xml` redirect to `/sitemap-index.xml` | `public/_redirects` |
+| Sitemap at `/sitemap.xml` (single file; `astro.config.mjs` renames the integration's output) | `astro.config.mjs`; old `/sitemap-index.xml` redirects via `public/_redirects` |
 | `llms.txt` for AI crawlers | `public/llms.txt` (update when services or areas change; no phone or email until real) |
 | Sitemap `lastmod` | `astro.config.mjs`: last git commit date per page; omitted in shallow clones |
 
@@ -62,7 +62,7 @@ The checker fails on `block` findings and only prints `warn` findings. `P-img-mi
 
 ## Outstanding Tasks
 - [x] Domain connection: manchestergutters.co.uk serves the site (verified 2026-10-24)
-- [ ] Submit `https://manchestergutters.co.uk/sitemap-index.xml` in Google Search Console (nothing was submitted as of 2026-10-23)
+- [ ] Submit `https://manchestergutters.co.uk/sitemap.xml` in Google Search Console (nothing was submitted as of 2026-10-23)
 - [ ] Replace placeholder images with real photos, then remove the `P-img-missing` override from `site-checks.config.json`
 - [ ] Update contact details with real phone/email/WhatsApp (also fill `llms.txt` and `business.json`)
 - [ ] Choose and set up a CMS (TinaCMS, Decap CMS, etc.)

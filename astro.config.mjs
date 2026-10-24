@@ -1,5 +1,8 @@
 // @ts-check
 import { execFileSync } from 'node:child_process';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
@@ -20,6 +23,22 @@ const lastCommitDate = (file) => {
   }
 };
 
+// @astrojs/sitemap always writes sitemap-index.xml + sitemap-0.xml. For a single-file
+// sitemap the index adds nothing, so publish it at the conventional /sitemap.xml instead.
+// Skipped if the sitemap was split (50k+ URLs), where the index is required.
+const flatSitemap = {
+  name: 'flat-sitemap',
+  hooks: {
+    'astro:build:done': ({ dir }) => {
+      const out = fileURLToPath(dir);
+      const single = path.join(out, 'sitemap-0.xml');
+      if (!fs.existsSync(single) || fs.existsSync(path.join(out, 'sitemap-1.xml'))) return;
+      fs.renameSync(single, path.join(out, 'sitemap.xml'));
+      fs.rmSync(path.join(out, 'sitemap-index.xml'), { force: true });
+    },
+  },
+};
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://manchestergutters.co.uk',
@@ -31,5 +50,6 @@ export default defineConfig({
         return item;
       },
     }),
+    flatSitemap, // must come after sitemap(): it rewrites that integration's output
   ],
 });
