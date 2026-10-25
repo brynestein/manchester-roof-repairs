@@ -2,7 +2,7 @@
  "site": "Manchester Gutters",
  "researched": "2026-10-25",
  "country": "United Kingdom",
- "sources": "Keyword Planner UK (Discover new keywords from 5 seeds, plus two volume runs) and Search Console queries of Munster Gutters and Recommended Roofing; see topic-research.md",
+ "sources": "Keyword Planner UK (Discover new keywords from 5 seeds, plus two volume runs) and Search Console queries of Munster Gutters and Recommended Roofing; see topic-research.md; plus Google autocomplete (topic_autocomplete.py) with a further Planner volume run",
  "volume_note": "Monthly UK searches summed over the cluster, counting once any searches Planner reports with the same volume and monthly pattern (one search to Google)",
  "left_out": {
   "guttering sealant": "product search",
@@ -11,7 +11,10 @@
   "trustmark": "navigational",
   "rogue traders": "mostly the BBC programme",
   "ogee guttering": "product search",
-  "gutter cleaning": "low-ticket; not a priority"
+  "gutter cleaning": "low-ticket; not a priority",
+  "what is fascia in the body / anatomy / training": "other meanings of the word",
+  "how do you spell fascia / soffit / gutter": "spelling look-ups",
+  "gutter joint / guttering joints / connectors / seals / joiners": "product searches (parts)"
  },
  "overlap_tests_pending": [
   [
@@ -41,6 +44,10 @@
   [
    "gutter leaking",
    "gutter repairs manchester"
+  ],
+  [
+   "what are soffits and fascias",
+   "fascias and soffits manchester"
   ]
  ],
  "articles": [
@@ -153,16 +160,84 @@
      "search": "cost to replace gutters and downpipes",
      "volume": 30,
      "same_search_as_another": false
+    },
+    {
+     "search": "cost to replace guttering",
+     "volume": 1300,
+     "same_search_as_another": true
+    },
+    {
+     "search": "how much for gutter installation",
+     "volume": 390,
+     "same_search_as_another": true
+    },
+    {
+     "search": "how much for guttering",
+     "volume": 170,
+     "same_search_as_another": true
+    },
+    {
+     "search": "cost to replace guttering uk",
+     "volume": 170,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much do new gutters cost",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much does gutters cost to install",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter pro prices",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "cost to replace guttering on 3 bed semi",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much for gutters on a house",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "price of gutters installed",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "cost to replace guttering on house",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "cost of replacing roof and gutters",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "cost of guttering replacement uk",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how long does guttering last",
+     "volume": 40,
+     "same_search_as_another": false
     }
    ],
    "folded": [
     "how long does guttering last",
-    "guttering building regulations",
-    "are gutter guards worth it",
-    "gutter guards cost"
+    "guttering building regulations"
    ],
    "money_page": "/gutter-replacement/",
-   "volume": 3640,
+   "volume": 4270,
    "stage": "Launch",
    "sister_site": "Munster \"how much to replace gutters\" (234 impressions, position 5)"
   },
@@ -235,13 +310,88 @@
      "search": "rotted fascia board repair cost",
      "volume": 70,
      "same_search_as_another": false
+    },
+    {
+     "search": "soffit replacement cost",
+     "volume": 140,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much to replace fascia and gutters",
+     "volume": 90,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much does soffit and fascia cost",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much for soffit and fascia",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much for fascias and soffits",
+     "volume": 70,
+     "same_search_as_another": true
+    },
+    {
+     "search": "how much for soffits fascias and guttering",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "fascia replacement cost uk",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much fascia board replacement",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much for new fascias soffits and guttering uk",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter soffit and fascia replacement cost",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "soffit replacement cost uk",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much is soffit replacement",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "fascia price",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much for fascia and guttering",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much do fascias cost",
+     "volume": 30,
+     "same_search_as_another": false
     }
    ],
    "folded": [
     "fascia capping vs replacement"
    ],
    "money_page": "/fascias-and-soffits/",
-   "volume": 1850,
+   "volume": 2590,
    "stage": "Launch",
    "sister_site": "Munster fascia and soffit cost article: 57 clicks"
   },
@@ -351,6 +501,11 @@
      "search": "how much does gutter repair cost",
      "volume": 20,
      "same_search_as_another": false
+    },
+    {
+     "search": "how much to fix gutter",
+     "volume": 50,
+     "same_search_as_another": true
     }
    ],
    "folded": [],
@@ -390,6 +545,113 @@
    "volume": 240,
    "stage": "Launch",
    "sister_site": ""
+  },
+  {
+   "slug": "what-are-fascias-and-soffits",
+   "group": "Problem and how-to",
+   "h1": "What Are Fascias and Soffits on a House?",
+   "searches": [
+    {
+     "search": "fascia vs soffit",
+     "volume": 320,
+     "same_search_as_another": false
+    },
+    {
+     "search": "fascia vs barge board",
+     "volume": 90,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what is soffit",
+     "volume": 260,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what is soffit board",
+     "volume": 260,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what are soffit vents",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what is soffit and fascia on a house",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what is soffit in construction",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what are soffits and fascias",
+     "volume": 1300,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what are fascias on a house",
+     "volume": 590,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what are soffits on a house",
+     "volume": 320,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what is fascia board",
+     "volume": 320,
+     "same_search_as_another": false
+    },
+    {
+     "search": "fascia boards sizes",
+     "volume": 260,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what are fascia boards on a house",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what is fascia construction",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what is fascia made of",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what are soffits and fascia on a house",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what are fascia boards and soffits",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what is the difference between soffits and fascias",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what is roofline",
+     "volume": 40,
+     "same_search_as_another": false
+    }
+   ],
+   "folded": [],
+   "money_page": "/fascias-and-soffits/",
+   "sister_site": "",
+   "volume": 4120,
+   "stage": "Launch"
   },
   {
    "slug": "leaking-gutter-joint",
@@ -445,11 +707,41 @@
      "search": "downpipe leaking at joints",
      "volume": 50,
      "same_search_as_another": false
+    },
+    {
+     "search": "leaking gutter joint repair cost",
+     "volume": 110,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter joint repair cost",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter joint rubber seal",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to fix a leaking gutter joint uk",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to repair leaking gutter seams",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to seal leaking gutter joints",
+     "volume": 70,
+     "same_search_as_another": false
     }
    ],
    "folded": [],
    "money_page": "/gutter-repairs/",
-   "volume": 2100,
+   "volume": 2410,
    "stage": "Launch",
    "sister_site": ""
   },
@@ -507,11 +799,26 @@
      "search": "sagging gutter",
      "volume": 30,
      "same_search_as_another": false
+    },
+    {
+     "search": "how to fix a leaky gutter",
+     "volume": 210,
+     "same_search_as_another": true
+    },
+    {
+     "search": "how to stop gutters from leaking",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what damage can a leaking gutter cause",
+     "volume": 30,
+     "same_search_as_another": false
     }
    ],
    "folded": [],
    "money_page": "/gutter-repairs/",
-   "volume": 1520,
+   "volume": 1600,
    "stage": "Launch",
    "sister_site": ""
   },
@@ -534,11 +841,51 @@
      "search": "downpipe leaking",
      "volume": 90,
      "same_search_as_another": false
+    },
+    {
+     "search": "downpipe replacement cost uk",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to clear a blocked downpipe",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to install downpipe",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to unblock gutter downpipe uk",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to clear blocked gutter downpipe",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "blocked downpipe from gutter",
+     "volume": 210,
+     "same_search_as_another": false
+    },
+    {
+     "search": "blocked downpipe drain",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "blocked downpipe soakaway",
+     "volume": 50,
+     "same_search_as_another": false
     }
    ],
    "folded": [],
    "money_page": "/downpipes/",
-   "volume": 460,
+   "volume": 990,
    "stage": "Launch",
    "sister_site": ""
   },
@@ -566,13 +913,100 @@
      "search": "how to replace soffits",
      "volume": 40,
      "same_search_as_another": false
+    },
+    {
+     "search": "how to replace fascia and soffit",
+     "volume": 110,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to install fascia boards",
+     "volume": 90,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to replace fascia board",
+     "volume": 90,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to install soffits and fascia uk",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to fix fascia board",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to put up soffit",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to install soffits",
+     "volume": 50,
+     "same_search_as_another": true
+    },
+    {
+     "search": "how to fix soffit boards",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to install fascias",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to replace fascia board uk",
+     "volume": 30,
+     "same_search_as_another": false
     }
    ],
    "folded": [
     "signs fascia needs replacing"
    ],
    "money_page": "/fascias-and-soffits/",
-   "volume": 420,
+   "volume": 980,
+   "stage": "Launch",
+   "sister_site": ""
+  },
+  {
+   "slug": "box-gutter-leaking",
+   "group": "Problem and how-to",
+   "h1": "Leaking Box Gutters and Conservatory Gutters",
+   "searches": [
+    {
+     "search": "conservatory box gutter leaking",
+     "volume": 140,
+     "same_search_as_another": false
+    },
+    {
+     "search": "fixing box gutters",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "box gutter leaking",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what are box gutters",
+     "volume": 90,
+     "same_search_as_another": false
+    },
+    {
+     "search": "box gutter sizes",
+     "volume": 50,
+     "same_search_as_another": false
+    }
+   ],
+   "folded": [],
+   "money_page": "/gutter-repairs/",
+   "volume": 380,
    "stage": "Launch",
    "sister_site": ""
   },
@@ -604,29 +1038,114 @@
    "sister_site": ""
   },
   {
-   "slug": "box-gutter-leaking",
-   "group": "Problem and how-to",
-   "h1": "Leaking Box Gutters and Conservatory Gutters",
+   "slug": "gutter-fall-and-bracket-spacing",
+   "group": "How-to",
+   "h1": "Gutter Brackets and Fall Explained",
    "searches": [
     {
-     "search": "conservatory box gutter leaking",
+     "search": "fall for guttering",
+     "volume": 480,
+     "same_search_as_another": false
+    },
+    {
+     "search": "guttering fall per metre",
      "volume": 140,
      "same_search_as_another": false
     },
     {
-     "search": "fixing box gutters",
+     "search": "what fall should a gutter have",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how far apart should gutter brackets be",
+     "volume": 110,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how many gutter brackets per meter",
      "volume": 70,
      "same_search_as_another": false
     },
     {
-     "search": "box gutter leaking",
+     "search": "how much fall on guttering",
+     "volume": 90,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter fall calculator",
+     "volume": 90,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter brackets rise and fall",
+     "volume": 590,
+     "same_search_as_another": false
+    },
+    {
+     "search": "types of gutter brackets",
+     "volume": 170,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter fall ratio",
+     "volume": 110,
+     "same_search_as_another": false
+    },
+    {
+     "search": "different types of gutter brackets",
+     "volume": 110,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter fall uk",
+     "volume": 90,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how far apart gutter brackets",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter fixing brackets",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to attach gutter brackets",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what is the fall on guttering",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what size screws for gutter brackets",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what screws for gutter brackets",
      "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how many gutter clips per meter",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how far apart should gutter clips be",
+     "volume": 40,
      "same_search_as_another": false
     }
    ],
    "folded": [],
-   "money_page": "/gutter-repairs/",
-   "volume": 240,
+   "money_page": "/gutter-replacement/",
+   "volume": 2480,
    "stage": "Launch",
    "sister_site": ""
   },
@@ -674,6 +1193,36 @@
      "search": "how to do guttering",
      "volume": 30,
      "same_search_as_another": false
+    },
+    {
+     "search": "how to install guttering and downpipes",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to gutter installation",
+     "volume": 480,
+     "same_search_as_another": true
+    },
+    {
+     "search": "how to repair gutters",
+     "volume": 170,
+     "same_search_as_another": true
+    },
+    {
+     "search": "how to fix guttering to a shed",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to do gutters",
+     "volume": 30,
+     "same_search_as_another": true
+    },
+    {
+     "search": "uk gutter sizes",
+     "volume": 50,
+     "same_search_as_another": false
     }
    ],
    "folded": [
@@ -681,46 +1230,51 @@
     "gutter installation mistakes"
    ],
    "money_page": "/gutter-replacement/",
-   "volume": 1140,
+   "volume": 1290,
    "stage": "Launch",
    "sister_site": "Munster step-by-step installation guide: 68 clicks"
   },
   {
-   "slug": "gutter-fall-and-bracket-spacing",
-   "group": "How-to",
-   "h1": "Gutter Fall and Bracket Spacing Explained",
+   "slug": "are-gutter-guards-worth-it",
+   "group": "Comparison",
+   "h1": "Gutter Guards, Are They Worth Fitting?",
    "searches": [
     {
-     "search": "fall for guttering",
-     "volume": 480,
+     "search": "best gutter guards",
+     "volume": 170,
      "same_search_as_another": false
     },
     {
-     "search": "guttering fall per metre",
-     "volume": 140,
-     "same_search_as_another": false
-    },
-    {
-     "search": "what fall should a gutter have",
+     "search": "are gutter guards worth it",
      "volume": 40,
      "same_search_as_another": false
     },
     {
-     "search": "how far apart should gutter brackets be",
-     "volume": 110,
+     "search": "what gutter guard is best",
+     "volume": 30,
      "same_search_as_another": false
     },
     {
-     "search": "how many gutter brackets per meter",
-     "volume": 70,
+     "search": "cost of gutter guards",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "cost of gutter guards installed",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "diy gutter guards",
+     "volume": 30,
      "same_search_as_another": false
     }
    ],
    "folded": [],
    "money_page": "/gutter-replacement/",
-   "volume": 840,
-   "stage": "Launch",
-   "sister_site": ""
+   "sister_site": "",
+   "volume": 350,
+   "stage": "Launch"
   },
   {
    "slug": "rogue-roofers",
