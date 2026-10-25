@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FloatingCTA from '../components/FloatingCTA.astro';
 import seoData from '../data/seo.json';
+import { facts } from '../lib/facts';
 import business from '../data/business.json';
 
 const { title, description } = seoData.contact;
@@ -45,7 +46,7 @@ const contactSchema = {
   <section class="page-hero">
     <div class="container">
       <h1>Contact Us</h1>
-      <p>Get in touch for a free, no-obligation quote — we respond within 2 hours</p>
+      <p>Get in touch for a free, no-obligation quote{facts.quoteReply ? ` — we respond ${facts.quoteReply}` : ''}</p>
     </div>
   </section>
 
@@ -96,7 +97,7 @@ const contactSchema = {
               <textarea id="message" name="message" rows="5" placeholder="Please describe your roofing issue or what work you need done..." required></textarea>
             </div>
             <button type="submit" class="btn btn-red" style="width: 100%; text-align: center; font-size: 1.1rem; padding: 16px;">Send Message &amp; Get Free Quote</button>
-            <p class="form-note">We'll respond within 2 hours during business hours. Your details are safe with us.</p>
+            <p class="form-note">{facts.quoteReply ? `We'll respond ${facts.quoteReply} during business hours. ` : ''}We use your details only to reply to your enquiry. See our <a href="/privacy-policy/">privacy policy</a>.</p>
           </form>
         </div>
 
@@ -139,15 +140,15 @@ const contactSchema = {
                 <div>
                   <strong>Opening Hours</strong>
                   <span>Mon–Sat: 8am–6pm</span>
-                  <span class="emergency-note">24/7 Emergency Call-Outs</span>
+                  {facts.emergency.available && <span class="emergency-note">Emergency call-outs {facts.emergency.available}</span>}
                 </div>
               </li>
             </ul>
           </div>
 
           <div class="info-card emergency-card">
-            <h3>Emergency?</h3>
-            <p>If you have an urgent roofing emergency, call us now — we're available 24/7 and respond within 60 minutes.</p>
+            <h3>Urgent problem?</h3>
+            <p>If water is coming in or a gutter has come away, call us now{facts.emergency.available ? ` — emergency call-outs ${facts.emergency.available}${facts.emergency.response ? `, aiming to reach you ${facts.emergency.response}` : ''}` : ''}.</p>
             <a href={`tel:${business.phoneRaw}`} class="btn btn-primary" style="width: 100%; text-align: center;">
               Call Now: {business.phone}
             </a>
@@ -176,7 +177,7 @@ const contactSchema = {
         <div class="map-info">
           <h2>Find Us</h2>
           <div class="red-line"></div>
-          <p>We're based in Manchester and cover all of Greater Manchester and surrounding areas within a 25-mile radius.</p>
+          <p>Manchester Gutters is based in Manchester and covers Greater Manchester.</p>
           <p>Whether you're in the city centre, the suburbs, or a neighbouring town, we'll come to you for a free roof inspection and quote.</p>
           <div class="coverage-areas">
             <h4>Key Areas We Cover:</h4>

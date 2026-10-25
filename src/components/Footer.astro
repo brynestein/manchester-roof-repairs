@@ -1,5 +1,7 @@
 ---
 import business from '../data/business.json';
+import reviews from '../data/reviews.json';
+import gallery from '../data/gallery.json';
 
 const currentYear = new Date().getFullYear();
 ---
@@ -19,7 +21,7 @@ const currentYear = new Date().getFullYear();
           </div>
         </div>
         <p class="footer-desc">
-          Trusted local roofers serving Manchester and surrounding areas. Fully insured, experienced, and committed to quality workmanship on every job.
+          Gutter, fascia, soffit and roof work for homes and businesses across Manchester and Greater Manchester.
         </p>
       </div>
 
@@ -43,8 +45,8 @@ const currentYear = new Date().getFullYear();
           <li><a href="/">Home</a></li>
           <li><a href="/services/">Services</a></li>
           <li><a href="/about/">About Us</a></li>
-          <li><a href="/reviews/">Reviews</a></li>
-          <li><a href="/gallery/">Gallery</a></li>
+          {reviews.length > 0 && <li><a href="/reviews/">Reviews</a></li>}
+          {gallery.length > 0 && <li><a href="/gallery/">Gallery</a></li>}
           <li><a href="/contact/">Contact</a></li>
         </ul>
       </div>
@@ -74,7 +76,7 @@ const currentYear = new Date().getFullYear();
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; {currentYear} {business.companyName}. All rights reserved. <button type="button" class="cookie-settings-link" data-cookie-settings>Cookie settings</button></p>
+      <p>&copy; {currentYear} {business.companyName}. All rights reserved. <a href="/privacy-policy/">Privacy policy</a> · <a href="/cookie-policy/">Cookie policy</a> · <button type="button" class="cookie-settings-link" data-cookie-settings>Cookie settings</button></p>
     </div>
   </div>
 </footer>
@@ -192,6 +194,11 @@ const currentYear = new Date().getFullYear();
   }
 
   /* It opens the cookie banner rather than going anywhere, so it is a button styled as a link. */
+  .footer-bottom a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
   .cookie-settings-link {
     padding: 0;
     border: 0;

@@ -1,0 +1,115 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FloatingCTA from '../components/FloatingCTA.astro';
+import business from '../data/business.json';
+import { orgSchema } from '../lib/org';
+import tracking from '../data/tracking.json';
+
+// Written from what public/js/consent-tracking.js and the pages actually load; update both together.
+const analyticsOn = tracking.gtm.enabled || tracking.ga4.enabled;
+const clarityOn = tracking.clarity.enabled;
+---
+
+<Layout
+  schema={orgSchema}
+  title="Cookie Policy | Manchester Gutters"
+  description="Which cookies the Manchester Gutters website uses, what each one is for, how long it lasts, and how to change your cookie choice at any time."
+>
+  <Header />
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Cookie Policy</h1>
+        <p>Which cookies this website uses and how to change your choice</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container legal">
+        <h2>Summary</h2>
+        <p>The {business.companyName} website only sets analytics cookies if you choose "Accept analytics" on the cookie banner. If you choose "Reject", or do not choose, no analytics or session-recording tools load.</p>
+        <p>You can change your choice at any time with the "Cookie settings" button at the bottom of every page.</p>
+
+        <h2>What is stored without your consent</h2>
+        <p>Your cookie choice itself is saved in your browser's local storage under the name <code>site-consent-v1</code>, so the banner does not appear on every page. It holds only "granted" or "denied" and is not sent to anyone.</p>
+
+        {analyticsOn && (
+          <>
+            <h2>Analytics cookies (only after you accept)</h2>
+            <p>The site uses Google Tag Manager to load Google Analytics 4. Google Analytics counts visits and shows which pages people use, so the site can be improved. It sets these cookies:</p>
+            <table>
+              <thead><tr><th>Cookie</th><th>Set by</th><th>Purpose</th><th>Lasts</th></tr></thead>
+              <tbody>
+                <tr><td><code>_ga</code></td><td>Google Analytics</td><td>Tells one visitor from another</td><td>2 years</td></tr>
+                <tr><td><code>_ga_*</code></td><td>Google Analytics</td><td>Keeps track of the current visit</td><td>2 years</td></tr>
+              </tbody>
+            </table>
+            <p>See <a href="https://policies.google.com/technologies/cookies" rel="noopener">how Google uses cookies</a>.</p>
+          </>
+        )}
+
+        {clarityOn && (
+          <>
+            <h2>Session recording (only after you accept)</h2>
+            <p>The site uses Microsoft Clarity to see how visitors use pages, for example where people click and how far they scroll. By default Clarity masks what you type into form fields. It sets cookies including:</p>
+            <table>
+              <thead><tr><th>Cookie</th><th>Set by</th><th>Purpose</th><th>Lasts</th></tr></thead>
+              <tbody>
+                <tr><td><code>_clck</code></td><td>Microsoft Clarity</td><td>Tells one visitor from another</td><td>1 year</td></tr>
+                <tr><td><code>_clsk</code></td><td>Microsoft Clarity</td><td>Links page views in one visit</td><td>1 day</td></tr>
+              </tbody>
+            </table>
+            <p>Microsoft may set further cookies, listed in <a href="https://learn.microsoft.com/en-us/clarity/setup-and-installation/cookie-list" rel="noopener">Clarity's cookie list</a>.</p>
+          </>
+        )}
+
+        <h2>Other services the pages load</h2>
+        <ul>
+          <li><strong>Google Fonts</strong> supplies the site's fonts. It sets no cookies, but your browser sends its IP address to Google to fetch the fonts.</li>
+          <li><strong>Google Maps</strong> shows the map on the contact page. Google may set its own cookies when the map loads; see <a href="https://policies.google.com/technologies/cookies" rel="noopener">Google's cookie policy</a>.</li>
+        </ul>
+
+        <h2>Changing your choice</h2>
+        <p>Use the "Cookie settings" button at the bottom of any page, or clear this site's data in your browser settings. Clearing cookies removes the analytics cookies; it does not undo data already collected.</p>
+
+        <h2>Questions</h2>
+        <p>Email <a href={`mailto:${business.email}`}>{business.email}</a>. More about how {business.companyName} handles personal information is in the <a href="/privacy-policy/">privacy policy</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingCTA />
+</Layout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, #1a1a2e, #0f3460);
+    padding: 80px 0 60px;
+    text-align: center;
+    color: var(--white);
+  }
+
+  .page-hero h1 {
+    font-size: 2.8rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .page-hero p {
+    font-size: 1.15rem;
+    color: #ccc;
+  }
+
+  .legal { max-width: 820px; }
+  .legal h2 { font-size: 1.5rem; margin: 2rem 0 0.75rem; }
+  .legal p, .legal li { line-height: 1.7; margin-bottom: 0.75rem; }
+  .legal ul { padding-left: 1.25rem; }
+  .legal table { width: 100%; border-collapse: collapse; margin: 0.5rem 0 1rem; font-size: 0.95rem; }
+  .legal th, .legal td { border: 1px solid #ddd; padding: 8px 10px; text-align: left; }
+  .legal th { background: var(--light-gray); }
+  .legal code { font-size: 0.9em; }
+</style>

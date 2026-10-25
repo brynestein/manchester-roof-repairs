@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FloatingCTA from '../components/FloatingCTA.astro';
+import reviews from '../data/reviews.json';
+import gallery from '../data/gallery.json';
 ---
 
 <Layout
@@ -26,8 +28,8 @@ import FloatingCTA from '../components/FloatingCTA.astro';
         <ul>
           <li><a href="/services/">Roofing and guttering services in Manchester</a></li>
           <li><a href="/about/">About Manchester Gutters</a></li>
-          <li><a href="/reviews/">Customer reviews</a></li>
-          <li><a href="/gallery/">Our recent work</a></li>
+          {reviews.length > 0 && <li><a href="/reviews/">Customer reviews</a></li>}
+          {gallery.length > 0 && <li><a href="/gallery/">Our recent work</a></li>}
           <li><a href="/contact/">Contact us for a free quote</a></li>
         </ul>
         <p><a class="btn btn-primary" href="/">Back to the homepage</a></p>
