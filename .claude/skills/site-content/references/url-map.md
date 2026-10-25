@@ -25,6 +25,7 @@ Every site plan includes a URL map. It lists each page that will exist, why, and
 - **Every row has a reason to exist.** That means measured demand for services and articles, a place brief for towns, records for proof pages, and Search Console impressions for a service-in-place page. A row without its condition met waits in a later build stage; it is not built empty.
 - **The map shows the floor.** List where the launch set sits against the site floor (home, 6+ services, 1 hub, 10+ towns with briefs, 4+ proof pages, legal; the checker warns below 20 pages) and what reaches it.
 - **Hubs and towns come from location research** (location-research): every council area the client serves is a hub; towns are the Launch and Wave 2 rows of the ranking, each under the authority it is actually in. Hold towns stay in the ranking sheet. Put each row's stage and measured searches in Notes.
+- **Articles come from topic research** (topic-research): the Launch and Wave 2 topics that passed the overlap test, each with its search and the money page it was tested against in Notes.
 - **One search per row.** Two rows for one intent are merged; check the titles and H1s against the CSI before the map is signed off.
 - **After launch, crawl the site and compare.** A built page missing from the map, or a mapped page missing from the crawl, is a finding.
 

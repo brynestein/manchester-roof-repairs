@@ -15,6 +15,7 @@ Block means fix before merge. Warn means fix or explain in the PR. Where a tool 
 | Site size | 20+ indexable pages | Checker `S-pages-min` | warn |
 | Every page in sitemap; no noindex page in sitemap or main nav | yes | Checker `S-sitemap-coverage`, `S-sitemap-noindex`, `P-noindex` | block |
 | Town page only with a place brief; article only with demand evidence | yes | Manual, plan review | - |
+| Articles chosen from topic research; the overlap test against the money page passes (under 60% shared top-10 hostnames); text never copied between sites | topics sheet kept with the plan | Skill `scripts/topic_rank.py`; plan review | - |
 | Hubs and towns chosen from location research over a complete place list, country-level Keyword Planner data | ranking sheet kept with the plan | Skill `scripts/location_rank.py` (stops on a wrong-country export); plan review | - |
 | Twins cross-link | yes | Manual | - |
 

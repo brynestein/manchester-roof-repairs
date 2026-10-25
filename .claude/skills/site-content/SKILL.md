@@ -22,6 +22,7 @@ Do not carry the checkable rules in your head. Write the page, run the checks, f
 |---|---|
 | Planning a site, deciding which pages exist and how they fit | [references/site-structure.md](references/site-structure.md) |
 | Choosing which hubs and towns get pages (complete place list, Keyword Planner volumes, stages) | [references/location-research.md](references/location-research.md); scripts in `scripts/` |
+| Choosing which articles get written (topic sources, groups, Keyword Planner volumes, the overlap test against money pages) | [references/topic-research.md](references/topic-research.md); scripts in `scripts/` |
 | Writing the site's URL map (every page, its type, stage, title, H1, sections, links) | [references/url-map.md](references/url-map.md); layouts in `assets/layouts/` |
 | Building any page: the blocks it carries, in order | [references/page-templates.md](references/page-templates.md) |
 | Choosing what a page targets, its URL, or whether it should exist | [references/search-intent.md](references/search-intent.md) |
@@ -45,7 +46,7 @@ Do not carry the checkable rules in your head. Write the page, run the checks, f
 2. **Lock a search intent per page** (search-intent) and the hub for each head term.
 3. **Approve the ontology** for the trade before it drives content (ontology).
 4. **Build the chrome once**: nav, footer, credentials strip, CTA with form, consent, `<main>`.
-5. **Build pages by type** from the templates, in this order: home, services, hubs, towns in batches as briefs are ready, proof pages, articles with demand evidence.
+5. **Build pages by type** from the templates, in this order: home, services, hubs, towns in batches as briefs are ready, proof pages, articles staged by topic research (topic-research).
 6. **Run all four layers** before and after launch (measurement). The off-site gate (Google Business Profile, citations, reviews) clears before DNS flips.
 
 ## The process for a page

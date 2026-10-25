@@ -17,7 +17,7 @@ TRADE = {'launch': 20, 'wave': 10}
 PROXY = {'launch': 50, 'wave': 20}
 
 
-def read_export(path, country):
+def read_export(path, country, with_months=False):
     raw = open(path, 'rb').read()
     txt = raw.decode('utf-16') if raw[:2] in (b'\xff\xfe', b'\xfe\xff') else raw.decode('utf-8-sig')
     lines = txt.splitlines()
@@ -31,6 +31,8 @@ def read_export(path, country):
         if k:
             a = r.get('Avg. monthly searches') or ''
             vol[k] = int(float(a)) if a else 0  # blank = under Planner's floor or merged with a close variant
+            if with_months:
+                vol[k] = (vol[k], tuple(r[c] for c in r if c and c.startswith('Searches: ')))
     return vol
 
 
