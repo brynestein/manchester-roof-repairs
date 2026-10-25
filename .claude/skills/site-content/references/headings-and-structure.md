@@ -53,7 +53,7 @@ Tables are what AI answers and featured snippets lift, and what a homeowner read
 | A **price table** (job, typical cost range, year, and duration or warranty where known) on every cost, repair, replacement and service page. Figures only from the client's records, labelled indicative and dated, VAT treatment stated. The "at a glance" box is built from this table's rows and omitted if there are fewer than three | service, hub, town, cost article | retrofit gate on articles; manual [house, Patric] |
 | At least **one comparison table** per article (materials, repair vs replace, options, cost by job) with a sub-section per option where the reader is choosing | article, guide | Patric's article gate `tables: 1` [house] |
 | **Brands and materials in one table per page**, each brand with one home page on the site, rather than scattered through prose. Cut about 240 brand mentions to 55 in the Manchester drafts | service, article | manual [measured on drafts] |
-| A **symptom decision table** (symptom, usual cause, what we do, price band, link to the right service) on landing pages and hubs | landing page, hub | manual [house, orbit method] |
+| A **symptom decision table** (symptom, usual cause, what we do, price band, link to the right service) on landing pages, and optionally in a hub's "problems we fix" section | landing page (hub optional) | manual [house, orbit method] |
 | A **short costings table on town pages** linking to the full price guide, so towns do not repeat identical figures 188 times | town | manual |
 | A cost chart beside a cost list where there is a price range; narrow bars carry no inner text | article | [house, Patric] |
 

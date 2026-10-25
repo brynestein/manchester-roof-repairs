@@ -73,7 +73,7 @@ Do not carry the checkable rules in your head. Write the page, run the checks, f
 10. **Schema says what the page says.** One organisation anchor by `@id`, Service with `areaServed` = the page's place, FAQPage only where the visible FAQ matches word for word, ratings only where reviews are shown.
 11. **Every page ends with the form.** The quote form at `#quote` and the regional phone on every page; never a link to a contact page as the only call to action.
 12. **No marketing filler.** No "welcome to", "we are", "for over 20 years" openers; no clichés or stock AI phrasing; no em dashes or exclamation marks; the brand named instead of "we".
-13. **One facts file, nothing hidden.** Every claim (years, ratings, hours, guarantees, prices) comes from the site's facts file, never typed into a template or variant; no visually hidden text, except hidden keyword headings on a site that has opted in (`allowHiddenHeadings`, agency-owned sites only; see D-V); `llms.txt` carries public facts only.
+13. **One facts file, nothing hidden.** Every claim (years, ratings, hours, guarantees, prices) comes from the site's facts file, never typed into a template or variant; no visually hidden text, except hidden keyword headings on a site that has opted in (`allowHiddenHeadings`: on for Andrew's own sites, and on a client site only if the client agrees knowing the risk; see D-V); `llms.txt` carries public facts only.
 
 ## How sure we are
 
@@ -87,7 +87,7 @@ The evidence behind the tags (site crawls, Search Console, code reads, decisions
 
 ## Measuring whether it worked
 
-A page is judged on Search Console clicks and position at 28 days and again at 90, on mobile in the site's country, and on enquiries where they can be traced. "Never shown" is a ranking problem; "shown and passed over" is a wording problem; they get different fixes. Recommended Roofing published 21 articles in four weeks in autumn 2026 and 16 of 18 judged were never shown [measured]. Across tracked sites, local-presence signals correlate positively with rankings and content volume slightly negatively [measured]. Write fewer pages against measured demand, and check the off-site stack first when a site is not ranking.
+A page is judged at 28 days and again at 90 on Search Console clicks from unfiltered page data (all devices), on click rate and position on mobile in the site's country, and on enquiries where they can be traced. "Never shown" is a ranking problem; "shown and passed over" is a wording problem; they get different fixes. Recommended Roofing published 21 articles in four weeks in autumn 2026 and by 20 September 16 of 18 judged were never shown; its articles have since begun to earn (2 to 54 clicks in a quarter) [measured]. Munster's demand-led articles produced about half its year-on-year gain [measured]. Across tracked sites, local-presence signals correlate positively with rankings and content volume slightly negatively [measured]. Write fewer pages against measured demand, and check the off-site stack first when a site is not ranking.
 
 ## Out of scope
 

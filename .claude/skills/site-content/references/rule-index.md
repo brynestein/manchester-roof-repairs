@@ -23,7 +23,7 @@ Block means fix before merge. Warn means fix or explain in the PR. Where a tool 
 |---|---|---|---|
 | Title length | 30-60 characters | Standards `title-length-band`; Checker `P-title-len` | block / warn |
 | Title includes city or region (local pages) | yes | Standards `title-includes-location` | warn |
-| Unique titles and descriptions | yes | Checker `P-title-dupe`, `P-desc-dupe` | warn |
+| Unique titles and descriptions | yes | Checker `P-title-dupe` (warn), `P-desc-dupe` (block) | warn / block |
 | Meta description length | 120-160 | Standards `meta-description-length-band`; Checker `P-desc-len` | block / warn |
 | One H1 | exactly 1 | Checker `P-h1`, `P-h1-dupe` | block / warn |
 | H2 count on content pages | 2+ | Checker `P-h2` | warn |
@@ -92,7 +92,7 @@ Block means fix before merge. Warn means fix or explain in the PR. Where a tool 
 | Inbound links per page | 5+ | Audit | warn |
 | Links out per page | ≤200 | Audit | warn |
 | Homepage inbound vs average | 3x floor, 5x target | Checker `S-hub-ratio`; Audit `hub-concentration-ratio` | warn |
-| In-prose links | town/hub 3-5 per 500 words; article 3-5; service 0-2; entity 3-8 | Checker `P-prose-links` (minimum on towns, hubs, posts, entity pages; maximum 2 on service pages); Standards `location-page-prose-links-min` | warn |
+| In-prose links | town 2-4; hub 2-4; article 3-5; service 0-2; entity 3-8 | Checker `P-prose-links` (minimum on towns, hubs, posts, entity pages; maximum 2 on service pages); Standards `location-page-prose-links-min` | warn |
 | Internal link in first paragraph (town, hub, article, entity) | 1+ | Standards `link-in-first-paragraph` | block |
 | Link spread | ≤2 per 150 words per section | Standards `link-distribution-per-section` | warn |
 | Authoritative outside link on content pages | 1+; body external ≤7 | Checker `P-ext-link`; Standards `external-link-count-cap` | warn |
@@ -104,7 +104,7 @@ Block means fix before merge. Warn means fix or explain in the PR. Where a tool 
 | Nav labels queryable | 60%+ | Audit `nav-label-keyword-fit`; Checker `S-generic-nav` | warn |
 | Footer labels vary from nav | 3+ varied | Checker `S-footer-variance` | warn |
 | CTA to /contact or /quote | none; form at `#quote` + tel: | Checker `S-cta-contact` (/contact and /quote), `P-link-broken` (in-page anchors) | warn |
-| Broken links, in-page anchors, redirected URLs | none | Checker `P-link-broken` (pages and in-page anchors), `P-link-redirect` (links to redirect sources) | block |
+| Broken links, in-page anchors, redirected URLs | none | Checker `P-link-broken` (pages and in-page anchors, block), `P-link-redirect` (links to redirect sources, warn) | block / warn |
 | Sibling town links from a fixed slice | best-linked place page ≤5x the median | Checker `S-inbound-spread` | warn |
 
 ## Schema
@@ -120,7 +120,7 @@ Block means fix before merge. Warn means fix or explain in the PR. Where a tool 
 | `sameAs` on the anchor | 3+ | Standards `organization-needs-sameas-3plus` | warn |
 | No TODO placeholders | none | Standards `no-todo-placeholders` | block |
 | Service.areaServed = the page's place; ratings only where reviews shown; `@id`s resolve; BreadcrumbList with visible breadcrumb | yes | Manual | - |
-| No hidden headings (clipped, `sr-only`, `kwhide`, `display:none`), unless the site sets `allowHiddenHeadings` (D-V) | none | Checker `P-hidden-text` (block), or `P-hidden-text-allowed` (warn) on an opted-in site | block / warn |
+| No hidden headings (classes `sr-only`, `visually-hidden`, `screen-reader-text`, `kwhide`, or inline `display:none` / `visibility:hidden`), unless the site sets `allowHiddenHeadings` (D-V) | none | Checker `P-hidden-text` (block), or `P-hidden-text-allowed` (warn) on an opted-in site | block / warn |
 | Sitemap dates are real, not one build date | not all identical | Checker `S-sitemap-lastmod` | warn |
 
 ## Page plumbing

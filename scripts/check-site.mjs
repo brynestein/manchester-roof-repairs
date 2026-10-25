@@ -51,7 +51,7 @@ const DEFAULTS = {
   maxParagraphWords: 60,
   minLists: 1,
   // In-prose internal links per type. Service pages are link sinks: 0-2, homepage or proof only.
-  minProseLinks: { location: 3, hub: 3, town: 3, post: 3, entity: 3 },
+  minProseLinks: { location: 2, hub: 2, town: 2, post: 3, entity: 3 }, // towns and hubs 2-4 (first-paragraph link, proof, service mentions)
   maxProseLinks: { service: 2 },
   inboundSpread: 5, // flag a place type whose best-linked page has more than this multiple of the median
   // Hidden keyword headings (sr-only/kwhide) are an agency decision per site, not a default:

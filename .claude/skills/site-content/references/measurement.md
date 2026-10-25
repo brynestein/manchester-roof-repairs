@@ -12,7 +12,7 @@ Publishing is not the result. The standard has four layers of enforcement, each 
 ## What each outcome source gives
 
 **Search Console** (the primary source; Phase 2 of the portal plan builds the pipeline)
-- Per page: impressions, clicks, position, by device and country. Select and judge on **mobile + the site's country**: 84% of these sites' impressions are desktop rank-tracking robots [measured]. A click is a person on any device; a view may be a machine.
+- Per page: impressions, clicks, position, by device and country. Judge click rate and position on **mobile + the site's country**: desktop carries 64-78% of these sites' impressions but 26-39% of clicks, a pattern that fits rank-tracking robots (Patric measured 84% desktop earlier in 2026) [measured]. Count a page's clicks from unfiltered data on every device: a click is a person; a view may be a machine.
 - Verdicts per page at 28 days (nothing judged earlier) and 90 days: **never shown** (a ranking problem; writing more cannot fix it) is a different finding from **shown and passed over** (a wording problem; a title test can). Both are reported separately, never as one "dead" count.
 - Winners: ≥3 clicks and position ≤20. Multiply a winner into a new place only with a new place brief, never as a copy.
 - Topics: near-miss queries at positions 5-20 with impressions are people typing the thing; they outrank machine-generated ideas as a source.
@@ -48,7 +48,7 @@ Search Console joined to the 279-page crawl (`audit-content/docs/research/2026-1
 - The biggest zero-click queries are "<service> <county>" phrases with 500-700 impressions each ("gutter installation cork", "fascia installation cork", "upvc gutter installation tipperary"): no page is named for them. Service-in-place pages are built from this signal.
 - Roofing on a gutters brand is shown and passed over (11,500 impressions, 0.3-0.5% CTR, positions 12-26): a secondary trade needs its own hub named for the search.
 - Year in the title and tables: no measurable difference on complete data (Aug-Oct 2026: 3.0 vs 3.5 clicks per post with and without a year; 3.3 vs 3.4 with and without a table). An era change is the first confound to rule out in any before/after comparison.
-- Brand and "{brand} reviews" queries are 23% of clicks; 12% of clicks arrive through the Google Business Profile redirect URLs.
+- Brand and "{brand} reviews" queries are 23% of the clicks that Search Console attributes to a query; about 10% of all clicks (218 of 2,233, Aug-Oct 2026) arrive through the Google Business Profile bridge URLs.
 
 ## Evidence on file: recommendedroofing.ie and the robot share, October 2026 [measured]
 

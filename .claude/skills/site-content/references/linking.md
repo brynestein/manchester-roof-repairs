@@ -36,13 +36,13 @@ Money pages (services, and the chosen head-term hub) collect link value. Hubs, t
 |---|---|---|---|---|---|
 | Home | ~29 | 40-50 (cards) | ~24 | 90-100 | 1-3 to primary services |
 | Hub | ~29 | 40-60 (town cards, service cards, guides) | ~24 | 90-110 | 2-4 |
-| Town | ~29 | 30-45 (sibling chips, service cards) | ~24 | 80-100 | 1 (proof) plus the first-paragraph link |
+| Town | ~29 | 30-45 (sibling chips, service cards) | ~24 | 80-100 | 2-4: the first-paragraph link, 1 to the proof page, service mentions |
 | Service | ~29 | 20-25 (sibling cards) | ~24 | 70-80 | **0-2**, homepage or proof, anchor not used in nav, cards or footer [D-I] |
 | Article | ~33 | 8-15 | ~24 | 65-75 | 3-5 to services and places, 1 up to the pillar, Read-next 3-4 |
 | Entity | ~29 | 3-8 | ~24 | 55-64 | 3-8; external ≤3 |
 
 - Inbound: at least 5 internal links into every page (audit); no page over 200 links out.
-- Spread in-prose links: no more than 2 per 150 words in any H2 section (`link-distribution-per-section`); 3-5 per 500-word section on towns and hubs.
+- Spread in-prose links: no more than 2 per 150 words in any H2 section (`link-distribution-per-section`).
 - First-link waste: more than 3 duplicate (target, anchor) pairs on one page is flagged (audit). The second identical anchor to the same URL is discounted.
 - RR towns run about 93 content links (28 sibling chips + 18 service cards + hubs); that is the upper bound, not the target.
 
@@ -63,7 +63,7 @@ Money pages (services, and the chosen head-term hub) collect link value. Hubs, t
 |---|---|---|---|
 | Service | the service phrase as searched ("Emergency Roof Repairs"); footer label differs ("24/7 Roof Emergencies") | the service phrase; on town pages place-qualified ("Roof Repair {Town} →") | verb or partial phrase: "handles emergency roof repairs in Salford", "roof leak repairs" |
 | Hub | "{Trade phrase} {City}" ("Roofers Cork", "Roofing Cork") | "Roofers {City}" | "our Cork roofers", "roof repairs in Cork" |
-| Town | — | bare place name in chip lists ("Douglas"); "Roofers {Town}" in article chips | "Roofers {Town}", "we cover {Town}" |
+| Town | none | bare place name in chip lists ("Douglas"); "{Trade phrase} in {Town}" on hub town cards; "Roofers {Town}" in article chips | "Roofers {Town}", "we cover {Town}" |
 | Home | brand or "Home"; logo alt = business name | — | the brand name |
 | Article, guide, entity | the topic | the title | a natural fragment: "our guide to slate repair costs" |
 | Proof | "Reviews", "Case studies" | — | "€6.5 million public liability", "our case studies" |

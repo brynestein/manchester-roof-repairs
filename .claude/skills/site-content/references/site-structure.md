@@ -54,7 +54,7 @@ Where the clicks come from (Munster, all devices, 1 Aug - 22 Oct 2026, unfiltere
 ## Chrome (identical on every page)
 
 - Header: logo (alt = business name, links home), nav with keyword labels, phone (tel:), one button to `#quote` or tel:. Nav parents may be "Services" and "Locations" only when every child label is a full search phrase [D-C note].
-- Footer: every service with a label that differs from the nav label, hub links, NAP in full, guarantees, accreditations with links to the issuer's listing (not its homepage), socials, legal links, "Cookie settings".
+- Footer: every service with a label that differs from the nav label, hub links, NAP in full, the company number where the business is a limited company, guarantees, accreditations with links to the issuer's listing (not its homepage), socials, legal links, "Cookie settings".
 - Credentials strip near the top of commercial pages: years trading, insurance figure, memberships, guarantee. Facts from `business.json`.
 - Closing CTA on every page: H2 with the place, tel: buttons, and the quote form at `#quote` on the page [D-G].
 - Floating or sticky call bar on phones, outside `<main>`.
