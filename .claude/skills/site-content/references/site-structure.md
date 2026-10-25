@@ -20,7 +20,7 @@ Home
 
 Measured on the three sites: 10-13 service pages, 1-12 hubs, 78-188 town pages, 9-121 articles. dhennessy: 15 services, 30 locations, ~50 posts.
 
-Where the clicks come from (Munster, mobile + Ireland, 3 months): 6 county hubs 29%, home 17%, 118 articles 14%, 126 towns 15%, 13 services 5%. Hubs earn; towns cover; a secondary trade without its own named hub is shown and passed over.
+Where the clicks come from (Munster, all devices, 1 Aug - 22 Oct 2026, unfiltered): 118 articles 22%, guttering towns 20%, 6 county guttering hubs 20%, home 11%, Business Profile links 10%, services 5%, roofing towns 4%, county roofing 4%. Town pages earn as a set (25% of clicks, 81 of 142 town URLs clicked) as well as covering; a secondary trade without its own named hub is shown and passed over until it has one. Year on year the gain (+42%) came mostly from articles (+345 clicks), then towns, services and the roofing hubs.
 
 ## Page types and what each is for
 

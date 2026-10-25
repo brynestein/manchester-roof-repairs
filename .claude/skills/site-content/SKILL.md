@@ -73,7 +73,7 @@ Do not carry the checkable rules in your head. Write the page, run the checks, f
 10. **Schema says what the page says.** One organisation anchor by `@id`, Service with `areaServed` = the page's place, FAQPage only where the visible FAQ matches word for word, ratings only where reviews are shown.
 11. **Every page ends with the form.** The quote form at `#quote` and the regional phone on every page; never a link to a contact page as the only call to action.
 12. **No marketing filler.** No "welcome to", "we are", "for over 20 years" openers; no clichés or stock AI phrasing; no em dashes or exclamation marks; the brand named instead of "we".
-13. **One facts file, nothing hidden.** Every claim (years, ratings, hours, guarantees, prices) comes from the site's facts file, never typed into a template or variant; no visually hidden text; `llms.txt` carries public facts only.
+13. **One facts file, nothing hidden.** Every claim (years, ratings, hours, guarantees, prices) comes from the site's facts file, never typed into a template or variant; no visually hidden text, except hidden keyword headings on a site that has opted in (`allowHiddenHeadings`, agency-owned sites only; see D-V); `llms.txt` carries public facts only.
 
 ## How sure we are
 

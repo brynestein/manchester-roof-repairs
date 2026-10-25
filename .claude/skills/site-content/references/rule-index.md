@@ -120,7 +120,7 @@ Block means fix before merge. Warn means fix or explain in the PR. Where a tool 
 | `sameAs` on the anchor | 3+ | Standards `organization-needs-sameas-3plus` | warn |
 | No TODO placeholders | none | Standards `no-todo-placeholders` | block |
 | Service.areaServed = the page's place; ratings only where reviews shown; `@id`s resolve; BreadcrumbList with visible breadcrumb | yes | Manual | - |
-| No hidden headings (clipped, `sr-only`, `display:none`) | none | Checker `P-hidden-text` | block |
+| No hidden headings (clipped, `sr-only`, `kwhide`, `display:none`), unless the site sets `allowHiddenHeadings` (D-V) | none | Checker `P-hidden-text` (block), or `P-hidden-text-allowed` (warn) on an opted-in site | block / warn |
 | Sitemap dates are real, not one build date | not all identical | Checker `S-sitemap-lastmod` | warn |
 
 ## Page plumbing

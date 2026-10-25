@@ -33,7 +33,7 @@ All measured on 24 October 2026 across munstergutters.ie, recommendedroofing.ie 
 | Area pages carrying three named, area-themed customer reviews each (at least 197 across 78 pages) against a stated "20+ Google Reviews" and aggregateRating 5/20 on every page | Dublin Gutter source data | Reviews only from verifiable sources, quoted exactly; never written into page data; rating only where the reviews are shown | manual; raise with the owner |
 | Dead `#quote` buttons | Munster | Cause: `Hero.tsx` links `#quote`; the section with that id is never rendered | `P-link-broken` |
 | One review card on 157 pages | Munster | Cause: hard-coded in `HomeHero.tsx` | manual |
-| Keyword headings kept in the page but visually hidden "for SEO" | Munster home and two county hubs | No hidden text | `P-hidden-text` |
+| Keyword headings kept in the page but visually hidden "for SEO" | Munster home and two county hubs | No hidden text, unless the site has opted in (D-V) | `P-hidden-text` / `P-hidden-text-allowed` |
 | A statistic ("847 projects … 43% of callouts") repeated with identical figures on six county pages | Munster | No statistic without a dataset; never repeated across places | manual |
 | "15-year warranty" in 55 descriptions; "#1", "Top 6", "20% off" in titles and descriptions | Munster | Claims in titles and descriptions match the facts file | manual |
 | "Three decades" on 28 pages and "30+ years" for a 2019 company; "7 days a week" against Mon-Sat hours | Dublin Gutter | One facts file; no claim literals in variants | manual (add a facts-consistency check) |
