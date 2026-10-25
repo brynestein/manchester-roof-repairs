@@ -74,7 +74,7 @@ const currentYear = new Date().getFullYear();
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; {currentYear} {business.companyName}. All rights reserved. <a href="#cookie-settings" data-cookie-settings>Cookie settings</a></p>
+      <p>&copy; {currentYear} {business.companyName}. All rights reserved. <button type="button" class="cookie-settings-link" data-cookie-settings>Cookie settings</button></p>
     </div>
   </div>
 </footer>
@@ -189,6 +189,17 @@ const currentYear = new Date().getFullYear();
     border-top: 1px solid #333;
     text-align: center;
     font-size: 0.85rem;
+  }
+
+  /* It opens the cookie banner rather than going anywhere, so it is a button styled as a link. */
+  .cookie-settings-link {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
   }
 
   @media (max-width: 900px) {
