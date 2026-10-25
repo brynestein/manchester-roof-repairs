@@ -1,6 +1,6 @@
 # The URL map: every page a site will have, before it is built
 
-Every site plan includes a URL map. It lists each page that will exist, why, and how it links, in the same columns as a Screaming Frog "Internal: HTML" export. That way the plan can be compared line by line with a crawl of the built site. Worked example: `assets/manchester-gutters-url-map.xlsx` (Manchester Gutters, proposed, October 2026; illustrative until demand research and the client brief confirm it).
+Every site plan includes a URL map. It lists each page that will exist, why, and how it links, in the same columns as a Screaming Frog "Internal: HTML" export. That way the plan can be compared line by line with a crawl of the built site. Worked example: `assets/manchester-gutters-url-map.xlsx` (Manchester Gutters, proposed, October 2026; hubs and towns from `assets/location-research/`, services and proof pages to be confirmed by the client brief).
 
 ## Columns
 
@@ -24,7 +24,7 @@ Every site plan includes a URL map. It lists each page that will exist, why, and
 
 - **Every row has a reason to exist.** That means measured demand for services and articles, a place brief for towns, records for proof pages, and Search Console impressions for a service-in-place page. A row without its condition met waits in a later build stage; it is not built empty.
 - **The map shows the floor.** List where the launch set sits against the site floor (home, 6+ services, 1 hub, 10+ towns with briefs, 4+ proof pages, legal; the checker warns below 20 pages) and what reaches it.
-- **Hubs follow the client's real service area,** not a template list. Towns follow their hub in the URL.
+- **Hubs and towns come from location research** (location-research): every council area the client serves is a hub; towns are the Launch and Wave 2 rows of the ranking, each under the authority it is actually in. Hold towns stay in the ranking sheet. Put each row's stage and measured searches in Notes.
 - **One search per row.** Two rows for one intent are merged; check the titles and H1s against the CSI before the map is signed off.
 - **After launch, crawl the site and compare.** A built page missing from the map, or a mapped page missing from the crawl, is a finding.
 

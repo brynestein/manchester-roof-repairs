@@ -21,6 +21,7 @@ Do not carry the checkable rules in your head. Write the page, run the checks, f
 | Doing | Read |
 |---|---|
 | Planning a site, deciding which pages exist and how they fit | [references/site-structure.md](references/site-structure.md) |
+| Choosing which hubs and towns get pages (complete place list, Keyword Planner volumes, stages) | [references/location-research.md](references/location-research.md); scripts in `scripts/` |
 | Writing the site's URL map (every page, its type, stage, title, H1, sections, links) | [references/url-map.md](references/url-map.md); layouts in `assets/layouts/` |
 | Building any page: the blocks it carries, in order | [references/page-templates.md](references/page-templates.md) |
 | Choosing what a page targets, its URL, or whether it should exist | [references/search-intent.md](references/search-intent.md) |
@@ -40,7 +41,7 @@ Do not carry the checkable rules in your head. Write the page, run the checks, f
 
 ## The process for a site
 
-1. **Plan the structure** (site-structure): services with measured demand, the hub per city, the towns with place briefs, the head-term hub, proof pages that have records. Record it in the site's plan as a URL map (url-map) with the counts.
+1. **Plan the structure** (site-structure): services with measured demand, hubs and towns chosen from measured demand over a complete place list (location-research), the towns with place briefs, the head-term hub, proof pages that have records. Record it in the site's plan as a URL map (url-map) with the counts.
 2. **Lock a search intent per page** (search-intent) and the hub for each head term.
 3. **Approve the ontology** for the trade before it drives content (ontology).
 4. **Build the chrome once**: nav, footer, credentials strip, CTA with form, consent, `<main>`.
