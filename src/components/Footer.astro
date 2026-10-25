@@ -74,7 +74,7 @@ const currentYear = new Date().getFullYear();
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; {currentYear} {business.companyName}. All rights reserved.</p>
+      <p>&copy; {currentYear} {business.companyName}. All rights reserved. <button type="button" class="cookie-settings-link" data-cookie-settings>Cookie settings</button></p>
     </div>
   </div>
 </footer>
@@ -191,6 +191,17 @@ const currentYear = new Date().getFullYear();
     font-size: 0.85rem;
   }
 
+  /* It opens the cookie banner rather than going anywhere, so it is a button styled as a link. */
+  .cookie-settings-link {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
   @media (max-width: 900px) {
     .footer-grid {
       grid-template-columns: 1fr 1fr;
@@ -198,6 +209,11 @@ const currentYear = new Date().getFullYear();
   }
 
   @media (max-width: 600px) {
+    /* Room for the fixed call/WhatsApp buttons, which otherwise cover the last links. */
+    .footer-bottom {
+      padding-bottom: 150px;
+    }
+
     .footer-grid {
       grid-template-columns: 1fr;
     }

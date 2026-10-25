@@ -50,7 +50,7 @@ const gallerySchema = {
         {projects.map(project => (
           <div class="gallery-item" data-category={project.category}>
             <div class="gallery-image">
-              <img src={project.image} alt={project.title} loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+              <img src={project.image} alt={project.title} loading="lazy" data-fallback />
               <div class="gallery-placeholder">
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
               </div>
