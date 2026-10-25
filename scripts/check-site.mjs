@@ -51,9 +51,12 @@ const DEFAULTS = {
   maxParagraphWords: 60,
   minLists: 1,
   // In-prose internal links per type. Service pages are link sinks: 0-2, homepage or proof only.
-  minProseLinks: { location: 3, hub: 3, town: 3, post: 3, entity: 3 },
+  minProseLinks: { location: 2, hub: 2, town: 2, post: 3, entity: 3 }, // towns and hubs 2-4 (first-paragraph link, proof, service mentions)
   maxProseLinks: { service: 2 },
   inboundSpread: 5, // flag a place type whose best-linked page has more than this multiple of the median
+  // Hidden keyword headings (sr-only/kwhide) are an agency decision per site, not a default:
+  // Google's spam policy lists hidden text. true = report them as warnings instead of blocking.
+  allowHiddenHeadings: false,
   citySlug: null, // off by default (skill decision D-A: bare service slugs, place in title and H1); set to enforce -in-<citySlug>
   identityTypePattern: "Contractor|Business|Organization|Store|Service$|Roofer|Plumber|Electrician",
   ignorePaths: ["^/404", "^/admin", "^/api/"],
@@ -306,7 +309,7 @@ for (const p of model) {
 
 // Rules added with the site-content standard (Oct 2026): hidden headings, paragraph ceiling,
 // links to redirects, place-type link spread.
-Object.assign(BASE_SEV, { "P-para-max": "warn", "P-hidden-text": "block", "P-link-redirect": "warn", "S-inbound-spread": "warn" });
+Object.assign(BASE_SEV, { "P-para-max": "warn", "P-hidden-text": "block", "P-hidden-text-allowed": "warn", "P-link-redirect": "warn", "S-inbound-spread": "warn" });
 const proseRule = (map, type, fallback) => (typeof map === "number" ? (type === "service" ? fallback : map) : map?.[type]);
 
 // ---------------------------------------------------------------- page checks
@@ -338,11 +341,11 @@ for (const p of model) {
   if (p.headings.filter((h) => h.level === 2).length < 2 && p.type !== "page") add("P-h2", P, "fewer than 2 H2 headings");
   for (let i = 1; i < p.headings.length; i++) if (p.headings[i].level > p.headings[i - 1].level + 1) { add("P-heading-order", P, `H${p.headings[i - 1].level} followed by H${p.headings[i].level} ("${p.headings[i].text.slice(0, 40)}")`); break; }
 
-  // hidden text: a heading kept in the page but clipped or hidden is spam, not SEO. Delete it instead.
+  // hidden headings block unless the site opts in (allowHiddenHeadings); listed either way so they stay visible in review.
   for (const m of html.matchAll(/<h([1-6])\b([^>]*)>([\s\S]*?)<\/h\1>/gi)) {
     const a = attrs(m[2]);
     if (/\b(sr-only|visually-hidden|screen-reader-text|kwhide)\b/i.test(a.class || "") || /display\s*:\s*none|visibility\s*:\s*hidden/i.test(a.style || ""))
-      add("P-hidden-text", P, `hidden H${m[1]}: "${textOf(m[3]).slice(0, 50)}"`);
+      add(cfg.allowHiddenHeadings ? "P-hidden-text-allowed" : "P-hidden-text", P, `hidden H${m[1]}: "${textOf(m[3]).slice(0, 50)}"`);
   }
   // in-page anchors must exist (e.g. a "Get a quote" button to #quote)
   for (const a of p.anchors) {

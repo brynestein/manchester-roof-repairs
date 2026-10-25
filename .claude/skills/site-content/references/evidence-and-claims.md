@@ -16,7 +16,7 @@ The rule under everything: **no source, no claim.** A wrong price, guarantee or 
 - **Each brand's prices come only from its own records**, never a sister brand's; a page without a published price says it is quoted after a survey.
 - **No statistic without a dataset**, and never the same statistic on more than one place's page (Munster: "847 gutter projects … 43% of emergency callouts" with identical figures for six counties).
 - **No superlatives, rankings, discounts or guarantee lengths in titles or descriptions** unless the page shows the evidence (Munster: "15-year warranty" in 55 descriptions against a 10-year maximum).
-- **No visually hidden text.** A heading not worth showing is deleted, not clipped to 1px.
+- **No visually hidden text by default.** A heading not worth showing is deleted, not clipped to 1px. The one exception is hidden keyword headings on a site that has opted in with `allowHiddenHeadings: true` in `site-checks.config.json`: Andrew's own sites only, never a client site without the client's informed agreement (D-V). Google's spam policy lists hidden text, so the risk is a manual action; the checker keeps listing every hidden heading as a warning so the choice stays visible.
 - **Missing a fact?** Leave a visible `TODO` in the PR and do not publish the line. Do not soften a guess into a fact. A shorter true page beats a longer one with one unsourced line.
 
 ## First-party proof [house, Patric; D-R]

@@ -17,7 +17,7 @@ All measured on 24 October 2026 across munstergutters.ie, recommendedroofing.ie 
 | 91 titles over 60 characters; location titles with a brand suffix over 65 | RR, Dublin Gutter | Title 30-60, brand only if it fits | `P-title-len` |
 | Identical 6-row price table on 188 town pages | RR | Town costings are the town's own rows or a short table linking to the price guide | manual |
 | Landing-page schema copied from another page with the wrong `@id`s; FAQPage count ≠ visible questions | RR | Schema generated per page, validated, counts matched | `P-schema-valid`, `P-schema-faq` |
-| No `<main>` on any of 732 pages | all three | `<main>` wraps the content once | `P-main` |
+| No `<main>` on 453 of 732 pages (RR and Dublin Gutter; Munster has it) | RR, Dublin Gutter | `<main>` wraps the content once | `P-main` |
 | No BreadcrumbList on towns despite a visible breadcrumb | RR | Visible breadcrumb ⇒ BreadcrumbList | manual |
 | One Google review card repeated on 157 pages | Munster | Proof is specific to the page or omitted | manual |
 | LocalBusiness + aggregateRating on every town page without the reviews shown there | RR | Rating only where reviews are evidenced on the page | manual |
@@ -33,7 +33,7 @@ All measured on 24 October 2026 across munstergutters.ie, recommendedroofing.ie 
 | Area pages carrying three named, area-themed customer reviews each (at least 197 across 78 pages) against a stated "20+ Google Reviews" and aggregateRating 5/20 on every page | Dublin Gutter source data | Reviews only from verifiable sources, quoted exactly; never written into page data; rating only where the reviews are shown | manual; raise with the owner |
 | Dead `#quote` buttons | Munster | Cause: `Hero.tsx` links `#quote`; the section with that id is never rendered | `P-link-broken` |
 | One review card on 157 pages | Munster | Cause: hard-coded in `HomeHero.tsx` | manual |
-| Keyword headings kept in the page but visually hidden "for SEO" | Munster home and two county hubs | No hidden text | `P-hidden-text` |
+| Keyword headings kept in the page but visually hidden "for SEO" | Munster home and two county hubs | No hidden text, unless the site has opted in (D-V) | `P-hidden-text` / `P-hidden-text-allowed` |
 | A statistic ("847 projects … 43% of callouts") repeated with identical figures on six county pages | Munster | No statistic without a dataset; never repeated across places | manual |
 | "15-year warranty" in 55 descriptions; "#1", "Top 6", "20% off" in titles and descriptions | Munster | Claims in titles and descriptions match the facts file | manual |
 | "Three decades" on 28 pages and "30+ years" for a 2019 company; "7 days a week" against Mon-Sat hours | Dublin Gutter | One facts file; no claim literals in variants | manual (add a facts-consistency check) |

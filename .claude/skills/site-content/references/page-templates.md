@@ -102,4 +102,4 @@ H1 = the entity; what it is in plain words; why it matters for the job; how we u
 
 ## Proof pages
 
-Reviews (only verifiable, quoted exactly, dated, with the area), case studies (what was done in the record's words, photos, cost band), gallery (real photos, meaningful alt), videos (click-to-play, VideoObject), insurance (the certificate facts), price guide (the full tables that town pages link to). A proof page with no records is not built.
+Reviews (only verifiable, quoted exactly, dated, with the area), case studies (what was done in the record's words, photos, cost band), gallery (real photos, meaningful alt), videos (click-to-play, VideoObject), insurance (the certificate facts), price guide (the full tables that town pages link to). A proof page with no records is not published: it is not built, or on a live site it is noindexed and kept out of the sitemap and menus until records exist.
