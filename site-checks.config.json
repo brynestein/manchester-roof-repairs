@@ -1,4 +1,5 @@
 {
   "siteUrl": "https://manchestergutters.co.uk",
+  "allowHiddenHeadings": true,
   "severity": { "P-img-missing": "warn" }
 }
