@@ -1,90 +1,98 @@
 ---
 name: site-content
-description: House rules and workflow for writing and structuring pages on local-service client sites (roofing, guttering and similar) - page types, URL structure, one H1, headings, internal linking, entities and local context, schema, AI-search (AIO/GEO) plumbing. Use when creating or editing any page, nav, footer, service or location page, blog post, or when asked to optimise a site's content or SEO. Pair with scripts/check-site.mjs, which enforces the black-and-white rules.
+description: The content standard for local-service trade sites (roofing, guttering and similar) - site structure and page types, the process for each page, search intent and keyword choice, titles, H1 and headings, answer-first structure, tables, entities and the trade ontology, information gain, place briefs for town pages, internal linking and anchor text (hub and spoke), schema and the entity graph, evidence and claims, AI-search citation markers, measurement. Use when planning a site, planning, writing, editing or reviewing any page, nav, footer, service, hub, town or article, or when asked to optimise a site's content or SEO. Pair with scripts/check-site.mjs, @audit-content/agency-standards and the Site Manager audit tool, which enforce the black-and-white rules.
 ---
 
 # site-content
 
-Two parts. **This skill is judgement**: how to decide what a page is, what it says and how it links. **`scripts/check-site.mjs` is enforcement**: it fails the build on the rules that have a yes/no answer. Do not carry the checkable rules in your head; write the page, run the checker, fix what it reports.
+The content standard for every site we build. One skill, four enforcement layers:
 
-Rule ids below (`P-…` per page, `S-…` site-wide) match the checker output.
+| Layer | What it does | Where |
+|---|---|---|
+| **Judgement** | Deciding what a site and a page are for, what they say and how they link | This skill and `references/` |
+| **Build checks** | Fails the build on structure, technical and linking rules | `scripts/check-site.mjs` in each site repo (rule ids `P-…`, `S-…`) |
+| **Draft scoring** | Entities, intent, anchors, phrasing against the brief | `@audit-content/agency-standards` `validateContent` |
+| **Site audit and outcomes** | The whole live site weekly, and Search Console, rank and AI-visibility data at 28 and 90 days | Site Manager audit tool; see measurement |
 
-## Workflow for a new or changed page
+Do not carry the checkable rules in your head. Write the page, run the checks, fix what they report, then read the page as a customer would. A page that passes every check can still be thin, wrong or a near-copy.
 
-1. **Classify it.** Home, service, location, post (editorial), or plain page (about, contact, gallery, reviews, legal). The type decides the URL pattern, the checks that apply and the linking direction.
-2. **Pick the URL** from the rules below. Never rename a live URL without a redirect.
-3. **Name the target query and entities** before writing: the one phrase the page should rank for, the places, materials, standards and bodies a knowledgeable person would mention. Put them in the brief or PR description so a reviewer can check them.
-4. **Outline** with one H1 (the target query in natural language) and H2s that each answer a question a customer would ask. Then write.
-5. **Link** (see Internal linking) and add structured data (see Schema).
-6. **Check:** `node scripts/check-site.mjs --dist dist` after a build. Fix every `BLOCK`. Warnings are fixed or explained in the PR description, never silenced by editing the config.
-7. **PR, not main.** State what you changed, which warnings remain and why.
+## Read before working
 
-## Page basics (checker: P-title, P-desc, P-canonical, P-h1, P-main, P-lang, P-og)
+| Doing | Read |
+|---|---|
+| Planning a site, deciding which pages exist and how they fit | [references/site-structure.md](references/site-structure.md) |
+| Building any page: the blocks it carries, in order | [references/page-templates.md](references/page-templates.md) |
+| Choosing what a page targets, its URL, or whether it should exist | [references/search-intent.md](references/search-intent.md) |
+| Title, H1, headings, opening, paragraphs, tables, length | [references/headings-and-structure.md](references/headings-and-structure.md) |
+| Which entities to name, how often, where, and how to phrase claims | [references/entities.md](references/entities.md) |
+| Building the brief from the trade ontology | [references/ontology.md](references/ontology.md) |
+| What makes the page add something no competitor has, and how much | [references/information-gain.md](references/information-gain.md) |
+| Researching a town before its page is written | [references/place-brief.md](references/place-brief.md) |
+| Internal links, link budgets, nav, footer, anchor text | [references/linking.md](references/linking.md) |
+| JSON-LD and the entity graph | [references/schema.md](references/schema.md) |
+| Facts, prices, guarantees, proof, authors, AI-citation pass | [references/evidence-and-claims.md](references/evidence-and-claims.md) |
+| Facts file, build, publishing, redirects, tracking, images, video, calculators | [references/build-and-publishing.md](references/build-and-publishing.md) |
+| How results come back and change the rules | [references/measurement.md](references/measurement.md) |
+| Mistakes seen on live sites and the rule that stops each | [references/defects-to-avoid.md](references/defects-to-avoid.md) |
+| Every rule in one table with its threshold and enforcer | [references/rule-index.md](references/rule-index.md) |
+| Why a rule is what it is where sources disagreed | [references/decisions.md](references/decisions.md) |
 
-- Exactly one `<h1>`; at least two `<h2>`s on service, location and post pages; no skipped levels (H1 then H3 is a finding).
-- Unique `<title>` (30-65 chars) and unique meta description (70-160) on every page, written for the click, not stuffed.
-- Absolute canonical URL on the site's own host. `<main>` wraps the page content once; header, footer and floating CTAs stay outside it, so AI and entity extractors read the right text.
-- No page is `noindex` and listed in the sitemap.
+## The process for a site
 
-## URL structure (S-slug-format, S-slug-geo, S-trailing-slash)
+1. **Plan the structure** (site-structure): services with measured demand, the hub per city, the towns with place briefs, the head-term hub, proof pages that have records. Record it in the site's plan with the counts.
+2. **Lock a search intent per page** (search-intent) and the hub for each head term.
+3. **Approve the ontology** for the trade before it drives content (ontology).
+4. **Build the chrome once**: nav, footer, credentials strip, CTA with form, consent, `<main>`.
+5. **Build pages by type** from the templates, in this order: home, services, hubs, towns in batches as briefs are ready, proof pages, articles with demand evidence.
+6. **Run all four layers** before and after launch (measurement). The off-site gate (Google Business Profile, citations, reviews) clears before DNS flips.
 
-- Lowercase, hyphen-separated, no dates, no IDs, no stop-word padding.
-- Patterns: `/services/<service>-in-<city>/` (the city in the slug is a small, durable relevance signal; set `citySlug` in `site-checks.config.json` to enforce), `/locations/<place>/`, `/post/<slug>/`. Location slugs are just the place name.
-- Pick one trailing-slash style and keep it everywhere, including internal links.
-- A new page set (service x place) must be generated from data, not copy-pasted: see Location differentiation.
+## The process for a page
 
-## Copy (P-words, P-para-length, P-lists)
+1. **Classify it.** Home, service, service-in-place, hub, town, article (pillar, spoke or hedge), landing page, entity page, proof, plain. The type decides the URL, the template, the checks and the link direction.
+2. **Lock the search intent.** One central search intent (CSI) per page, measured from volume and top-10 overlap, in the customer's words. No measurable demand means fold it, make it a guide, or drop it.
+3. **Write the brief before the page.** The CSI; the target entities by category from the ontology (required, parity, buried); the **gap set**, what the page will say that no top-10 result says, with its source; the place brief for a town page; the top People Also Ask questions; the facts and records available (prices, guarantees, accreditations, jobs, photos, reviews). Put it in the PR so a reviewer can check it.
+4. **Outline from the template.** H1 = the CSI in natural language (or the buyer's question on an article). "At a glance" first. Commercial pages: topic H2s with the trust entities and key topics in them, questions in the FAQ. Articles: a 40-60-word answer, glance bullets, then question H2s (60% or more).
+5. **Write.** Answer first, then detail. Real specifics only, from records. Accreditations and standards as plain subject-verb-object sentences. Tables carry the numbers. The brand named, not "we", at least once per section.
+6. **Link and mark up.** Direction, budgets and anchors per linking; JSON-LD per schema, matching what is visible.
+7. **Check.** Build checks (0 block), draft scoring for client-facing competitive pages, the AI-citation pass (5 of 7). Fix or explain every warning in the PR; never silence a rule by editing config.
+8. **Look at it** on desktop and phone width before merge.
+9. **PR, not main.** State the CSI, the gap set, what changed, remaining warnings and why, and any fact the client must confirm.
+10. **Judge it** at 28 and 90 days from Search Console; a winner is multiplied only with a new brief.
 
-- Service, location and post pages: aim for 750+ words in `<main>`, but never pad. If there is not enough real material for the page, merge it or drop it.
-- Short paragraphs (average 20 words or fewer), descriptive subheads, lists and tables for steps, prices, comparisons and materials. These are what AI answers quote.
-- Lead each section with the direct answer, then the detail. Include real specifics: costs as ranges, timescales, materials, standards, what is and is not included.
-- Real FAQs (3-5 per service/location/post page) that customers actually ask; mark them up as FAQPage (see Schema).
-- Do not invent testimonials, ratings, case studies, accreditations, prices or photographs. If the fact is not in the client data, leave a visible `TODO` in the PR and do not publish it.
+## The rules that matter most
 
-## Entities and local context
+1. **One page, one search intent, named for the search.** Title, H1 and URL say the same thing, in the buyer's words ("roof replacement" not "new roof installation", "chimney repair" not "chimney flashing", "GRP" not "fibreglass"). A 1,200-word page named for the search beat a 6,500-word general page [measured].
+2. **Hub and spoke, deliberately.** Money pages (services, and the chosen head-term hub) collect links; towns and articles feed them. Service pages never link to towns or articles. Towns link to every service and their in-hub siblings. Articles link up to services, places and their pillar.
+3. **One H1, at least two H2s, no skipped levels.** Commercial pages: topic H2s plus a visible FAQ. Articles: 60%+ question H2s, first sentence answers each.
+4. **Answer first.** The opening states the answer (price range, timeframe, verdict) in an "at a glance" box built from the page's own price rows, before any background.
+5. **Name the entities a knowledgeable person would name**, from the ontology, at 4-12 mentions per 200 words, with the important ones in an H2 or the first paragraph. Town pages are written from a place brief and measured for uniqueness.
+6. **The page adds something.** At least 3 facts, entities or answers (5 on an article) that no top-10 result for the search carries, from the ontology gap, our records or the place brief, each as a plain sentence. Restating the ranking set in better prose earns nothing.
+7. **Claims as sentences, not fragments.** "Our roofers hold NFRC membership." not "NFRC members". Every paragraph still makes sense quoted alone.
+8. **Nothing invented.** No made-up prices, guarantees, statistics, reviews, jobs, people, landmarks, accreditations or schema. Proof is rendered from records; no record, no claim; the page is held, not softened.
+9. **Tables carry the numbers.** A price table on every cost and service page, a comparison table on every article, brands in one table per page.
+10. **Schema says what the page says.** One organisation anchor by `@id`, Service with `areaServed` = the page's place, FAQPage only where the visible FAQ matches word for word, ratings only where reviews are shown.
+11. **Every page ends with the form.** The quote form at `#quote` and the regional phone on every page; never a link to a contact page as the only call to action.
+12. **No marketing filler.** No "welcome to", "we are", "for over 20 years" openers; no clichés or stock AI phrasing; no em dashes or exclamation marks; the brand named instead of "we".
+13. **One facts file, nothing hidden.** Every claim (years, ratings, hours, guarantees, prices) comes from the site's facts file, never typed into a template or variant; no visually hidden text; `llms.txt` carries public facts only.
 
-- Name things precisely and consistently: the business, the town and neighbouring areas, local landmarks and housing stock, materials (cast iron, PVC, slate), standards and trade bodies. Prefer names that have a Wikipedia or Wikidata entry.
-- Aim for entity density in the 4-12 named entities per 200 words range; more reads as stuffing. Keep sentiment neutral-to-positive and factual, not salesy.
-- Location pages need genuinely different content per place (architecture, common faults, landmarks, access) drawn from `src/data/locations.json` or equivalent. A template with the place name swapped is a doorway page; if you cannot write ~500 unique words about a place, do not publish the page.
-- Semantic scoring (entity density, sentiment, header ratio, intent coverage) is not in the checker. Run `@audit-content/agency-standards` `validateContent` from the audit-content repo when the content is client-facing and competitive, and treat block-severity results like checker blocks.
+## How sure we are
 
-## Internal linking (S-orphans, S-hub-ratio, S-dir-*, S-generic-nav, S-footer-variance, S-cta-contact, P-prose-links)
+Each rule carries one of these tags. When a rule conflicts with what a site's own data shows, the data wins for that site; record it in that repo's `docs/patterns/` and in decisions.
 
-These are house defaults taken from a competitor teardown; they are strong defaults, not laws. If you deviate for a good reason, say so in the PR.
+- **[measured]** We measured it: the Manchester search-intent pilot (July 2026), the dhennessy link graph (July 2026), the three group-site crawls (October 2026), Patric's Search Console and content-yield results (2026).
+- **[house]** A house default from a competitor teardown, a built site, or a decision. Strong default, not a law; deviate with a reason in the PR.
+- **[practice]** Widely recommended SEO or AI-search practice we have not tested. Several come from a vendor checklist (the "Cited Page Swipe File") whose figures we cannot verify.
 
-- **Every page is reachable.** No orphans. The homepage should receive at least 3x the average inbound links of other pages once the site has 10+ pages.
-- **Direction.** Location pages link to services and to other locations. Service pages link to other services and **not** to location pages or blog posts (render place names on service pages as plain text). Blog posts link in to services and locations, in prose; no "related posts" widgets.
-- **Anchor text by target.** Services: the keyword phrase ("Emergency Roof Repairs"). Locations: the exact place name only. Home: the brand or "Home". Contact/quote: an action phrase. Blog: a natural sentence fragment. Never "click here", never a service phrase pointing at a location.
-- **Nav labels are anchor text:** use the target query phrase, not "Services" or "More". If it does not fit, change the layout, not the label.
-- **Footer anchors vary from nav anchors** for the same URL (synonymous phrasing), so each URL earns two distinct anchor signals.
-- **Header CTA** points at an on-page form anchor or a `tel:` link rather than `/contact`.
-- **3-5 in-prose internal links** per service, location and post page, in the body copy, with contextual anchors, plus one link to an authoritative external source (government, standards body, trade association).
+The evidence behind the tags (site crawls, Search Console, code reads, decisions) is in `audit-content/docs/research/2026-10-site-content/`.
 
-## Schema (P-schema-valid, P-schema-identity, P-schema-faq)
+## Measuring whether it worked
 
-- LocalBusiness-family JSON-LD (trade-specific subtype, e.g. `RoofingContractor`) on every page, built from `business.json` so name, address and phone (NAP) never drift. Layered per page: FAQPage on service/location/post, `Service` or `ItemList` on hubs, `Article` on posts, `ImageGallery` on galleries.
-- `AggregateRating` and `Review` only from real, verifiable data. No placeholders in published output.
-- Schema must match what is visible on the page. Validate with the schema tooling in Site Manager before merge.
+A page is judged on Search Console clicks and position at 28 days and again at 90, on mobile in the site's country, and on enquiries where they can be traced. "Never shown" is a ranking problem; "shown and passed over" is a wording problem; they get different fixes. Recommended Roofing published 21 articles in four weeks in autumn 2026 and 16 of 18 judged were never shown [measured]. Across tracked sites, local-presence signals correlate positively with rankings and content volume slightly negatively [measured]. Write fewer pages against measured demand, and check the off-site stack first when a site is not ranking.
 
-## Technical and AI-search plumbing (S-sitemap-*, S-robots*, S-llms, S-404, S-soft404, P-img-*)
+## Out of scope
 
-- Pages are statically generated: the full text must be in the HTML response. No content that appears only after client-side JavaScript.
-- A real 404 page that is served with HTTP 404 (S-404, S-soft404). A sitemap (conventionally `/sitemap.xml`; an index only when the site needs several files) that lists every indexable page, with `lastmod` only where the date is real, referenced from `robots.txt` and submitted in Search Console. `robots.txt` does not block AI crawlers unless the client asks.
-- A real `/llms.txt` (plain text, short site summary and key URLs).
-- Every image referenced must exist (P-img-missing), have meaningful alt text, explicit dimensions and a modern format.
-- Core Web Vitals targets (LCP under 2.5s, INP under 200ms, CLS under 0.1) are checked in Site Manager's page-speed tool, not here.
+Google Business Profile, reviews and citations (the `gbp-signal-audit` skill and the local presence gate), design, Core Web Vitals (Site Manager's page-speed tool), tracking and consent (each repo's notes), and anything needing the client's decision (pricing, guarantees, claims, service areas). Raise those in the PR.
 
-## Security header and tracking (S-csp-inline, S-csp-host)
+## Where this skill lives
 
-- The site's security header (`public/_headers`, Content-Security-Policy) must allow everything the pages load. A header that is too strict fails silently in the browser: tracking stops and menus and buttons do nothing, while the page still looks fine in a screenshot.
-- No inline JavaScript: no `onclick`/`onerror` attributes, and no `<script>` with code in it (JSON-LD is fine). Put code in an Astro `<script>` block (built out to a file) or under `public/js/`.
-- Adding a third-party tag means adding its hosts to the header in the same change. The checker blocks when GTM/GA4, Clarity or Google Fonts are used but not allowed.
-- Tracking loads through `public/js/consent-tracking.js`, behind the cookie banner. Never add a tag that sets cookies or records sessions outside it, and never inside GTM without a consent check on the tag.
-
-## Out of scope for this skill
-
-Google Business Profile and citation work (use the `gbp-signal-audit` skill and the local-presence gate), rank and traffic analysis (Search Console, Site Manager), and anything needing the client's decision (pricing, guarantees, claims). Raise those in the PR.
-
-## Reading checker output
-
-`BLOCK` fails the run and must be fixed before merge. `warn` is advisory: fix it or give a reason. Two cautions: tiny sites (under 10 pages) will not trigger the hub-ratio check, and the checker cannot judge meaning, so a page that passes can still be thin, wrong or duplicated in substance. Read it as a person would.
+The canonical copy is in `brynestein/audit-content` at `.claude/skills/site-content/`. Each site repo carries a copy so sessions in that repo load it. Edit the canonical copy first, then copy it to the site repos; do not let copies drift.
