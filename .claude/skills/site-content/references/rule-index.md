@@ -2,7 +2,7 @@
 
 Every rule in one place. **Checker** = `scripts/check-site.mjs` in the site repo (built HTML or the live site, in CI). **Standards** = `@audit-content/agency-standards` (a draft against the page brief). **Audit** = the audit tool in Site Manager (the live site, weekly). **Gate** = Patric's article gates (`blog-ai-audit.mjs`, `retrofit-article.mjs`), to be ported. **Manual** = review judgement.
 
-Block means fix before merge. Warn means fix or explain in the PR. Items marked "(align)" need a code change to match this standard; until then the tool's current threshold applies. The site checker (`scripts/check-site.mjs`) was aligned on 25 October 2026; the remaining "(align)" items are in `@audit-content/agency-standards`.
+Block means fix before merge. Warn means fix or explain in the PR. Where a tool still differs from a threshold here, the tool's own threshold applies until it is changed. The site checker (`scripts/check-site.mjs`, manchester-roof-repairs#7) and `@audit-content/agency-standards` (audit-content#617) were aligned on 25 October 2026.
 
 ## Site structure
 
@@ -28,12 +28,12 @@ Block means fix before merge. Warn means fix or explain in the PR. Items marked 
 | One H1 | exactly 1 | Checker `P-h1`, `P-h1-dupe` | block / warn |
 | H2 count on content pages | 2+ | Checker `P-h2` | warn |
 | No skipped heading levels | none | Checker `P-heading-order` | warn |
-| Question H2s on articles | 60%+ | Gate `questionH2Pct: 60`; Standards `h2-questions-min-count` (floor 1) | warn |
-| FAQ questions on commercial pages | 6-8 (town, service), 8-12 (hub) | Standards `mandatory-faq-on-service-page` (align: count FAQ items) | warn |
+| Question H2s on articles | 60%+ | Standards `h2-questions-min-count` (60% on articles, 1 elsewhere) | warn |
+| FAQ questions on commercial pages | 6-8 (town, service), 8-12 (hub) | Standards `mandatory-faq-on-service-page` (counts FAQ items) | warn |
 | Top People Also Ask answered | 3 of top 5 | Standards `h2-covers-real-paa` | warn |
 | No marketing opener | first sentence | Standards `no-fluff-opening` | block |
 | Build-up openers per section | ≤10% | Gate `buildupPct: 10` | warn |
-| Answer paragraph after a question H2 | 40-60 words | Standards `answer-first-paragraph-length` (align from 40-80) | warn |
+| Answer paragraph after a question H2 | 40-60 words | Standards `answer-first-paragraph-length` | warn |
 | "At a glance" first: topic-headed, from the page's own price rows; articles answer paragraph then 4-6 standalone bullets | present | Gate (first H2 ends "at a Glance" + `<ul>`); Manual | block (articles) |
 | No "Summary", "The short version", "Conclusion" headings | none | Gate | block |
 | No year in H1 or slug | none | Manual | - |
@@ -75,8 +75,8 @@ Block means fix before merge. Warn means fix or explain in the PR. Items marked 
 | Accreditations and expected relationships as sentences | 1 plain sentence each | Standards `extractable-spo-accreditations` | warn |
 | Knowledge Graph recognition of named entities | 30%+ | Audit | warn |
 | Sentiment | 0.45-0.6 | Audit | warn |
-| Named local places on town pages | 3+ where relevant | Standards `location-landmark-count` (align: block → warn) | warn |
-| Gap items absent from every top-10 result | 3+ commercial, 5+ article, 2+ entity page, listed in the brief | Standards `min-info-gain-entities` (re-adopt as warn) | warn |
+| Named local places on town pages | 3+ where relevant | Standards `location-landmark-count` | warn |
+| Gap items absent from every top-10 result | 3+ commercial, 5+ article, 2+ entity page, listed in the brief | Standards `min-info-gain-entities` (needs the `infoGainEntities` set from the brief) | warn |
 | Entity page: related entities, outbound prose links, sameAs | 3+ each twice; 3-8; Wikidata + official | Standards `entity-page-related-mentions-min`, `entity-page-outbound-prose-min`, `entity-page-sameas-required` | warn / warn / block |
 | One phone number across the site; NAP in header and footer | 1 tel:; 2 NAP renders | Checker `S-nap`; Audit `local-nap-density` | warn |
 
@@ -87,7 +87,7 @@ Block means fix before merge. Warn means fix or explain in the PR. Items marked 
 | Service page links to a town or hub in content | none | Checker `S-dir-service-location`; Standards `service-page-no-location-links`; verifier | block |
 | Service page links to an article | none | Checker `S-dir-service-post`; Standards `service-page-no-blog-links`; verifier | block |
 | Town links to an article | none | Verifier (port) | block |
-| Article → article | pillar/spoke, Read-next, other-cities only | Standards `blog-post-no-prose-blog-links` (align to allow the structured set) | warn |
+| Article → article | pillar/spoke, Read-next, other-cities only | Standards `blog-post-no-prose-blog-links` (allows pillar + Read next, 4 in prose) | warn |
 | Orphan pages | none | Checker `S-orphans` | block |
 | Inbound links per page | 5+ | Audit | warn |
 | Links out per page | ≤200 | Audit | warn |
@@ -114,7 +114,7 @@ Block means fix before merge. Warn means fix or explain in the PR. Items marked 
 | JSON-LD parses | every block | Checker `P-schema-valid` | block |
 | Organisation anchor referenced on every page | yes | Checker `P-schema-identity` | block |
 | FAQPage matches the visible FAQ | count equal, word for word | Checker `P-schema-faq` | warn |
-| Shape and recognised types | `@context`, `@type` | Standards `schema-passes-jsonld-shape` (align: extend allow-list) | block |
+| Shape and recognised types | `@context`, `@type` | Standards `schema-passes-jsonld-shape` | block |
 | Complete PostalAddress on LocalBusiness | yes | Standards `localbusiness-needs-address` | block |
 | ContactPoint | 1+ | Standards `contact-point-required` | block |
 | `sameAs` on the anchor | 3+ | Standards `organization-needs-sameas-3plus` | warn |
