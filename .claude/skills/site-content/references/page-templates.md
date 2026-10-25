@@ -71,20 +71,27 @@ Section-for-section mirror of the hub for one service: hero → logos → "what 
 
 | # | Block | Status |
 |---|---|---|
-| 1 | Breadcrumb Home › Blog › {Place} (BreadcrumbList); H1 = subject + place, 30-45 chars, no colon, dash or year; italic subheading line; meta line: tag, place, updated date, "By {Owner}, {Title}"; place-correct tel: + `#quote` | required |
+| 1 | Breadcrumb Home › Blog › {Place} (BreadcrumbList); H1 = subject + place, 30-45 chars, no colon, dash or year; italic subheading line; meta line: tag, place, updated date, "By {Owner}, {Title}"; place-correct tel: + `#quote`. On a cost article the meta description carries the headline price range | required |
 | 2 | Real photo or click-to-play job video with a true caption | required (photo) / if records (video) |
 | 3 | **Answer paragraph, 40-60 words**, answering the title's question | required |
 | 4 | **"{Topic} at a Glance"** H2 + 4-6 one-sentence bullets that each stand alone | required |
-| 5 | "Read next:" one line with 3-4 internal links (service, area, related guides) | required |
-| 6 | Body: question H2s (60% or more), first sentence answers each; cost list + chart; comparison table; sub-section per option; brand named once and 3+ data points per section | required |
-| 7 | Case box, review quote, job video rendered from records (max 2 / 2 / 1) | if records |
-| 8 | "Who should I hire for {job} in {City}?" block from confirmed facts | required on cost and service articles |
-| 9 | "Guarantees on {topic}" section | required on cost, repair and replacement articles |
-| 10 | "Nearby areas we also cover" (sibling spokes) and the other-cities sentence; spoke → pillar link once | required where they exist |
-| 11 | FAQ 10-12 questions, FAQPage matching | required |
-| 12 | Related cards: the service, "Your area", "All areas"; "{Trade phrase} {Town}" chips | required |
-| 13 | One closing CTA band with the form | required |
+| 5 | **Contents**: a jump list of every H2, each a plain `<a href="#id">` link to an `id` on the heading, written in the HTML (not built by script after load). On a phone it sits under the at-a-glance box and can be collapsed; on a wide screen it may sit in a sticky side column. It never scrolls inside its own box | required |
+| 6 | "Read next:" one line with 3-4 internal links (service, area, related guides) | required |
+| 7 | Body: question H2s (60% or more), first sentence answers each; cost list + chart; comparison table; sub-section per option; brand named once and 3+ data points per section. The group's Hold topics (topic-research) are answered here as headed sections, not as separate articles | required |
+| 8 | **Cost articles, three tables**: (a) cost by property type: length in metres, total by material, time on site; (b) additional costs: access or scaffolding per elevation, related boards per metre, each downpipe, removal and disposal, add-ons; (c) lifespan and upkeep by material. Every figure from the client's own quotes and jobs (evidence-and-claims); a row with no record is left out, never estimated. A regional difference ("Manchester runs higher than…") only from the client's own data | required on cost articles |
+| 9 | Case box, review quote, job video rendered from records (max 2 / 2 / 1) | if records |
+| 10 | "Who should I hire for {job} in {City}?" block from confirmed facts | required on cost and service articles |
+| 11 | "Guarantees on {topic}" section | required on cost, repair and replacement articles |
+| 12 | "Nearby areas we also cover" (sibling spokes) and the other-cities sentence; spoke → pillar link once | required where they exist |
+| 13 | FAQ 10-12 questions, FAQPage matching | required |
+| 14 | **"Sources and further reading"**: the primary source for every regulation, standard or statistic the article cites (legislation.gov.uk, gov.uk guidance such as Approved Document H, the Planning Portal, the standards or trade body's own guidance), each also linked where the claim is made | required when the article cites one |
+| 15 | Related cards: the service, "Your area", "All areas"; "{Trade phrase} {Town}" chips | required |
+| 16 | One closing CTA band with the form | required |
 | Schema | BlogPosting or Article (author Person = owner, publisher = organisation, about = Place), BreadcrumbList, FAQPage | |
+
+Why the contents list: it lets a reader jump to the one question they came with, and it gives search engines and AI fetchers the page's outline as plain links. The same cost article uses one (a sticky side column with every H2). Observed, not measured.
+
+Why the cost tables: a UK competitor's gutter replacement cost article (bernardandrewsroofing.com, checked 25 October 2026) is one of three sources Google's AI Overview cites for "How much does it cost to have guttering done?", and the Overview's cost-by-property-type ranges match its table. One example, not a measured effect; the tables also answer the follow-up questions a buyer has. That article has no job photos, case studies or sourced figures, so copy the blocks, never its numbers.
 
 Forbidden: "Summary", "The short version", "In conclusion" headings; em dashes; exclamation marks; a byline written by the model; a second CTA section; links to pages that do not exist.
 

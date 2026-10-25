@@ -17,6 +17,9 @@ def keywords(cfg):
 if __name__ == '__main__':
     cfg = json.load(open(sys.argv[1]))
     kws = keywords(cfg)
+    long = [k for k in kws if len(k.split()) > 10 or len(k) > 80]  # Keyword Planner rejects these
+    if long: print('left out (over 10 words or 80 characters):', long)
+    kws = [k for k in kws if k not in long]
     if len(kws) > 10000:
         sys.exit(f'{len(kws)} keywords: Keyword Planner takes 10,000 per upload; split the places file')
     open(sys.argv[2], 'w').write('Keyword\n' + '\n'.join(kws) + '\n')
