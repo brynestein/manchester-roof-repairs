@@ -17,7 +17,7 @@ Every commercial page shares: hero with H1 and tel: + `#quote` buttons, credenti
 | 7 | Services grid: one card per service, H3 = the service phrase, one line, link to the service page | required | |
 | 8 | Short costings table for the town with a link to the full price guide | required | identical figures on 188 pages is the pattern to avoid; use the town's own rows or say the range is province-wide |
 | 9 | Evidence of work here: a job photo, filmed job, case study or review from the town | if records | if none exists, an honest "not yet filmed in {Town}" line, never borrowed proof |
-| 10 | FAQ: 6-8 questions with the town in the question (planning, regulations, weather, insurance, cost, response time), `<details>` or button with `aria-expanded`, FAQPage matching word for word | required | |
+| 10 | FAQ: 6-8 questions (planning, regulations, weather, insurance, cost, response time); every question names the place, and every answer carries at least one local fact from the place brief (conservation areas and Article 4 directions, typical housing, council rules, exposure and weather), linked to its source, usually the council's own page. No local fact for a question means a different question: a generic answer with the place name swapped in does not count. `<details>` or button with `aria-expanded`, FAQPage matching word for word | required | |
 | 11 | Nearby areas: chips to in-hub siblings (nearest 10-30), plus "All {Hub}" | required | never a fixed alphabetical slice |
 | 12 | Other cities (multi-city sites only): cards to the other hubs, anchor "{Trade phrase} {City}" | if multi-city | |
 | 13 | Closing CTA with the form at `#quote` | required | |
@@ -39,7 +39,7 @@ Links out: every service, 10-30 siblings, the hub, the proof page; zero to artic
 | 8 | Recent projects (case cards), verified reviews, brands installed, videos | if records |
 | 9 | Why clients choose us | required |
 | 10 | Guide cards to this city's articles (the one allowed hub → article link block) | if articles exist |
-| 11 | FAQ 8-12, FAQPage matching | required |
+| 11 | FAQ 8-12, FAQPage matching; every question names the place, and every answer carries at least one local fact from the place brief (conservation areas and Article 4 directions, typical housing, council rules, exposure and weather), linked to its source, usually the council's own page. No local fact for a question means a different question: a generic answer with the place name swapped in does not count | required |
 | 12 | Other cities, closing CTA with form | required |
 | Schema | as town, plus LocalBusiness with the real postal address where one exists | |
 
@@ -88,6 +88,8 @@ Section-for-section mirror of the hub for one service: hero → logos → "what 
 | 15 | Related cards: the service, "Your area", "All areas"; "{Trade phrase} {Town}" chips | required |
 | 16 | One closing CTA band with the form | required |
 | Schema | BlogPosting or Article (author Person = owner, publisher = organisation, about = Place), BreadcrumbList, FAQPage | |
+
+Why local FAQs: a London roofer's area pages (bernardandrewsroofing.com/areas-we-serve/, checked 25 October 2026) ask place questions and answer them with a council fact ("Islington has Article 4 directions in place across 40 of its 42 conservation areas"), and its Golders Green page was fourth for "roof repairs golders green", behind Checkatrade, TrustATrader and a local roofer. One example, not a measured effect, and its figure was not checked here; our rule adds the source link.
 
 Why the contents list: it lets a reader jump to the one question they came with, and it gives search engines and AI fetchers the page's outline as plain links. The same cost article uses one (a sticky side column with every H2). Observed, not measured.
 

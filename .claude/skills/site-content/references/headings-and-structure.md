@@ -73,7 +73,7 @@ Length is a floor for coverage, never a target. A page named for the search at 1
 
 ## FAQ block
 
-- 6-8 real questions on town and service pages, 8-12 on hubs, 10-12 on cost and replacement articles (cost, a cheaper or smaller version, emergency call-out, VAT, scaffolding, insurance, repair vs replace, guarantee, grants, how to spot a genuine firm, free quote). The place is in the question on town pages (planning, regulations, weather, insurance).
+- 6-8 real questions on town and service pages, 8-12 on hubs, 10-12 on cost and replacement articles (cost, a cheaper or smaller version, emergency call-out, VAT, scaffolding, insurance, repair vs replace, guarantee, grants, how to spot a genuine firm, free quote). On town and hub pages the place is in every question (planning, regulations, weather, insurance), and every answer carries at least one sourced local fact from the place brief; a generic answer with the place name swapped in does not count.
 - Questions customers actually ask (People Also Ask, calls, reviews); short specific answers using the same facts as the body.
 - One FAQ component site-wide: native `<details>`/`<summary>` or a button that toggles `aria-expanded`; no inline `onclick`. FAQPage schema from the same items, so schema and text cannot differ.
 
