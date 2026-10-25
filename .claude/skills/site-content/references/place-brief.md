@@ -39,7 +39,7 @@ The brief is a record in `locations.json` (or equivalent), filled from research 
 | "{Town} weather and your roof" (3 question H3s) | exposure, rain, trees, coast, freeze-thaw |
 | "{Town} property types" (3-4 question H3s) | housing eras, roof types, materials, conservation areas |
 | "Local {trade} in {Town}" | where we are based, response time, access notes |
-| FAQ with the town in the question | planning, regulations, weather, insurance, cost |
+| FAQ with the town in the question, each answer carrying a sourced local fact | planning (conservation areas, Article 4 directions), regulations, weather, insurance, cost; the fact links to the council or other official page |
 | Evidence of work here | jobs, photos, reviews from the records |
 | Nearby areas | the nearest-towns list |
 

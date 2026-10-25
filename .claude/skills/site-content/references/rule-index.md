@@ -35,6 +35,7 @@ Block means fix before merge. Warn means fix or explain in the PR. Where a tool 
 | No skipped heading levels | none | Checker `P-heading-order` | warn |
 | Question H2s on articles | 60%+ | Standards `h2-questions-min-count` (60% on articles, 1 elsewhere) | warn |
 | FAQ questions on commercial pages | 6-8 (town, service), 8-12 (hub) | Standards `mandatory-faq-on-service-page` (counts FAQ items) | warn |
+| Town and hub FAQs: the place in every question; a sourced local fact in every answer | all | Manual (place brief review) | - |
 | Top People Also Ask answered | 3 of top 5 | Standards `h2-covers-real-paa` | warn |
 | No marketing opener | first sentence | Standards `no-fluff-opening` | block |
 | Build-up openers per section | ≤10% | Gate `buildupPct: 10` | warn |
