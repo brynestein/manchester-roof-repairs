@@ -17,7 +17,7 @@ All measured on 24 October 2026 across munstergutters.ie, recommendedroofing.ie 
 | 91 titles over 60 characters; location titles with a brand suffix over 65 | RR, Dublin Gutter | Title 30-60, brand only if it fits | `P-title-len` |
 | Identical 6-row price table on 188 town pages | RR | Town costings are the town's own rows or a short table linking to the price guide | manual |
 | Landing-page schema copied from another page with the wrong `@id`s; FAQPage count ≠ visible questions | RR | Schema generated per page, validated, counts matched | `P-schema-valid`, `P-schema-faq` |
-| No `<main>` on any of 732 pages | all three | `<main>` wraps the content once | `P-main` |
+| No `<main>` on 453 of 732 pages (RR and Dublin Gutter; Munster has it) | RR, Dublin Gutter | `<main>` wraps the content once | `P-main` |
 | No BreadcrumbList on towns despite a visible breadcrumb | RR | Visible breadcrumb ⇒ BreadcrumbList | manual |
 | One Google review card repeated on 157 pages | Munster | Proof is specific to the page or omitted | manual |
 | LocalBusiness + aggregateRating on every town page without the reviews shown there | RR | Rating only where reviews are evidenced on the page | manual |

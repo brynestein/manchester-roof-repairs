@@ -20,7 +20,7 @@ Home
 
 Measured on the three sites: 10-13 service pages, 1-12 hubs, 78-188 town pages, 9-121 articles. dhennessy: 15 services, 30 locations, ~50 posts.
 
-Where the clicks come from (Munster, all devices, 1 Aug - 22 Oct 2026, unfiltered): 118 articles 22%, guttering towns 20%, 6 county guttering hubs 20%, home 11%, Business Profile links 10%, services 5%, roofing towns 4%, county roofing 4%. Town pages earn as a set (25% of clicks, 81 of 142 town URLs clicked) as well as covering; a secondary trade without its own named hub is shown and passed over until it has one. Year on year the gain (+42%) came mostly from articles (+345 clicks), then towns, services and the roofing hubs.
+Where the clicks come from (Munster, all devices, 1 Aug - 22 Oct 2026, unfiltered): 118 articles 22%, guttering towns 20%, 6 county guttering hubs 20%, home 11%, Business Profile links 10%, services 5%, roofing towns 4%, county roofing 4%. Town pages earn as a set (25% of clicks, 81 of 126 town pages clicked) as well as covering; a secondary trade without its own named hub is shown and passed over until it has one. Year on year the gain (+42%) came mostly from articles (+345 clicks), then towns, services and the roofing hubs.
 
 ## Page types and what each is for
 
@@ -49,7 +49,7 @@ Where the clicks come from (Munster, all devices, 1 Aug - 22 Oct 2026, unfiltere
 6. **Every page that exists is in the nav, the footer, the sitemap and llms.txt** as appropriate. RR's two newest services had 6 and 9 inbound links because they were in none of them.
 7. **Nothing links to a page that does not exist.** A town in a chip list without a page renders as text. 121 Munster pages link a `#quote` anchor that is not on the page.
 8. **Growth is demand-gated.** Start at the floor (home, 6+ services, 1 hub, 10+ towns with place briefs, 4+ proof pages, legal) and add a town or topic only with a place brief or demand evidence. No weekly cadence [D-N].
-9. **The off-site stack decides whether any of this ranks.** Across tracked sites, local-presence signals correlate +0.24 with rankings and content volume -0.22 [measured, Workstream C, 2026]. Google Business Profile, citations and reviews are not this skill's job but are the gate before DNS flips (see `client-site-build-patterns.md`, Local presence gate).
+9. **The off-site stack decides whether any of this ranks.** In the agency's audit-tool calibration, the audit tool's Local category score correlates +0.24 with visibility and its Content category score −0.22 (regression across 48 domains, Workstream C calibration, July 2026) [measured]. Google Business Profile, citations and reviews are not this skill's job but are the gate before DNS flips (see `client-site-build-patterns.md`, Local presence gate).
 
 ## Chrome (identical on every page)
 
