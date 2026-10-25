@@ -37,14 +37,24 @@ const DEFAULTS = {
     { type: "service", match: "^/services/." },
     { type: "location", match: "^/(locations|areas)/." },
     { type: "post", match: "^/(post|posts|blog)/." },
+    { type: "entity", match: "^/entity/." },
   ],
-  contentTypes: ["service", "location", "post"], // stricter checks
-  faqTypes: ["service", "location", "post"],
-  minWords: { service: 750, location: 750, post: 750, home: 400, page: 0 },
-  maxAvgParagraphWords: 20,
-  minLists: 5,
-  minProseLinks: 3,
-  citySlug: null, // if set, service slugs must end -in-<citySlug> or -<citySlug>
+  // Types the site-content skill defines but URLs cannot reveal (bare service slugs, hubs, towns)
+  // are mapped in the site's config: e.g. { "type": "town", "match": "^/roofers-[a-z-]+/[a-z0-9-]+/$" }.
+  contentTypes: ["service", "service-in-place", "hub", "town", "location", "post", "entity"], // stricter checks
+  faqTypes: ["service", "service-in-place", "hub", "town", "location", "post"],
+  placeTypes: ["location", "hub", "town"], // pages a service page must not link to in content
+  minWords: { home: 1000, service: 1500, "service-in-place": 1000, hub: 2000, town: 1000, location: 1000, post: 800, entity: 300, page: 0 },
+  titleLen: [30, 60],
+  descLen: [120, 160],
+  maxAvgParagraphWords: 25,
+  maxParagraphWords: 60,
+  minLists: 1,
+  // In-prose internal links per type. Service pages are link sinks: 0-2, homepage or proof only.
+  minProseLinks: { location: 3, hub: 3, town: 3, post: 3, entity: 3 },
+  maxProseLinks: { service: 2 },
+  inboundSpread: 5, // flag a place type whose best-linked page has more than this multiple of the median
+  citySlug: null, // off by default (skill decision D-A: bare service slugs, place in title and H1); set to enforce -in-<citySlug>
   identityTypePattern: "Contractor|Business|Organization|Store|Service$|Roofer|Plumber|Electrician",
   ignorePaths: ["^/404", "^/admin", "^/api/"],
   ignoreLinkPaths: ["^/cdn-cgi/"], // host-injected URLs that are not pages
@@ -219,7 +229,7 @@ async function readSitemaps(src) {
     } else {
       for (const m of r.body.matchAll(/<url>([\s\S]*?)<\/url>/g)) {
         const loc = (m[1].match(/<loc>\s*([^<\s]+)\s*<\/loc>/) || [])[1];
-        if (loc) urls.push({ loc, lastmod: /<lastmod>/.test(m[1]) });
+        if (loc) urls.push({ loc, lastmod: (m[1].match(/<lastmod>\s*([^<\s]+)\s*<\/lastmod>/) || [])[1] || null });
       }
     }
   }
@@ -294,6 +304,11 @@ for (const p of model) {
   }
 }
 
+// Rules added with the site-content standard (Oct 2026): hidden headings, paragraph ceiling,
+// links to redirects, place-type link spread.
+Object.assign(BASE_SEV, { "P-para-max": "warn", "P-hidden-text": "block", "P-link-redirect": "warn", "S-inbound-spread": "warn" });
+const proseRule = (map, type, fallback) => (typeof map === "number" ? (type === "service" ? fallback : map) : map?.[type]);
+
 // ---------------------------------------------------------------- page checks
 
 const seenTitle = new Map(), seenDesc = new Map(), seenH1 = new Map();
@@ -304,10 +319,10 @@ for (const p of model) {
   const title = (html.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [])[1];
   const t = title ? decode(title).trim() : "";
   if (!t) add("P-title", P, "missing <title>");
-  else { if (t.length < 30 || t.length > 65) add("P-title-len", P, `title is ${t.length} chars (aim 30-65)`); note(seenTitle, t, P); }
+  else { if (t.length < cfg.titleLen[0] || t.length > cfg.titleLen[1]) add("P-title-len", P, `title is ${t.length} chars (aim ${cfg.titleLen.join("-")})`); note(seenTitle, t, P); }
   const desc = meta(html, "description");
   if (!desc || !desc.trim()) add("P-desc", P, "missing meta description");
-  else { const d = decode(desc).trim(); if (d.length < 70 || d.length > 160) add("P-desc-len", P, `description is ${d.length} chars (aim 70-160)`); note(seenDesc, d, P); }
+  else { const d = decode(desc).trim(); if (d.length < cfg.descLen[0] || d.length > cfg.descLen[1]) add("P-desc-len", P, `description is ${d.length} chars (aim ${cfg.descLen.join("-")})`); note(seenDesc, d, P); }
   const canon = (html.match(/<link\b[^>]*rel=["']canonical["'][^>]*>/i) || [""])[0].match(/href=["']([^"']+)/i)?.[1];
   if (!canon) add("P-canonical", P, "missing canonical link");
   else { try { const c = new URL(canon); if (siteUrl && c.origin !== siteUrl) add("P-canonical", P, `canonical host ${c.origin} differs from site ${siteUrl}`); else if (pageKey(c.pathname) !== P) { p.canonElsewhere = true; add("P-canonical-path", P, `canonical points to ${c.pathname} (this URL is a duplicate of it; avoid linking to it)`); } } catch { add("P-canonical", P, `canonical not absolute: ${canon}`); } }
@@ -322,6 +337,18 @@ for (const p of model) {
   if (h1.length !== 1) add("P-h1", P, `${h1.length} H1 elements (need exactly 1)`); else note(seenH1, h1[0].text.toLowerCase(), P);
   if (p.headings.filter((h) => h.level === 2).length < 2 && p.type !== "page") add("P-h2", P, "fewer than 2 H2 headings");
   for (let i = 1; i < p.headings.length; i++) if (p.headings[i].level > p.headings[i - 1].level + 1) { add("P-heading-order", P, `H${p.headings[i - 1].level} followed by H${p.headings[i].level} ("${p.headings[i].text.slice(0, 40)}")`); break; }
+
+  // hidden text: a heading kept in the page but clipped or hidden is spam, not SEO. Delete it instead.
+  for (const m of html.matchAll(/<h([1-6])\b([^>]*)>([\s\S]*?)<\/h\1>/gi)) {
+    const a = attrs(m[2]);
+    if (/\b(sr-only|visually-hidden|screen-reader-text|kwhide)\b/i.test(a.class || "") || /display\s*:\s*none|visibility\s*:\s*hidden/i.test(a.style || ""))
+      add("P-hidden-text", P, `hidden H${m[1]}: "${textOf(m[3]).slice(0, 50)}"`);
+  }
+  // in-page anchors must exist (e.g. a "Get a quote" button to #quote)
+  for (const a of p.anchors) {
+    const id = /^#([^\s#]+)$/.exec(a.href || "")?.[1];
+    if (id && !new RegExp(`\\b(id|name)=["']${id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["']`, "i").test(html)) add("P-link-broken", P, `link to #${id} ("${a.label.slice(0, 30)}") but no element has that id`);
+  }
 
   // landmarks and schema
   const mains = (html.match(/<main\b/gi) || []).length;
@@ -345,7 +372,9 @@ for (const p of model) {
   const mainText = textOf(mainHtml);
   const nW = words(mainText);
   const prose = [...mainHtml.matchAll(/<(p|li)\b[^>]*>([\s\S]*?)<\/\1>/gi)].flatMap((m) => [...m[2].matchAll(/<a\b([^>]*)>/gi)]).filter((m) => { const h = attrs(m[1]).href; if (!h || /^(mailto|tel|#)/i.test(h)) return false; try { return isInternal(new URL(h, (siteUrl || "https://x.invalid") + (p.base ?? P))); } catch { return !/^https?:/i.test(h); } }).length;
-  if (cfg.contentTypes.includes(p.type) && prose < cfg.minProseLinks) add("P-prose-links", P, `${prose} in-prose internal links (aim ${cfg.minProseLinks}+)`);
+  const minProse = proseRule(cfg.minProseLinks, p.type, 0), maxProse = proseRule(cfg.maxProseLinks, p.type, undefined);
+  if (minProse && prose < minProse) add("P-prose-links", P, `${prose} in-prose internal links (aim ${minProse}+)`);
+  if (maxProse != null && prose > maxProse) add("P-prose-links", P, `${prose} in-prose internal links on a ${p.type} page (aim 0-${maxProse}: service pages collect links, they do not hand them out)`);
   if (cfg.contentTypes.includes(p.type) && !(p.external || []).some((e) => mainHtml.includes(e.href))) add("P-ext-link", P, "no outbound link to an external source in the main content");
 
   // copy
@@ -353,6 +382,8 @@ for (const p of model) {
   if (minW && nW < minW) add("P-words", P, `${nW} words in <main> (aim ${minW}+)`);
   const paras = [...mainHtml.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/gi)].map((m) => words(textOf(m[1]))).filter((n) => n > 0);
   if (paras.length >= 5) { const avg = paras.reduce((a, b) => a + b, 0) / paras.length; if (avg > cfg.maxAvgParagraphWords) add("P-para-length", P, `average paragraph is ${avg.toFixed(0)} words (aim <= ${cfg.maxAvgParagraphWords})`); }
+  const longest = Math.max(0, ...paras);
+  if (cfg.maxParagraphWords && longest > cfg.maxParagraphWords) add("P-para-max", P, `a paragraph runs ${longest} words (aim <= ${cfg.maxParagraphWords})`);
   const lists = (mainHtml.match(/<(ul|ol)\b/gi) || []).length;
   if (cfg.contentTypes.includes(p.type) && lists < cfg.minLists) add("P-lists", P, `${lists} lists in <main> (aim ${cfg.minLists}+)`);
 }
@@ -361,9 +392,19 @@ for (const [k, v] of seenDesc) if (v.length > 1) add("P-desc-dupe", v.join(", ")
 for (const [k, v] of seenH1) if (v.length > 1) add("P-h1-dupe", v.join(", "), `duplicate H1 "${k.slice(0, 50)}"`);
 
 // broken internal pages and missing images (async)
+// Links to a redirect source cost a hop and dilute the link; point them at the final URL.
+const redirectSources = new Set();
+if (!MODE_LIVE) {
+  const rd = await src.get("/_redirects");
+  if (rd.status === 200) for (const line of (rd.body || "").split(/\r?\n/)) {
+    const from = line.trim().split(/\s+/)[0];
+    if (from && from.startsWith("/") && !/[*:]/.test(from)) redirectSources.add(pageKey(from));
+  }
+}
 const seenBroken = new Set();
 for (const b of brokenQueue) {
   const id = b.page + b.key; if (seenBroken.has(id)) continue; seenBroken.add(id);
+  if (redirectSources.has(b.key)) { add("P-link-redirect", b.page, `link to ${b.key} ("${b.label.slice(0, 30)}") is a redirect; link the final URL`); continue; }
   if (MODE_LIVE) { if (await src.exists(b.key)) continue; } else if (await src.exists(b.key)) continue;
   add("P-link-broken", b.page, `link to ${b.key} ("${b.label.slice(0, 30)}") has no page`);
 }
@@ -395,6 +436,8 @@ else {
   for (const [k] of smPaths) if (!idxPaths.has(k) && !model.some((p) => p.path === k)) add("S-sitemap-coverage", k, "sitemap lists a URL that is not a built page");
   for (const [k] of smPaths) if (byPath.get(k)?.noindex) add("S-sitemap-noindex", k, "noindex page is listed in the sitemap");
   if (sm.urls.length && !sm.urls.every((u) => u.lastmod)) add("S-sitemap-lastmod", "(site)", `${sm.urls.filter((u) => !u.lastmod).length}/${sm.urls.length} sitemap URLs have no <lastmod>`);
+  const dates = new Set(sm.urls.filter((u) => u.lastmod).map((u) => u.lastmod.slice(0, 10)));
+  if (sm.urls.length >= 5 && sm.urls.every((u) => u.lastmod) && dates.size === 1) add("S-sitemap-lastmod", "(site)", `all ${sm.urls.length} sitemap URLs share one <lastmod> (${[...dates][0]}); use each page's real modified date, not the build date`);
 }
 
 const rb = sm.robots;
@@ -419,6 +462,15 @@ if (MODE_LIVE) {
   if (probe.status === 200) add("S-soft404", "(site)", "a non-existent URL returns 200 (soft 404); add a 404 page and serve it with status 404");
 } else if (!has404) add("S-404", "(site)", "no 404 page (404.html) in the build");
 
+// place pages: inbound spread. A fixed slice of towns linked from every page starves the rest.
+for (const t of cfg.placeTypes) {
+  const ps = indexable.filter((p) => p.type === t);
+  if (ps.length < 10) continue;
+  const c = ps.map((p) => [p.path, inbound.get(p.path).size]).sort((a, b) => a[1] - b[1]);
+  const med = c[Math.floor(c.length / 2)][1], top = c[c.length - 1];
+  if (top[1] > cfg.inboundSpread * Math.max(med, 1)) add("S-inbound-spread", "(site)", `${t} pages: ${top[0]} has ${top[1]} linking pages vs a median of ${med} (lowest ${c[0][0]}: ${c[0][1]}); link nearest or in-hub siblings, never a fixed slice`);
+}
+
 // orphans and hub ratio
 for (const p of indexable) if (p.path !== "/" && inbound.get(p.path).size === 0) add("S-orphans", p.path, "no internal links point to this page");
 if (indexable.length >= 10 && home) {
@@ -432,7 +484,7 @@ if (indexable.length >= 10 && home) {
 for (const p of model.filter((x) => x.type === "service")) {
   const body = (p.main != null ? p.main : p.html);
   const inMain = (a) => p.main == null || body.includes(a.href);
-  const loc = p.internal.filter((a) => typeOf(a.key) === "location" && inMain(a));
+  const loc = p.internal.filter((a) => cfg.placeTypes.includes(typeOf(a.key)) && inMain(a));
   const post = p.internal.filter((a) => typeOf(a.key) === "post" && inMain(a));
   if (loc.length) add("S-dir-service-location", p.path, `links to ${loc.length} location page(s) in content (e.g. ${loc[0].key}); render place names as plain text`);
   if (post.length) add("S-dir-service-post", p.path, `links to ${post.length} blog post(s) in content (e.g. ${post[0].key}); blog should link in to services, not the reverse`);
@@ -458,8 +510,8 @@ if (homeM) {
   if (same.length >= 3) add("S-footer-variance", "/", `${same.length} footer links repeat the nav label exactly (${[...new Set(same)].slice(0, 3).join(", ")}); vary footer anchors`);
   const generic = hdr.filter((a) => cfg.genericNavLabels.includes(a.label.toLowerCase()) && !/^(home|contact|about)$/i.test(a.label));
   if (generic.length) add("S-generic-nav", "/", `generic nav labels: ${[...new Set(generic.map((a) => a.label))].join(", ")}; use the target query phrase`);
-  const cta = hdr.find((a) => /(^|\/)contact\/?$/i.test(a.href) && /quote|call|book|get|free/i.test(a.label));
-  if (cta) add("S-cta-contact", "/", `header CTA "${cta.label}" links to /contact; use an on-page anchor or tel: link`);
+  const cta = hdr.find((a) => /(^|\/)(contact|quote)\/?$/i.test(a.href) && /quote|call|book|get|free/i.test(a.label));
+  if (cta) add("S-cta-contact", "/", `header CTA "${cta.label}" links to ${cta.href}; use the on-page form (#quote) or a tel: link`);
 }
 
 // Security header vs what the pages actually load. A strict header that blocks the site's
