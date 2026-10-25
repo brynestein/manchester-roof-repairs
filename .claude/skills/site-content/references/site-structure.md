@@ -36,7 +36,7 @@ Where the clicks come from (Munster, all devices, 1 Aug - 22 Oct 2026, unfiltere
 | Intent hedge | Editorial twin of a top town page ("roofers {town}: how to choose") | `/blog/roofers-<town>/` | top 5 places | search shows editorial results for the place query |
 | Landing page | Paid or head-term landing with one-tap recovery | `/<trade-phrase>-<county>/` | 0-1 | ads run, or the county term needs a page named for the search |
 | Entity page | One standard, material, body or council explained | `/entity/<slug>/` | 9-16 | the four gates: Wikidata entry, mentioned on 3+ site pages, authoritative external source, real search demand |
-| Proof | Reviews (named for "{brand} reviews"), case studies, gallery, videos, insurance, price guide | `/<name>/` | 4-9 | the record exists; a proof page without records is not built. "{brand} reviews" is a top-three query on Munster [measured] |
+| Proof | Reviews (named for "{brand} reviews"), case studies, gallery, videos, insurance, price guide | `/<name>/` | 4-9 | the record exists; a proof page without records is not built. "{brand} reviews" is Munster's fourth-largest query over 16 months and second in Aug-Oct 2026 [measured] |
 | Company, legal, utility | About, contact, privacy, terms, cookies, accessibility, 404, thank-you | `/<name>/` | 6-10 | always |
 
 ## Rules that shape the whole site
@@ -49,7 +49,7 @@ Where the clicks come from (Munster, all devices, 1 Aug - 22 Oct 2026, unfiltere
 6. **Every page that exists is in the nav, the footer, the sitemap and llms.txt** as appropriate. RR's two newest services had 6 and 9 inbound links because they were in none of them.
 7. **Nothing links to a page that does not exist.** A town in a chip list without a page renders as text. 121 Munster pages link a `#quote` anchor that is not on the page.
 8. **Growth is demand-gated.** Start at the floor (home, 6+ services, 1 hub, 10+ towns with place briefs, 4+ proof pages, legal) and add a town or topic only with a place brief or demand evidence. No weekly cadence [D-N].
-9. **The off-site stack decides whether any of this ranks.** In the agency's audit-tool calibration, the audit tool's Local category score correlates +0.24 with visibility and its Content category score −0.22 (regression across 48 domains, Workstream C calibration, July 2026) [measured]. Google Business Profile, citations and reviews are not this skill's job but are the gate before DNS flips (see `client-site-build-patterns.md`, Local presence gate).
+9. **The off-site stack decides whether any of this ranks.** In the agency's audit-tool calibration, the audit tool's Local category score has a regression coefficient of +0.24 against visibility and its Content proxy score −0.22 (48 domains from Recommended Roofing's rank tracker, including directories and large sites; Workstream C, July 2026) [measured]. Google Business Profile, citations and reviews are not this skill's job but are the gate before DNS flips (see `client-site-build-patterns.md`, Local presence gate).
 
 ## Chrome (identical on every page)
 

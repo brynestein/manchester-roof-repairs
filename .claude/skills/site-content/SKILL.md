@@ -21,6 +21,7 @@ Do not carry the checkable rules in your head. Write the page, run the checks, f
 | Doing | Read |
 |---|---|
 | Planning a site, deciding which pages exist and how they fit | [references/site-structure.md](references/site-structure.md) |
+| Writing the site's URL map (every page, its type, stage, title, H1, sections, links) | [references/url-map.md](references/url-map.md); layouts in `assets/layouts/` |
 | Building any page: the blocks it carries, in order | [references/page-templates.md](references/page-templates.md) |
 | Choosing what a page targets, its URL, or whether it should exist | [references/search-intent.md](references/search-intent.md) |
 | Title, H1, headings, opening, paragraphs, tables, length | [references/headings-and-structure.md](references/headings-and-structure.md) |
@@ -39,7 +40,7 @@ Do not carry the checkable rules in your head. Write the page, run the checks, f
 
 ## The process for a site
 
-1. **Plan the structure** (site-structure): services with measured demand, the hub per city, the towns with place briefs, the head-term hub, proof pages that have records. Record it in the site's plan with the counts.
+1. **Plan the structure** (site-structure): services with measured demand, the hub per city, the towns with place briefs, the head-term hub, proof pages that have records. Record it in the site's plan as a URL map (url-map) with the counts.
 2. **Lock a search intent per page** (search-intent) and the hub for each head term.
 3. **Approve the ontology** for the trade before it drives content (ontology).
 4. **Build the chrome once**: nav, footer, credentials strip, CTA with form, consent, `<main>`.
@@ -83,11 +84,11 @@ Each rule carries one of these tags. When a rule conflicts with what a site's ow
 - **[house]** A house default from a competitor teardown, a built site, or a decision. Strong default, not a law; deviate with a reason in the PR.
 - **[practice]** Widely recommended SEO or AI-search practice we have not tested. Several come from a vendor checklist (the "Cited Page Swipe File") whose figures we cannot verify.
 
-The evidence behind the tags (site crawls, Search Console, code reads, decisions) is in `audit-content/docs/research/2026-10-site-content/`.
+The evidence behind the tags (site crawls, Search Console, code reads, decisions) is in `audit-content/docs/research/2026-10-site-content/`. The readable Word versions, the Content Standard and the Site Analysis (findings SA-1 to SA-32), are in `audit-content/docs/standards/`, built from this skill.
 
 ## Measuring whether it worked
 
-A page is judged at 28 days and again at 90 on Search Console clicks from unfiltered page data (all devices), on click rate and position on mobile in the site's country, and on enquiries where they can be traced. "Never shown" is a ranking problem; "shown and passed over" is a wording problem; they get different fixes. Recommended Roofing published 21 articles in four weeks in autumn 2026 and by 20 September 16 of 18 judged were never shown; its articles have since begun to earn (2 to 54 clicks in a quarter) [measured]. Munster's demand-led articles produced about half its year-on-year gain [measured]. In the agency's audit-tool calibration across 48 domains, the Local category score correlates positively with visibility and the Content category score slightly negatively [measured]. Write fewer pages against measured demand, and check the off-site stack first when a site is not ranking.
+A page is judged at 28 days and again at 90 on Search Console clicks from unfiltered page data (all devices), on click rate and position on mobile in the site's country, and on enquiries where they can be traced. "Never shown" is a ranking problem; "shown and passed over" is a wording problem; they get different fixes. Recommended Roofing published 21 articles in four weeks in autumn 2026 and by 20 September 16 of 18 judged were never shown; its articles have since begun to earn (2 to 54 clicks in a quarter) [measured]. Munster's demand-led articles produced about half its year-on-year gain [measured]. In the agency's audit-tool calibration across 48 ranking domains, the Local category score predicts visibility and the Content proxy score slightly negatively [measured]. Write fewer pages against measured demand, and check the off-site stack first when a site is not ranking.
 
 ## Out of scope
 

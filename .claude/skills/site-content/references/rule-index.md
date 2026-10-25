@@ -61,7 +61,7 @@ Block means fix before merge. Warn means fix or explain in the PR. Where a tool 
 | Price table on cost, repair, replacement and service pages | present, 3+ rows, dated, VAT stated | Gate (articles); Manual | - |
 | Comparison table on articles | 1+ | Gate `tables: 1` | warn |
 | Brands and materials in one table per page | 1 table, each brand one home page | Manual | - |
-| Symptom decision table on landing pages and hubs | present | Manual | - |
+| Symptom decision table on landing pages (optional on hubs) | present | Manual | - |
 
 ## Entities and information gain
 
