@@ -52,10 +52,16 @@
 ## Content and SEO Rules
 Follow `.claude/skills/site-content/SKILL.md` when writing or editing any page. The rules that can be checked mechanically (one H1, unique title/description, canonical, `<main>`, JSON-LD, images exist, sitemap, robots, llms.txt, 404, linking direction) are enforced by `scripts/check-site.mjs` in CI. Do not disable a check to get green; fix the page or explain the warning in the PR.
 
+Every claim about the business (years trading, jobs completed, Google rating, insurance, accreditations, guarantee, emergency cover, reply time) lives in `src/data/facts.json` and renders through `src/lib/facts.ts`. A null value hides the claim on every page, in the FAQ and in the schema. Fill values only from records the client has confirmed; never type a claim into a page. `reviews.json` and `gallery.json` hold real reviews and jobs only; while either is empty its page is noindex, out of the sitemap and out of the menu.
+
 ## Status / TODO
 - [x] Domain connection fixed (manchestergutters.co.uk serves the site)
 - [ ] Submit `sitemap.xml` in Google Search Console (the sitemap exists; it had not been submitted as of 2026-10-23)
 - [ ] Replace placeholder images with real project photos (then remove the `P-img-missing` override in `site-checks.config.json`)
 - [ ] Update phone number, email, and WhatsApp with real details (also `public/llms.txt`)
+- [ ] Wire the quote forms to a real destination (GHL webhook in `tracking.json` or email). The contact form posts to `#` and the home form sends details to `/contact/` in the URL, so no enquiry is delivered today
+- [ ] Fill `src/data/facts.json`, `reviews.json` and `gallery.json` from the client brief
+- [ ] Load the contact-page Google Map only after consent (it can set Google cookies before the visitor chooses)
+- [ ] Privacy policy: confirm the legal entity, address and retention period with the client
 - [ ] Evaluate CMS options (TinaCMS, Decap CMS, Payload, Storyblok) for content management
 - [ ] Add real Google Reviews / AggregateRating schema (LocalBusiness-family JSON-LD already emits on every page)

@@ -7,6 +7,8 @@ import seoData from '../data/seo.json';
 import business from '../data/business.json';
 import faqs from '../data/faqs.json';
 import areas from '../data/areas.json';
+import reviews from '../data/reviews.json';
+import { facts, faqs, stats, trustItems, aggregateRating, guaranteeLabel, yearsTrading } from '../lib/facts';
 
 const { title, description } = seoData.index;
 
@@ -17,9 +19,9 @@ const localBusinessSchema = {
   "url": "https://manchestergutters.co.uk",
   "logo": "https://manchestergutters.co.uk/favicon.svg",
   "image": "https://manchestergutters.co.uk/images/hero-bg.jpg",
-  "description": "Professional roof repairs and guttering in Manchester. Fully insured, local roofers with 10-year guarantees. Emergency call-outs, new roofs, flat roofs & more.",
-  "telephone": "{business.phone}",
-  "email": "info@manchestergutters.co.uk",
+  "description": "Gutter and roof repairs, replacements and cleaning across Manchester and Greater Manchester.",
+  "telephone": business.phone,
+  "email": business.email,
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Manchester",
@@ -51,13 +53,7 @@ const localBusinessSchema = {
       "closes": "18:00"
     }
   ],
-  "priceRange": "$$",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "reviewCount": "200",
-    "bestRating": "5"
-  },
+  ...(aggregateRating ? { aggregateRating } : {}),
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Roofing Services",
@@ -93,14 +89,18 @@ const webSiteSchema = {
       <div class="hero-content">
         <h1>Stop Your Roof Leaking — Fixed Right, First Time</h1>
         <ul class="hero-checks">
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--yellow)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Fully Insured &amp; Certified Roofers
-          </li>
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--yellow)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            10-Year Written Guarantee on All Work
-          </li>
+          {facts.insurance.publicLiability && (
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--yellow)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Fully insured ({facts.insurance.publicLiability} public liability)
+            </li>
+          )}
+          {guaranteeLabel && (
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--yellow)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              {guaranteeLabel} on all work
+            </li>
+          )}
           <li>
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--yellow)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
             Free No-Obligation Quotes
@@ -110,24 +110,20 @@ const webSiteSchema = {
           <a href={`tel:${business.phoneRaw}`} class="btn btn-primary">Call Us Now</a>
           <a href="/services/" class="btn btn-outline">Our Services</a>
         </div>
-        <div class="hero-stats">
-          <div class="stat">
-            <span class="stat-number">10+</span>
-            <span class="stat-label">Years Experience</span>
+        {stats.length > 0 && (
+          <div class="hero-stats">
+            {stats.map((stat) => (
+              <div class="stat">
+                <span class="stat-number">{stat.value}</span>
+                <span class="stat-label">{stat.label}</span>
+              </div>
+            ))}
           </div>
-          <div class="stat">
-            <span class="stat-number">2,500+</span>
-            <span class="stat-label">Roofs Completed</span>
-          </div>
-          <div class="stat">
-            <span class="stat-number">4.8</span>
-            <span class="stat-label">Google Rating</span>
-          </div>
-        </div>
+        )}
       </div>
       <div class="hero-form-card">
         <h3>Get Your Free Quote</h3>
-        <p>No obligation — we'll get back to you within 2 hours</p>
+        <p>No obligation{facts.quoteReply ? ` — we'll get back to you ${facts.quoteReply}` : ''}</p>
         <form action="/contact/" method="GET">
           <input type="text" name="name" placeholder="Your Name" required />
           <input type="email" name="email" placeholder="Email Address" required />
@@ -144,55 +140,32 @@ const webSiteSchema = {
           <textarea name="message" placeholder="Describe your roofing issue..." rows="3"></textarea>
           <button type="submit" class="btn btn-primary" style="width: 100%; text-align: center;">Request Free Quote</button>
         </form>
-        <p class="form-trust">All work backed by our 10-year guarantee</p>
+        {guaranteeLabel && <p class="form-trust">All work backed by our {guaranteeLabel}</p>}
       </div>
     </div>
     <div class="hero-red-line"></div>
   </section>
 
   <!-- Trust Bar -->
-  <section class="trust-bar">
-    <div class="container">
-      <div class="trust-grid">
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          </div>
-          <div>
-            <strong>Fully Insured</strong>
-            <span>£5M Public Liability</span>
-          </div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </div>
-          <div>
-            <strong>TrustMark Registered</strong>
-            <span>Government-Endorsed</span>
-          </div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
-          </div>
-          <div>
-            <strong>Checkatrade Approved</strong>
-            <span>Vetted &amp; Reviewed</span>
-          </div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
-          </div>
-          <div>
-            <strong>10-Year Guarantee</strong>
-            <span>Written Warranty</span>
-          </div>
+  {trustItems.length > 0 && (
+    <section class="trust-bar">
+      <div class="container">
+        <div class="trust-grid">
+          {trustItems.map((item) => (
+            <div class="trust-item">
+              <div class="trust-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              </div>
+              <div>
+                <strong>{item.title}</strong>
+                <span>{item.detail}</span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  )}
 
   <!-- Why Choose Us -->
   <section class="section why-us" id="about">
@@ -203,10 +176,12 @@ const webSiteSchema = {
             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
             <span>Professional Roofing</span>
           </div>
-          <div class="experience-badge">
-            <span class="badge-number">10+</span>
-            <span class="badge-text">Years of<br/>Experience</span>
-          </div>
+          {yearsTrading && (
+            <div class="experience-badge">
+              <span class="badge-number">{yearsTrading}</span>
+              <span class="badge-text">Years<br/>Trading</span>
+            </div>
+          )}
         </div>
         <div class="why-us-content">
           <h2>Why Manchester Trusts Us With Their Roofs</h2>
@@ -232,24 +207,28 @@ const webSiteSchema = {
                 <p>Detailed written quotes before any work starts. No hidden costs, no surprises.</p>
               </div>
             </div>
+            {facts.emergency.available && (
             <div class="outcome">
               <div class="outcome-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
               </div>
               <div>
                 <h4>Rapid Response</h4>
-                <p>Emergency call-outs within 60 minutes. We're always ready when Manchester weather strikes.</p>
+                <p>Emergency call-outs {facts.emergency.available}{facts.emergency.response ? `, aiming to reach you ${facts.emergency.response}` : ''}.</p>
               </div>
             </div>
+            )}
+            {guaranteeLabel && (
             <div class="outcome">
               <div class="outcome-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
               </div>
               <div>
                 <h4>Guaranteed Quality</h4>
-                <p>Every job backed by our 10-year written guarantee for complete peace of mind.</p>
+                <p>Every job backed by a {guaranteeLabel}.</p>
               </div>
             </div>
+            )}
           </div>
         </div>
       </div>
@@ -278,7 +257,7 @@ const webSiteSchema = {
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
           </div>
           <h3>New Roof Installation</h3>
-          <p>Complete new roof installations using premium materials with a 10-year workmanship guarantee.</p>
+          <p>Complete new roof installations for houses and commercial buildings across Manchester.</p>
           <a href="/services/" class="service-link">Learn More &rarr;</a>
         </div>
         <div class="service-card">
@@ -294,7 +273,7 @@ const webSiteSchema = {
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
           </div>
           <h3>Emergency Roofing</h3>
-          <p>24/7 emergency roof repairs. We respond within 60 minutes to protect your property.</p>
+          <p>Urgent repairs for storm damage and sudden leaks, to make your property watertight.</p>
           <a href="/services/" class="service-link">Learn More &rarr;</a>
         </div>
       </div>
@@ -330,61 +309,51 @@ const webSiteSchema = {
         </div>
         <div class="process-step">
           <div class="process-number">4</div>
-          <h3>10-Year Guarantee</h3>
-          <p>Receive your written guarantee and enjoy total peace of mind knowing your roof is fully protected.</p>
+          {guaranteeLabel ? (
+            <>
+              <h3>{facts.guarantee.years}-Year Guarantee</h3>
+              <p>Receive your {guaranteeLabel} when the job is finished.</p>
+            </>
+          ) : (
+            <>
+              <h3>Job Complete</h3>
+              <p>The work is finished, checked and tidied away, and your gutters and roof are watertight.</p>
+            </>
+          )}
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Reviews Preview -->
-  <section class="section" style="background: var(--light-gray);">
-    <div class="container">
-      <div class="section-header">
-        <h2>What Our Customers Say</h2>
-        <div class="red-line"></div>
-        <p>Don't just take our word for it — read reviews from real Manchester homeowners</p>
-      </div>
-      <div class="reviews-grid">
-        <div class="review-card">
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">"Fantastic service from start to finish. They fixed our leaking roof quickly and the price was very fair. Highly recommend to anyone in Manchester."</p>
-          <div class="review-author">
-            <div class="review-avatar">JB</div>
-            <div>
-              <strong>James B.</strong>
-              <span>Didsbury, Manchester</span>
-            </div>
-          </div>
+  <!-- Reviews Preview: real reviews only, from reviews.json -->
+  {reviews.length > 0 && (
+    <section class="section" style="background: var(--light-gray);">
+      <div class="container">
+        <div class="section-header">
+          <h2>What Our Customers Say</h2>
+          <div class="red-line"></div>
         </div>
-        <div class="review-card">
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">"Called them for an emergency leak during a storm. They arrived within the hour and had it sorted the same day. Brilliant team — can't fault them."</p>
-          <div class="review-author">
-            <div class="review-avatar">SK</div>
-            <div>
-              <strong>Sarah K.</strong>
-              <span>Chorlton, Manchester</span>
+        <div class="reviews-grid">
+          {reviews.slice(0, 3).map((review: { initials: string; name: string; location: string; text: string }) => (
+            <div class="review-card">
+              <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="review-text">"{review.text}"</p>
+              <div class="review-author">
+                <div class="review-avatar">{review.initials}</div>
+                <div>
+                  <strong>{review.name}</strong>
+                  <span>{review.location}</span>
+                </div>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
-        <div class="review-card">
-          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="review-text">"Had a complete new roof fitted. The quality of workmanship is excellent and they left the site spotless. Very professional outfit."</p>
-          <div class="review-author">
-            <div class="review-avatar">MP</div>
-            <div>
-              <strong>Mark P.</strong>
-              <span>Sale, Manchester</span>
-            </div>
-          </div>
+        <div style="text-align: center; margin-top: 40px;">
+          <a href="/reviews/" class="btn btn-red">Read All Reviews</a>
         </div>
       </div>
-      <div style="text-align: center; margin-top: 40px;">
-        <a href="/reviews/" class="btn btn-red">Read All Reviews</a>
-      </div>
-    </div>
-  </section>
+    </section>
+  )}
 
   <!-- Service Areas -->
   <section class="section">

@@ -8,20 +8,16 @@ import seoData from '../data/seo.json';
 const { title, description } = seoData.reviews;
 
 import reviews from '../data/reviews.json';
+import { facts, aggregateRating } from '../lib/facts';
+import { orgSchema } from '../lib/org';
 
 const reviewsSchema = {
   "@context": "https://schema.org",
   "@type": "RoofingContractor",
   "name": "Manchester Gutters",
   "url": "https://manchestergutters.co.uk",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "reviewCount": "200",
-    "bestRating": "5",
-    "worstRating": "1"
-  },
-  "review": reviews.map(r => ({
+  ...(aggregateRating ? { aggregateRating } : {}),
+  "review": reviews.map((r: { name: string; text: string }) => ({
     "@type": "Review",
     "author": { "@type": "Person", "name": r.name },
     "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
@@ -30,7 +26,7 @@ const reviewsSchema = {
 };
 ---
 
-<Layout title={title} description={description} schema={reviewsSchema}>
+<Layout title={title} description={description} schema={reviews.length ? reviewsSchema : orgSchema} noindex={reviews.length === 0}>
   <Header />
 
   <main>
@@ -38,18 +34,22 @@ const reviewsSchema = {
   <section class="page-hero">
     <div class="container">
       <h1>Customer Reviews</h1>
-      <p>Don't just take our word for it — hear from real Manchester homeowners</p>
-      <div class="hero-rating">
-        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-        <span class="rating-text">4.8 out of 5 based on 200+ Google Reviews</span>
-      </div>
+      {facts.google.rating && facts.google.reviewCount && (
+        <div class="hero-rating">
+          <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="rating-text">{facts.google.rating} out of 5 from {facts.google.reviewCount} Google reviews</span>
+        </div>
+      )}
     </div>
   </section>
 
   <section class="section">
     <div class="container">
+      {reviews.length === 0 && (
+        <p class="reviews-empty">Reviews from Manchester Gutters customers will be published here, with a link to the Google Business Profile.</p>
+      )}
       <div class="reviews-grid">
-        {reviews.map(review => (
+        {reviews.map((review: { initials: string; name: string; location: string; text: string }) => (
           <div class="review-card">
             <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <p class="review-text">"{review.text}"</p>
@@ -57,7 +57,7 @@ const reviewsSchema = {
               <div class="review-avatar">{review.initials}</div>
               <div>
                 <strong>{review.name}</strong>
-                <span>{review.location}, Manchester</span>
+                <span>{review.location}</span>
               </div>
             </div>
             <div class="review-source">via Google Reviews</div>
@@ -69,8 +69,8 @@ const reviewsSchema = {
 
   <section class="cta-banner">
     <div class="container" style="text-align: center;">
-      <h2 style="color: var(--white); font-size: 2rem; text-transform: uppercase; margin-bottom: 10px;">Join Our Happy Customers</h2>
-      <p style="color: rgba(255,255,255,0.8); margin-bottom: 25px;">Get a free quote and experience the quality service Manchester trusts</p>
+      <h2 style="color: var(--white); font-size: 2rem; text-transform: uppercase; margin-bottom: 10px;">Get a Free Quote</h2>
+      <p style="color: rgba(255,255,255,0.8); margin-bottom: 25px;">Get a free, no-obligation quote</p>
       <a href="/contact/" class="btn btn-primary">Get Your Free Quote</a>
     </div>
   </section>

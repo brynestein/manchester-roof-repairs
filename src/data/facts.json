@@ -1,0 +1,23 @@
+{
+  "_howToUse": "Every claim the site makes about the business comes from this file. A value left null (or an empty list) hides the claim everywhere: hero, trust bar, stats, FAQ, schema. Fill a value only from a record the client has confirmed (insurance certificate, membership number, Google profile, job records). Never type a claim into a page template.",
+  "yearFounded": null,
+  "jobsCompleted": null,
+  "google": {
+    "rating": null,
+    "reviewCount": null,
+    "profileUrl": null
+  },
+  "insurance": {
+    "publicLiability": null
+  },
+  "guarantee": {
+    "years": null,
+    "covers": null
+  },
+  "accreditations": [],
+  "emergency": {
+    "available": null,
+    "response": null
+  },
+  "quoteReply": null
+}

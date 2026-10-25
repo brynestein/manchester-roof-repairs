@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FloatingCTA from '../components/FloatingCTA.astro';
 import seoData from '../data/seo.json';
+import { orgSchema } from '../lib/org';
 
 const { title, description } = seoData.gallery;
 
@@ -24,7 +25,7 @@ const gallerySchema = {
 };
 ---
 
-<Layout title={title} description={description} schema={gallerySchema}>
+<Layout title={title} description={description} schema={projects.length ? gallerySchema : orgSchema} noindex={projects.length === 0}>
   <Header />
 
   <main>
@@ -32,12 +33,15 @@ const gallerySchema = {
   <section class="page-hero">
     <div class="container">
       <h1>Our Work</h1>
-      <p>Browse our completed roofing projects across Greater Manchester</p>
+      <p>Completed gutter and roofing jobs across Greater Manchester</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
+      {projects.length === 0 && (
+        <p class="gallery-empty">Photos of recent Manchester Gutters jobs will be published here.</p>
+      )}
       <!-- Filter Buttons -->
       <div class="filter-bar">
         {categories.map(cat => (
