@@ -57,10 +57,15 @@ Open Claude Code in the project folder and describe what you want changed. Claud
 | Sitemap at `/sitemap.xml` (single file; `astro.config.mjs` renames the integration's output) | `astro.config.mjs`; old `/sitemap-index.xml` redirects via `public/_redirects` |
 | `llms.txt` for AI crawlers | `public/llms.txt` (update when services or areas change; no phone or email until real) |
 | Sitemap `lastmod` | `astro.config.mjs`: last git commit date per page; omitted in shallow clones |
+| Security header (CSP) | `public/_headers`; checker rules `S-csp-inline` and `S-csp-host` block a header that would stop the site's own scripts |
+| Cookie banner, consent and tag loading | `public/js/consent-tracking.js`, IDs in `src/data/tracking.json`, "Cookie settings" link in the footer |
 
 The checker fails on `block` findings and only prints `warn` findings. `P-img-missing` is set to `warn` in `site-checks.config.json` while the site uses placeholder images; remove that line once real photos are in.
 
 ## Outstanding Tasks
+- [ ] GTM: set the Microsoft Clarity tag to require `analytics_storage` consent and publish; then `consent.mode` in `tracking.json` can move from `basic` to `advanced` (until then Clarity would start before the visitor answers the banner)
+- [ ] Privacy and cookie policy page, linked from the banner and footer
+- [ ] Banner wording reviewed once Meta Pixel and Google Ads tags are added (ad consent is denied by default today)
 - [x] Domain connection: manchestergutters.co.uk serves the site (verified 2026-10-24)
 - [ ] Submit `https://manchestergutters.co.uk/sitemap.xml` in Google Search Console (nothing was submitted as of 2026-10-23)
 - [ ] Replace placeholder images with real photos, then remove the `P-img-missing` override from `site-checks.config.json`

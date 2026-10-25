@@ -22,5 +22,8 @@
     "apiKey": "",
     "locationId": "",
     "webhookUrl": ""
+  },
+  "consent": {
+    "mode": "basic"
   }
 }

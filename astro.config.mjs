@@ -52,4 +52,6 @@ export default defineConfig({
     }),
     flatSitemap, // must come after sitemap(): it rewrites that integration's output
   ],
+  // Emit every script as a file: the security header (public/_headers) blocks inline scripts.
+  vite: { build: { assetsInlineLimit: 0 } },
 });
