@@ -6,14 +6,21 @@ Worked example: `assets/topic-research/` (Manchester Gutters, 96 topic searches 
 
 ## The steps
 
-1. **Collect candidate topics in the customer's words.** Sources, strongest first:
-   - **The site's own Search Console.** After launch, look for searches with impressions at positions 8-30 that have no page named for them. Use unfiltered data. A page export leaves out about two thirds of clicks as anonymised searches, so use the API for per-page searches.
-   - **A sister site's Search Console** for the same trade: questions that already earn clicks there. Rewrite them in the new country's English (Munster's "how much to replace gutters ireland" becomes "how much to replace gutters").
+1. **Collect candidate topics in the customer's words.** No single source is enough, so every run uses all of these that exist. Every search is a real search; nothing is staged without a Keyword Planner volume.
+   - **Keyword Planner's "Discover new keywords"**, location set to the country, with seeds for each service **and** each common problem or job (for gutters: guttering, gutter repair, gutter replacement, fascias and soffits, downpipe, leaking gutter, blocked downpipe, gutter brackets, rogue roofer). Service-only seeds return short phrases and miss the questions.
+   - **Google autocomplete**, from the skill's `scripts/topic_autocomplete.py config.json suggestions.json`. It crosses question openings ("how much", "how far apart", "why is my") and endings ("cost", "leaking", "regulations") with the trade's nouns, and returns the question wordings people type. Free, no key; the endpoint is unofficial, so the script caches and paces its requests.
+   - **A trade seed list**: the jobs and problems the trade knows about and the questions the client gets on calls and in emails, one search per line. Allowed as a source because the volume run decides; a seed with no volume is never staged.
    - **Google's "People also ask"** for the main service searches.
-   - **Keyword Planner's "Discover new keywords"** from three to five seeds.
-   - **The questions customers ask** on calls and in emails.
+   - **Search Console**: the site's own once it is live (searches with impressions at positions 8-30 and no page named for them; unfiltered data, or the API for per-page searches), and a sister site's in the same trade where there is one, rewritten for the country ("how much to replace gutters ireland" becomes "how much to replace gutters").
 
-   Leave out services the client offers but does not want to grow, as in location research.
+   Leave out services the client offers but does not want to grow, as in location research. Then run the skill's `scripts/topic_candidates.py config.json candidates.xlsx --planner discover.csv --suggest suggestions.json --seeds seeds.csv [--gsc Queries.csv ...] [--volumes earlier-runs.csv ...]`, which:
+   - keeps searches that name the trade and carry a question, cost, problem, comparison or rules word. Bare service searches such as "gutter repair" belong to the money pages;
+   - drops shops, "near me", jobs, other countries, other meanings of the trade's words ("fascia" in the body, "downpipe" on a car; set in the config's exclusions), and the typed AI prompts that reach Search Console;
+   - strips a sister site's place names;
+   - collapses Planner's close variants, which share one volume and one monthly pattern, into one cluster;
+   - writes a CSV of the searches with no volume yet, for one Planner upload. Keyword Planner rejects a search over 10 words or with stray punctuation, so the script strips punctuation and leaves those out.
+
+   **Tested on Manchester Gutters without the sister sites' Search Console** (25 October 2026): Discover from service seeds alone found 57% of the article plan's search volume and missed 3 of its 14 articles. Discover plus autocomplete found all 14 and 72% of the volume; adding the trade seed list, 86%. The first Manchester list, written from memory and staged without checking, traced to real searches for only 18 of 96.
 2. **Group them.** Each group has a job:
 
    | Group | Example | What it is for |
@@ -26,12 +33,12 @@ Worked example: `assets/topic-research/` (Manchester Gutters, 96 topic searches 
    | Trust and hiring | "roofing scams", "questions to ask a roofer" | People vetting traders. Real facts only, and the consumer body and law of the country (UK: Trading Standards, TrustMark, the 14-day cancellation right on contracts signed at home). Never name a real firm as a scammer |
    | Rules, responsibility, lifespan | "who is responsible for guttering" | Owners, landlords and neighbours; answers they cannot easily find elsewhere |
 
-   Write the topics, the money pages and any sister-site evidence into a topics file in the shape of the example, then run the skill's `scripts/topic_keywords.py topics.json keywords.csv`.
+   Choose one cluster per article: merge clusters that ask the same question in different words, and drop the ones that are a product search ("ogee guttering", "guttering sealant") or a navigational one ("trustmark"). Write the chosen topics, the money pages and the sister-site evidence into a topics file in the shape of the example. **The title comes from the cluster:** its highest-volume wording, kept as a question when the searches are questions ("How Much Does Gutter Replacement Cost?"); the H1 is 30-45 characters with no colon, dash or year, and the title tag 60 or fewer (headings-and-structure). The other wordings in the cluster become the article's H2s and FAQ questions. `scripts/topic_keywords.py topics.json keywords.csv` writes an upload for any that still lack a volume.
 3. **Get volumes from Keyword Planner** (Get search volume and forecasts), with the location set to the country only, as in location research.
 4. **Stage** with the skill's `scripts/topic_rank.py topics.json topics.xlsx export.csv`:
    - **Launch:** 100 or more searches a month, or proven on a sister site with measurable volume.
    - **Wave 2:** 30 or more, or proven on a sister site.
-   - **Hold:** below that.
+   - **Hold:** below that. A Hold topic is not dropped: it becomes a headed section of its group's main article (the cost article answers "how long do gutters last" and "do you need building regulations").
    - **Duplicates:** topics with the same volume and the same monthly pattern are probably one search to Google, and the sheet flags them. Write one article for both.
 5. **Run the overlap test before writing.** This is the cannibalisation gate. Compare the top-10 results for the article's search with those for the money page the sheet names (search-intent).
    - **60% or more of the same hostnames:** Google treats them as one search. The topic becomes a section of that page, not an article. A "gutter repairs guide" aimed at "gutter repairs" would fight `/gutter-repairs/`.
@@ -57,3 +64,7 @@ Question-shaped titles, a 40-60-word answer first, tables and named sources are 
 | Common gutter installation mistakes | 7 | How-to |
 
 Cost, how-to and trust articles all earn, and cost articles earn in a place as well as nationally [measured].
+
+## What Manchester Gutters showed (Keyword Planner UK, October 2026)
+
+613 real searches (Search Console of the two sister sites, and Discover new keywords from five seeds) formed 478 topics and 14 articles: `assets/topic-research/manchester-gutters-articles.json`. The largest are gutter replacement cost (3,640 a month across its searches), leaking gutter joint (2,100), fascia and soffit replacement cost (1,850), why gutters leak (1,520) and how to replace guttering (1,140). None of the cost searches with "manchester" in them has measurable volume, so the cost articles are national pillars with the client's own Manchester prices. The biggest raw numbers were not article demand: "guttering sealant" (3,600) and "ogee guttering" (2,900) are product searches, "trustmark" (5,400) is navigational.

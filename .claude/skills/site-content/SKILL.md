@@ -21,8 +21,8 @@ Do not carry the checkable rules in your head. Write the page, run the checks, f
 | Doing | Read |
 |---|---|
 | Planning a site, deciding which pages exist and how they fit | [references/site-structure.md](references/site-structure.md) |
-| Choosing which hubs and towns get pages (complete place list, Keyword Planner volumes, stages) | [references/location-research.md](references/location-research.md); scripts in `scripts/` |
-| Choosing which articles get written (topic sources, groups, Keyword Planner volumes, the overlap test against money pages) | [references/topic-research.md](references/topic-research.md); scripts in `scripts/` |
+| Choosing which hubs and towns get pages (places from ONS wards and Wikidata, Keyword Planner volumes, stages) | [references/location-research.md](references/location-research.md); scripts in `scripts/` |
+| Choosing which articles get written (topics from Keyword Planner, Google autocomplete, a trade seed list and Search Console; groups, volumes, titles, the overlap test against money pages) | [references/topic-research.md](references/topic-research.md); scripts in `scripts/` |
 | Writing the site's URL map (every page, its type, stage, title, H1, sections, links) | [references/url-map.md](references/url-map.md); layouts in `assets/layouts/` |
 | Building any page: the blocks it carries, in order | [references/page-templates.md](references/page-templates.md) |
 | Choosing what a page targets, its URL, or whether it should exist | [references/search-intent.md](references/search-intent.md) |
