@@ -16,40 +16,7 @@
   "how do you spell fascia / soffit / gutter": "spelling look-ups",
   "gutter joint / guttering joints / connectors / seals / joiners": "product searches (parts)"
  },
- "overlap_tests_pending": [
-  [
-   "gutter replacement cost",
-   "gutter replacement manchester"
-  ],
-  [
-   "fascia and soffit replacement cost",
-   "fascias and soffits manchester"
-  ],
-  [
-   "gutter fascia and soffit replacement cost",
-   "fascia and soffit replacement cost"
-  ],
-  [
-   "gutter fascia and soffit replacement cost",
-   "gutter replacement cost"
-  ],
-  [
-   "gutter repair cost",
-   "gutter repairs manchester"
-  ],
-  [
-   "gutter leaking at joint",
-   "gutter leaking"
-  ],
-  [
-   "gutter leaking",
-   "gutter repairs manchester"
-  ],
-  [
-   "what are soffits and fascias",
-   "fascias and soffits manchester"
-  ]
- ],
+ "overlap_tests_pending": [],
  "articles": [
   {
    "slug": "gutter-replacement-cost",
@@ -239,7 +206,10 @@
    "money_page": "/gutter-replacement/",
    "volume": 4270,
    "stage": "Launch",
-   "sister_site": "Munster \"how much to replace gutters\" (234 impressions, position 5)"
+   "sister_site": "Munster \"how much to replace gutters\" (234 impressions, position 5)",
+   "overlap_passed": [
+    "20% vs \"gutter replacement manchester\" (/gutter-replacement/)"
+   ]
   },
   {
    "slug": "fascia-and-soffit-replacement-cost",
@@ -385,21 +355,7 @@
      "search": "how much do fascias cost",
      "volume": 30,
      "same_search_as_another": false
-    }
-   ],
-   "folded": [
-    "fascia capping vs replacement"
-   ],
-   "money_page": "/fascias-and-soffits/",
-   "volume": 2590,
-   "stage": "Launch",
-   "sister_site": "Munster fascia and soffit cost article: 57 clicks"
-  },
-  {
-   "slug": "roofline-replacement-cost",
-   "group": "Cost",
-   "h1": "Cost of New Gutters, Fascias and Soffits",
-   "searches": [
+    },
     {
      "search": "gutter fascia and soffit replacement cost",
      "volume": 320,
@@ -451,11 +407,18 @@
      "same_search_as_another": false
     }
    ],
-   "folded": [],
-   "money_page": "/fascias-and-soffits/ and /gutter-replacement/",
-   "volume": 960,
+   "folded": [
+    "fascia capping vs replacement",
+    "gutters, fascias and soffits replaced together (from roofline-replacement-cost, 90% overlap)"
+   ],
+   "money_page": "/fascias-and-soffits/",
+   "volume": 3550,
    "stage": "Launch",
-   "sister_site": ""
+   "sister_site": "Munster fascia and soffit cost article: 57 clicks",
+   "overlap_passed": [
+    "10% vs \"fascias and soffits manchester\" (/fascias-and-soffits/)",
+    "40% vs \"gutter replacement cost\" (/blog/gutter-replacement-cost/)"
+   ]
   },
   {
    "slug": "gutter-repair-cost",
@@ -512,7 +475,10 @@
    "money_page": "/gutter-repairs/",
    "volume": 640,
    "stage": "Launch",
-   "sister_site": "Munster \"Average cost of gutter repairs\": 33 clicks"
+   "sister_site": "Munster \"Average cost of gutter repairs\": 33 clicks",
+   "overlap_passed": [
+    "0% vs \"gutter repairs manchester\" (/gutter-repairs/)"
+   ]
   },
   {
    "slug": "concrete-finlock-gutters",
@@ -651,7 +617,10 @@
    "money_page": "/fascias-and-soffits/",
    "sister_site": "",
    "volume": 4120,
-   "stage": "Launch"
+   "stage": "Launch",
+   "overlap_passed": [
+    "0% vs \"fascias and soffits manchester\" (/fascias-and-soffits/)"
+   ]
   },
   {
    "slug": "leaking-gutter-joint",
@@ -743,7 +712,10 @@
    "money_page": "/gutter-repairs/",
    "volume": 2410,
    "stage": "Launch",
-   "sister_site": ""
+   "sister_site": "",
+   "overlap_passed": [
+    "30% vs \"gutter leaking\" (/blog/why-is-my-gutter-leaking/)"
+   ]
   },
   {
    "slug": "why-is-my-gutter-leaking",
@@ -820,7 +792,10 @@
    "money_page": "/gutter-repairs/",
    "volume": 1600,
    "stage": "Launch",
-   "sister_site": ""
+   "sister_site": "",
+   "overlap_passed": [
+    "0% vs \"gutter repairs manchester\" (/gutter-repairs/)"
+   ]
   },
   {
    "slug": "blocked-downpipe",
@@ -1320,5 +1295,117 @@
    "stage": "Launch",
    "sister_site": "Munster \"Irish roofer scams\": 72 clicks"
   }
- ]
+ ],
+ "overlap_tests": {
+  "run": "2026-10-25",
+  "source": "DataForSEO Google organic, United Kingdom, desktop; top-10 organic hostnames",
+  "raw": "manchester-gutters-serps-raw.json",
+  "table": "manchester-gutters-overlap.md",
+  "results": [
+   {
+    "searches": [
+     "gutter replacement cost",
+     "gutter replacement manchester"
+    ],
+    "shared_hostnames": [
+     "checkatrade.com",
+     "mybuilder.com"
+    ],
+    "overlap_pct": 20,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "fascia and soffit replacement cost",
+     "fascias and soffits manchester"
+    ],
+    "shared_hostnames": [
+     "checkatrade.com"
+    ],
+    "overlap_pct": 10,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "gutter fascia and soffit replacement cost",
+     "fascia and soffit replacement cost"
+    ],
+    "shared_hostnames": [
+     "checkatrade.com",
+     "community.screwfix.com",
+     "doubleglazingontheweb.co.uk",
+     "fasciadivision.co.uk",
+     "fixmyroof.co.uk",
+     "fmb.org.uk",
+     "mybuilder.com",
+     "nationalplastics.co.uk",
+     "reddit.com"
+    ],
+    "overlap_pct": 90,
+    "verdict": "same search",
+    "action": "One search: roofline-replacement-cost merged into fascia-and-soffit-replacement-cost (its searches added there; whole-roofline costs become a section)"
+   },
+   {
+    "searches": [
+     "gutter fascia and soffit replacement cost",
+     "gutter replacement cost"
+    ],
+    "shared_hostnames": [
+     "checkatrade.com",
+     "mybuilder.com",
+     "myjobquote.co.uk",
+     "reddit.com"
+    ],
+    "overlap_pct": 40,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "gutter repair cost",
+     "gutter repairs manchester"
+    ],
+    "shared_hostnames": [],
+    "overlap_pct": 0,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "gutter leaking at joint",
+     "gutter leaking"
+    ],
+    "shared_hostnames": [
+     "community.screwfix.com",
+     "reddit.com",
+     "youtube.com"
+    ],
+    "overlap_pct": 30,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "gutter leaking",
+     "gutter repairs manchester"
+    ],
+    "shared_hostnames": [],
+    "overlap_pct": 0,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "what are soffits and fascias",
+     "fascias and soffits manchester"
+    ],
+    "shared_hostnames": [],
+    "overlap_pct": 0,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   }
+  ]
+ }
 }
