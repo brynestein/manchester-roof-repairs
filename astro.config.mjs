@@ -39,11 +39,19 @@ const flatSitemap = {
   },
 };
 
+// Reviews and Gallery are noindex while they hold no real records, so they stay out of the sitemap too.
+const readJson = (file) => JSON.parse(fs.readFileSync(new URL(file, import.meta.url), 'utf8'));
+const emptyPages = [
+  ['/reviews/', './src/data/reviews.json'],
+  ['/gallery/', './src/data/gallery.json'],
+].filter(([, file]) => readJson(file).length === 0).map(([page]) => page);
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://manchestergutters.co.uk',
   integrations: [
     sitemap({
+      filter: (page) => !emptyPages.includes(new URL(page).pathname),
       serialize(item) {
         const lastmod = lastCommitDate(sourceFor(new URL(item.url).pathname));
         if (lastmod) item.lastmod = lastmod;
@@ -52,4 +60,6 @@ export default defineConfig({
     }),
     flatSitemap, // must come after sitemap(): it rewrites that integration's output
   ],
+  // Emit every script as a file: the security header (public/_headers) blocks inline scripts.
+  vite: { build: { assetsInlineLimit: 0 } },
 });

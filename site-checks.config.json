@@ -1,5 +1,5 @@
 {
   "siteUrl": "https://manchestergutters.co.uk",
-  "citySlug": "manchester",
+  "allowHiddenHeadings": true,
   "severity": { "P-img-missing": "warn" }
 }

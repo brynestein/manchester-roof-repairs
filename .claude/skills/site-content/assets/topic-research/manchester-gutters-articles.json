@@ -1,0 +1,1597 @@
+{
+ "site": "Manchester Gutters",
+ "researched": "2026-10-25",
+ "country": "United Kingdom",
+ "sources": "Keyword Planner UK (Discover new keywords from 5 seeds, plus two volume runs) and Search Console queries of Munster Gutters and Recommended Roofing; see topic-research.md; plus Google autocomplete (topic_autocomplete.py) with a further Planner volume run",
+ "volume_note": "Monthly UK searches summed over the cluster, counting once any searches Planner reports with the same volume and monthly pattern (one search to Google)",
+ "left_out": {
+  "guttering sealant": "product search",
+  "gutter joints / gutter joiners / replacement gutter seals": "product searches (parts)",
+  "gutter price / guttering prices": "probably material prices at merchants; run the overlap test before treating as article demand",
+  "trustmark": "navigational",
+  "rogue traders": "mostly the BBC programme",
+  "ogee guttering": "product search",
+  "gutter cleaning": "low-ticket; not a priority",
+  "what is fascia in the body / anatomy / training": "other meanings of the word",
+  "how do you spell fascia / soffit / gutter": "spelling look-ups",
+  "gutter joint / guttering joints / connectors / seals / joiners": "product searches (parts)"
+ },
+ "overlap_tests_pending": [],
+ "articles": [
+  {
+   "slug": "gutter-replacement-cost",
+   "group": "Cost",
+   "h1": "How Much Does Gutter Replacement Cost?",
+   "searches": [
+    {
+     "search": "gutter replacement cost",
+     "volume": 1300,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much to replace guttering",
+     "volume": 390,
+     "same_search_as_another": false
+    },
+    {
+     "search": "new gutters price",
+     "volume": 320,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much do gutters cost",
+     "volume": 170,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much are gutters",
+     "volume": 170,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much does it cost to replace a gutter",
+     "volume": 170,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much are new gutters",
+     "volume": 140,
+     "same_search_as_another": false
+    },
+    {
+     "search": "new guttering cost",
+     "volume": 140,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much to replace gutters on house",
+     "volume": 90,
+     "same_search_as_another": false
+    },
+    {
+     "search": "average cost of gutter replacement",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "guttering installation cost",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "guttering price per metre",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much is guttering per metre",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "cost of guttering per metre",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "seamless gutters price",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "aluminium guttering cost",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "cast iron guttering cost",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter replacement cost calculator",
+     "volume": 170,
+     "same_search_as_another": false
+    },
+    {
+     "search": "downpipe replacement cost",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "downpipe cost",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "cost to replace gutters and downpipes",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "cost to replace guttering",
+     "volume": 1300,
+     "same_search_as_another": true
+    },
+    {
+     "search": "how much for gutter installation",
+     "volume": 390,
+     "same_search_as_another": true
+    },
+    {
+     "search": "how much for guttering",
+     "volume": 170,
+     "same_search_as_another": true
+    },
+    {
+     "search": "cost to replace guttering uk",
+     "volume": 170,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much do new gutters cost",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much does gutters cost to install",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter pro prices",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "cost to replace guttering on 3 bed semi",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much for gutters on a house",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "price of gutters installed",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "cost to replace guttering on house",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "cost of replacing roof and gutters",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "cost of guttering replacement uk",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how long does guttering last",
+     "volume": 40,
+     "same_search_as_another": false
+    }
+   ],
+   "folded": [
+    "how long does guttering last",
+    "guttering building regulations"
+   ],
+   "money_page": "/gutter-replacement/",
+   "volume": 4270,
+   "stage": "Launch",
+   "sister_site": "Munster \"how much to replace gutters\" (234 impressions, position 5)",
+   "overlap_passed": [
+    "20% vs \"gutter replacement manchester\" (/gutter-replacement/)"
+   ]
+  },
+  {
+   "slug": "fascia-and-soffit-replacement-cost",
+   "group": "Cost",
+   "h1": "Fascia and Soffit Replacement Cost",
+   "searches": [
+    {
+     "search": "cost of fascia and soffit replacement",
+     "volume": 590,
+     "same_search_as_another": false
+    },
+    {
+     "search": "soffit and fascia prices",
+     "volume": 390,
+     "same_search_as_another": false
+    },
+    {
+     "search": "soffits and fascias cost",
+     "volume": 390,
+     "same_search_as_another": true
+    },
+    {
+     "search": "fascia replacement cost",
+     "volume": 210,
+     "same_search_as_another": false
+    },
+    {
+     "search": "fascia board replacement cost",
+     "volume": 210,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much for fascia and soffit replacement",
+     "volume": 170,
+     "same_search_as_another": false
+    },
+    {
+     "search": "cost of fascias",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "new soffit and fascia cost",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "cost for new fascias and soffits",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "cost of new fascias",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "upvc fascias and soffits prices",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "soffit board replacement cost",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "rotted fascia board repair cost",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "soffit replacement cost",
+     "volume": 140,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much to replace fascia and gutters",
+     "volume": 90,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much does soffit and fascia cost",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much for soffit and fascia",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much for fascias and soffits",
+     "volume": 70,
+     "same_search_as_another": true
+    },
+    {
+     "search": "how much for soffits fascias and guttering",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "fascia replacement cost uk",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much fascia board replacement",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much for new fascias soffits and guttering uk",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter soffit and fascia replacement cost",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "soffit replacement cost uk",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much is soffit replacement",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "fascia price",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much for fascia and guttering",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much do fascias cost",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter fascia and soffit replacement cost",
+     "volume": 320,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter and fascia replacement cost",
+     "volume": 320,
+     "same_search_as_another": false
+    },
+    {
+     "search": "fascias and guttering cost",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "new gutter and fascia cost",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "new gutters and fascia cost",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "cost of replacing soffits and guttering",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "average price for fascias soffits and guttering",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "cost of replacing fascia boards and guttering",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "cost of new fascias soffits and guttering",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much to replace fascia soffit and gutters",
+     "volume": 20,
+     "same_search_as_another": false
+    }
+   ],
+   "folded": [
+    "fascia capping vs replacement",
+    "gutters, fascias and soffits replaced together (from roofline-replacement-cost, 90% overlap)"
+   ],
+   "money_page": "/fascias-and-soffits/",
+   "volume": 3550,
+   "stage": "Launch",
+   "sister_site": "Munster fascia and soffit cost article: 57 clicks",
+   "overlap_passed": [
+    "10% vs \"fascias and soffits manchester\" (/fascias-and-soffits/)",
+    "40% vs \"gutter replacement cost\" (/blog/gutter-replacement-cost/)"
+   ]
+  },
+  {
+   "slug": "gutter-repair-cost",
+   "group": "Cost",
+   "h1": "How Much Do Gutter Repairs Cost?",
+   "searches": [
+    {
+     "search": "gutter repair cost",
+     "volume": 390,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter fixing costs",
+     "volume": 390,
+     "same_search_as_another": true
+    },
+    {
+     "search": "gutter leak repair cost",
+     "volume": 90,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much to repair gutters",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "leaking gutter repair cost",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much to repair a gutter joint",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much does it cost to repair guttering",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much does gutter repair cost",
+     "volume": 20,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much to fix gutter",
+     "volume": 50,
+     "same_search_as_another": true
+    }
+   ],
+   "folded": [],
+   "money_page": "/gutter-repairs/",
+   "volume": 640,
+   "stage": "Launch",
+   "sister_site": "Munster \"Average cost of gutter repairs\": 33 clicks",
+   "overlap_passed": [
+    "0% vs \"gutter repairs manchester\" (/gutter-repairs/)"
+   ]
+  },
+  {
+   "slug": "concrete-finlock-gutters",
+   "group": "Cost",
+   "h1": "Concrete Finlock Gutters, Repair or Replace",
+   "searches": [
+    {
+     "search": "concrete gutter replacement cost",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "finlock gutter removal cost",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "finlock gutter repair",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "concrete gutter repair",
+     "volume": 70,
+     "same_search_as_another": false
+    }
+   ],
+   "folded": [],
+   "money_page": "/gutter-replacement/",
+   "volume": 240,
+   "stage": "Launch",
+   "sister_site": "",
+   "overlap_passed": [
+    "20% vs \"gutter replacement manchester\" (/gutter-replacement/)",
+    "40% vs \"gutter replacement cost\" (/blog/gutter-replacement-cost/)"
+   ]
+  },
+  {
+   "slug": "what-are-fascias-and-soffits",
+   "group": "Problem and how-to",
+   "h1": "What Are Fascias and Soffits on a House?",
+   "searches": [
+    {
+     "search": "fascia vs soffit",
+     "volume": 320,
+     "same_search_as_another": false
+    },
+    {
+     "search": "fascia vs barge board",
+     "volume": 90,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what is soffit",
+     "volume": 260,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what is soffit board",
+     "volume": 260,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what are soffit vents",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what is soffit and fascia on a house",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what is soffit in construction",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what are soffits and fascias",
+     "volume": 1300,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what are fascias on a house",
+     "volume": 590,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what are soffits on a house",
+     "volume": 320,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what is fascia board",
+     "volume": 320,
+     "same_search_as_another": false
+    },
+    {
+     "search": "fascia boards sizes",
+     "volume": 260,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what are fascia boards on a house",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what is fascia construction",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what is fascia made of",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what are soffits and fascia on a house",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what are fascia boards and soffits",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what is the difference between soffits and fascias",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what is roofline",
+     "volume": 40,
+     "same_search_as_another": false
+    }
+   ],
+   "folded": [],
+   "money_page": "/fascias-and-soffits/",
+   "sister_site": "",
+   "volume": 4120,
+   "stage": "Launch",
+   "overlap_passed": [
+    "0% vs \"fascias and soffits manchester\" (/fascias-and-soffits/)"
+   ]
+  },
+  {
+   "slug": "leaking-gutter-joint",
+   "group": "Problem and how-to",
+   "h1": "How to Fix a Leaking Gutter Joint",
+   "searches": [
+    {
+     "search": "gutter leaking at joint",
+     "volume": 1000,
+     "same_search_as_another": false
+    },
+    {
+     "search": "sealing gutter joints",
+     "volume": 390,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to fix a leaking gutter joint",
+     "volume": 260,
+     "same_search_as_another": false
+    },
+    {
+     "search": "fix leaking gutter joint",
+     "volume": 170,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to seal gutter joints",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "fixing gutter joints",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "sealing a leaking gutter joint",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "leaking plastic gutter joints",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter rubber seal replacement",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "downpipe leaking at joints",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "leaking gutter joint repair cost",
+     "volume": 110,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter joint repair cost",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter joint rubber seal",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to fix a leaking gutter joint uk",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to repair leaking gutter seams",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to seal leaking gutter joints",
+     "volume": 70,
+     "same_search_as_another": false
+    }
+   ],
+   "folded": [],
+   "money_page": "/gutter-repairs/",
+   "volume": 2410,
+   "stage": "Launch",
+   "sister_site": "",
+   "overlap_passed": [
+    "30% vs \"gutter leaking\" (/blog/why-is-my-gutter-leaking/)"
+   ]
+  },
+  {
+   "slug": "why-is-my-gutter-leaking",
+   "group": "Problem and how-to",
+   "h1": "Why Is My Gutter Leaking and How to Fix It",
+   "searches": [
+    {
+     "search": "gutter leaking",
+     "volume": 480,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter leak repairs",
+     "volume": 480,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to fix a leaking gutter",
+     "volume": 210,
+     "same_search_as_another": false
+    },
+    {
+     "search": "sealing gutter leaks",
+     "volume": 140,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter leaking at seam",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter leaking water",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter leaking at corner",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter leaking into house",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "fix hole in gutter",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "sagging gutter",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to fix a leaky gutter",
+     "volume": 210,
+     "same_search_as_another": true
+    },
+    {
+     "search": "how to stop gutters from leaking",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what damage can a leaking gutter cause",
+     "volume": 30,
+     "same_search_as_another": false
+    }
+   ],
+   "folded": [],
+   "money_page": "/gutter-repairs/",
+   "volume": 1600,
+   "stage": "Launch",
+   "sister_site": "",
+   "overlap_passed": [
+    "0% vs \"gutter repairs manchester\" (/gutter-repairs/)"
+   ]
+  },
+  {
+   "slug": "blocked-downpipe",
+   "group": "Problem and how-to",
+   "h1": "Blocked or Leaking Downpipe? What to Do",
+   "searches": [
+    {
+     "search": "downpipe blocked",
+     "volume": 260,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to unblock a downpipe",
+     "volume": 110,
+     "same_search_as_another": false
+    },
+    {
+     "search": "downpipe leaking",
+     "volume": 90,
+     "same_search_as_another": false
+    },
+    {
+     "search": "downpipe replacement cost uk",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to clear a blocked downpipe",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to install downpipe",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to unblock gutter downpipe uk",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to clear blocked gutter downpipe",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "blocked downpipe from gutter",
+     "volume": 210,
+     "same_search_as_another": false
+    },
+    {
+     "search": "blocked downpipe drain",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "blocked downpipe soakaway",
+     "volume": 50,
+     "same_search_as_another": false
+    }
+   ],
+   "folded": [],
+   "money_page": "/downpipes/",
+   "volume": 990,
+   "stage": "Launch",
+   "sister_site": "",
+   "overlap_passed": [
+    "0% vs \"downpipe repairs manchester\" (/downpipes/)"
+   ]
+  },
+  {
+   "slug": "rotten-fascia-boards",
+   "group": "Problem and how-to",
+   "h1": "Rotten Fascia Boards, Repair or Replace?",
+   "searches": [
+    {
+     "search": "fixing soffits and fascias",
+     "volume": 170,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to fit fascia boards",
+     "volume": 140,
+     "same_search_as_another": false
+    },
+    {
+     "search": "rotten fascia boards",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to replace soffits",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to replace fascia and soffit",
+     "volume": 110,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to install fascia boards",
+     "volume": 90,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to replace fascia board",
+     "volume": 90,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to install soffits and fascia uk",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to fix fascia board",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to put up soffit",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to install soffits",
+     "volume": 50,
+     "same_search_as_another": true
+    },
+    {
+     "search": "how to fix soffit boards",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to install fascias",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to replace fascia board uk",
+     "volume": 30,
+     "same_search_as_another": false
+    }
+   ],
+   "folded": [
+    "signs fascia needs replacing"
+   ],
+   "money_page": "/fascias-and-soffits/",
+   "volume": 980,
+   "stage": "Launch",
+   "sister_site": "",
+   "overlap_passed": [
+    "10% vs \"fascias and soffits manchester\" (/fascias-and-soffits/)",
+    "10% vs \"fascia and soffit replacement cost\" (/blog/fascia-and-soffit-replacement-cost/)"
+   ]
+  },
+  {
+   "slug": "box-gutter-leaking",
+   "group": "Problem and how-to",
+   "h1": "Leaking Box Gutters and Conservatory Gutters",
+   "searches": [
+    {
+     "search": "conservatory box gutter leaking",
+     "volume": 140,
+     "same_search_as_another": false
+    },
+    {
+     "search": "fixing box gutters",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "box gutter leaking",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what are box gutters",
+     "volume": 90,
+     "same_search_as_another": false
+    },
+    {
+     "search": "box gutter sizes",
+     "volume": 50,
+     "same_search_as_another": false
+    }
+   ],
+   "folded": [],
+   "money_page": "/gutter-repairs/",
+   "volume": 380,
+   "stage": "Launch",
+   "sister_site": "",
+   "overlap_passed": [
+    "0% vs \"gutter repairs manchester\" (/gutter-repairs/)",
+    "10% vs \"gutter leaking\" (/blog/why-is-my-gutter-leaking/)"
+   ]
+  },
+  {
+   "slug": "gutters-overflowing",
+   "group": "Problem and how-to",
+   "h1": "Why Are My Gutters Overflowing?",
+   "searches": [
+    {
+     "search": "gutters overflowing",
+     "volume": 260,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter overflowing in heavy rain",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "why are my gutters overflowing",
+     "volume": 10,
+     "same_search_as_another": false
+    }
+   ],
+   "folded": [],
+   "money_page": "/gutter-repairs/",
+   "volume": 340,
+   "stage": "Launch",
+   "sister_site": "",
+   "overlap_passed": [
+    "0% vs \"gutter repairs manchester\" (/gutter-repairs/)",
+    "10% vs \"gutter leaking\" (/blog/why-is-my-gutter-leaking/)"
+   ]
+  },
+  {
+   "slug": "gutter-fall-and-bracket-spacing",
+   "group": "How-to",
+   "h1": "Gutter Brackets and Fall Explained",
+   "searches": [
+    {
+     "search": "fall for guttering",
+     "volume": 480,
+     "same_search_as_another": false
+    },
+    {
+     "search": "guttering fall per metre",
+     "volume": 140,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what fall should a gutter have",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how far apart should gutter brackets be",
+     "volume": 110,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how many gutter brackets per meter",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how much fall on guttering",
+     "volume": 90,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter fall calculator",
+     "volume": 90,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter brackets rise and fall",
+     "volume": 590,
+     "same_search_as_another": false
+    },
+    {
+     "search": "types of gutter brackets",
+     "volume": 170,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter fall ratio",
+     "volume": 110,
+     "same_search_as_another": false
+    },
+    {
+     "search": "different types of gutter brackets",
+     "volume": 110,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter fall uk",
+     "volume": 90,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how far apart gutter brackets",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "gutter fixing brackets",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to attach gutter brackets",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what is the fall on guttering",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what size screws for gutter brackets",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what screws for gutter brackets",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how many gutter clips per meter",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how far apart should gutter clips be",
+     "volume": 40,
+     "same_search_as_another": false
+    }
+   ],
+   "folded": [],
+   "money_page": "/gutter-replacement/",
+   "volume": 2480,
+   "stage": "Launch",
+   "sister_site": "",
+   "overlap_passed": [
+    "0% vs \"gutter replacement manchester\" (/gutter-replacement/)",
+    "0% vs \"how to replace guttering\" (/blog/how-to-replace-guttering/)"
+   ]
+  },
+  {
+   "slug": "how-to-replace-guttering",
+   "group": "How-to",
+   "h1": "How to Replace Guttering Step by Step",
+   "searches": [
+    {
+     "search": "how to replace guttering",
+     "volume": 480,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to attach gutters",
+     "volume": 480,
+     "same_search_as_another": true
+    },
+    {
+     "search": "how to fit guttering",
+     "volume": 210,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to fix guttering",
+     "volume": 170,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to cut guttering",
+     "volume": 170,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to join gutters",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to install gutters on a house",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to do guttering",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to install guttering and downpipes",
+     "volume": 70,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to gutter installation",
+     "volume": 480,
+     "same_search_as_another": true
+    },
+    {
+     "search": "how to repair gutters",
+     "volume": 170,
+     "same_search_as_another": true
+    },
+    {
+     "search": "how to fix guttering to a shed",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to do gutters",
+     "volume": 30,
+     "same_search_as_another": true
+    },
+    {
+     "search": "uk gutter sizes",
+     "volume": 50,
+     "same_search_as_another": false
+    }
+   ],
+   "folded": [
+    "tools for fitting guttering",
+    "gutter installation mistakes"
+   ],
+   "money_page": "/gutter-replacement/",
+   "volume": 1290,
+   "stage": "Launch",
+   "sister_site": "Munster step-by-step installation guide: 68 clicks",
+   "overlap_passed": [
+    "0% vs \"gutter replacement manchester\" (/gutter-replacement/)",
+    "0% vs \"gutter replacement cost\" (/blog/gutter-replacement-cost/)"
+   ]
+  },
+  {
+   "slug": "are-gutter-guards-worth-it",
+   "group": "Comparison",
+   "h1": "Gutter Guards, Are They Worth Fitting?",
+   "searches": [
+    {
+     "search": "best gutter guards",
+     "volume": 170,
+     "same_search_as_another": false
+    },
+    {
+     "search": "are gutter guards worth it",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "what gutter guard is best",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "cost of gutter guards",
+     "volume": 50,
+     "same_search_as_another": false
+    },
+    {
+     "search": "cost of gutter guards installed",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "diy gutter guards",
+     "volume": 30,
+     "same_search_as_another": false
+    }
+   ],
+   "folded": [],
+   "money_page": "/gutter-replacement/",
+   "sister_site": "",
+   "volume": 350,
+   "stage": "Launch",
+   "overlap_passed": [
+    "0% vs \"gutter replacement manchester\" (/gutter-replacement/)"
+   ]
+  },
+  {
+   "slug": "rogue-roofers",
+   "group": "Trust and hiring",
+   "h1": "How to Spot a Rogue Roofer and Hire Safely",
+   "searches": [
+    {
+     "search": "roofing scams",
+     "volume": 90,
+     "same_search_as_another": false
+    },
+    {
+     "search": "cowboy roofers",
+     "volume": 90,
+     "same_search_as_another": false
+    },
+    {
+     "search": "rogue roofers",
+     "volume": 40,
+     "same_search_as_another": false
+    },
+    {
+     "search": "roofing scams uk",
+     "volume": 30,
+     "same_search_as_another": false
+    },
+    {
+     "search": "how to choose a roofer",
+     "volume": 20,
+     "same_search_as_another": false
+    },
+    {
+     "search": "questions to ask a roofer",
+     "volume": 10,
+     "same_search_as_another": false
+    }
+   ],
+   "folded": [
+    "how to complain about a builder"
+   ],
+   "money_page": "",
+   "volume": 280,
+   "stage": "Launch",
+   "sister_site": "Munster \"Irish roofer scams\": 72 clicks"
+  }
+ ],
+ "overlap_tests": {
+  "run": "2026-10-25 (first 10 searches); 2026-10-26 (9 more)",
+  "source": "DataForSEO Google organic, United Kingdom, desktop; top-10 organic hostnames",
+  "raw": "manchester-gutters-serps-raw.json",
+  "table": "manchester-gutters-overlap.md",
+  "results": [
+   {
+    "searches": [
+     "gutter replacement cost",
+     "gutter replacement manchester"
+    ],
+    "shared_hostnames": [
+     "checkatrade.com",
+     "mybuilder.com"
+    ],
+    "overlap_pct": 20,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "fascia and soffit replacement cost",
+     "fascias and soffits manchester"
+    ],
+    "shared_hostnames": [
+     "checkatrade.com"
+    ],
+    "overlap_pct": 10,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "gutter fascia and soffit replacement cost",
+     "fascia and soffit replacement cost"
+    ],
+    "shared_hostnames": [
+     "checkatrade.com",
+     "community.screwfix.com",
+     "doubleglazingontheweb.co.uk",
+     "fasciadivision.co.uk",
+     "fixmyroof.co.uk",
+     "fmb.org.uk",
+     "mybuilder.com",
+     "nationalplastics.co.uk",
+     "reddit.com"
+    ],
+    "overlap_pct": 90,
+    "verdict": "same search",
+    "action": "One search: roofline-replacement-cost merged into fascia-and-soffit-replacement-cost (its searches added there; whole-roofline costs become a section)"
+   },
+   {
+    "searches": [
+     "gutter fascia and soffit replacement cost",
+     "gutter replacement cost"
+    ],
+    "shared_hostnames": [
+     "checkatrade.com",
+     "mybuilder.com",
+     "myjobquote.co.uk",
+     "reddit.com"
+    ],
+    "overlap_pct": 40,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "gutter repair cost",
+     "gutter repairs manchester"
+    ],
+    "shared_hostnames": [],
+    "overlap_pct": 0,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "gutter leaking at joint",
+     "gutter leaking"
+    ],
+    "shared_hostnames": [
+     "community.screwfix.com",
+     "reddit.com",
+     "youtube.com"
+    ],
+    "overlap_pct": 30,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "gutter leaking",
+     "gutter repairs manchester"
+    ],
+    "shared_hostnames": [],
+    "overlap_pct": 0,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "what are soffits and fascias",
+     "fascias and soffits manchester"
+    ],
+    "shared_hostnames": [],
+    "overlap_pct": 0,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "concrete gutter replacement cost",
+     "gutter replacement manchester"
+    ],
+    "shared_hostnames": [
+     "checkatrade.com",
+     "facebook.com"
+    ],
+    "overlap_pct": 20,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "concrete gutter replacement cost",
+     "gutter replacement cost"
+    ],
+    "shared_hostnames": [
+     "checkatrade.com",
+     "myjobquote.co.uk",
+     "puresealservices.co.uk",
+     "reddit.com"
+    ],
+    "overlap_pct": 40,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "downpipe blocked",
+     "downpipe repairs manchester"
+    ],
+    "shared_hostnames": [],
+    "overlap_pct": 0,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "fixing soffits and fascias",
+     "fascias and soffits manchester"
+    ],
+    "shared_hostnames": [
+     "checkatrade.com"
+    ],
+    "overlap_pct": 10,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "fixing soffits and fascias",
+     "fascia and soffit replacement cost"
+    ],
+    "shared_hostnames": [
+     "checkatrade.com"
+    ],
+    "overlap_pct": 10,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "conservatory box gutter leaking",
+     "gutter repairs manchester"
+    ],
+    "shared_hostnames": [],
+    "overlap_pct": 0,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "conservatory box gutter leaking",
+     "gutter leaking"
+    ],
+    "shared_hostnames": [
+     "reddit.com"
+    ],
+    "overlap_pct": 10,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "gutters overflowing",
+     "gutter repairs manchester"
+    ],
+    "shared_hostnames": [],
+    "overlap_pct": 0,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "gutters overflowing",
+     "gutter leaking"
+    ],
+    "shared_hostnames": [
+     "reddit.com"
+    ],
+    "overlap_pct": 10,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "gutter brackets rise and fall",
+     "gutter replacement manchester"
+    ],
+    "shared_hostnames": [],
+    "overlap_pct": 0,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "gutter brackets rise and fall",
+     "how to replace guttering"
+    ],
+    "shared_hostnames": [],
+    "overlap_pct": 0,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "how to replace guttering",
+     "gutter replacement manchester"
+    ],
+    "shared_hostnames": [],
+    "overlap_pct": 0,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "how to replace guttering",
+     "gutter replacement cost"
+    ],
+    "shared_hostnames": [],
+    "overlap_pct": 0,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "best gutter guards",
+     "gutter replacement manchester"
+    ],
+    "shared_hostnames": [],
+    "overlap_pct": 0,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   }
+  ]
+ }
+}

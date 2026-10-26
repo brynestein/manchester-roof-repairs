@@ -6,8 +6,8 @@
   },
   {
     "title": "New Roof Installation",
-    "description": "Complete new roof installations for residential and commercial properties. We use only the highest-quality materials and skilled tradespeople.",
-    "features": ["Pitched roof installation", "Natural slate roofing", "Concrete & clay tiles", "Timber roof structure", "Breathable membrane", "Full scaffolding included"]
+    "description": "Complete new roof installations for residential and commercial properties.",
+    "features": ["Pitched roof installation", "Natural slate roofing", "Concrete & clay tiles", "Timber roof structure", "Breathable membrane"]
   },
   {
     "title": "Flat Roofing",
@@ -26,7 +26,7 @@
   },
   {
     "title": "Emergency Roofing",
-    "description": "24/7 emergency roofing services across Manchester. Storm damage, sudden leaks, or structural concerns — we respond within 60 minutes.",
-    "features": ["60-minute response time", "Temporary weatherproofing", "Storm damage repair", "Emergency tarpaulin", "Insurance claim support", "Same-day permanent fix"]
+    "description": "Urgent roof repairs across Manchester for storm damage, sudden leaks and structural concerns.",
+    "features": ["Temporary weatherproofing", "Storm damage repair", "Emergency tarpaulin"]
   }
 ]

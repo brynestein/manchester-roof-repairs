@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FloatingCTA from '../components/FloatingCTA.astro';
 import seoData from '../data/seo.json';
+import { facts, stats, trustItems, guaranteeLabel } from '../lib/facts';
 
 const { title, description } = seoData.about;
 
@@ -16,10 +17,9 @@ const aboutSchema = {
     "@type": "RoofingContractor",
     "name": "Manchester Gutters",
     "url": "https://manchestergutters.co.uk",
-    "foundingDate": "2014",
-    "description": "Family-run roofing company serving Manchester and Greater Manchester with over 10 years experience.",
+    ...(facts.yearFounded ? { "foundingDate": String(facts.yearFounded) } : {}),
+    "description": "Gutter and roofing contractor serving Manchester and Greater Manchester.",
     "knowsAbout": ["Roof Repairs", "New Roof Installation", "Flat Roofing", "Chimney Repairs", "Guttering & Drainage", "Emergency Roofing"],
-    "numberOfEmployees": { "@type": "QuantitativeValue", "value": "10+" },
     "areaServed": { "@type": "City", "name": "Manchester" }
   }
 };
@@ -34,7 +34,7 @@ const aboutSchema = {
   <section class="page-hero">
     <div class="container">
       <h1>About Us</h1>
-      <p>Manchester's trusted roofing experts — built on quality, honesty, and hard work</p>
+      <p>Gutter and roofing work across Manchester and Greater Manchester</p>
     </div>
   </section>
 
@@ -43,18 +43,17 @@ const aboutSchema = {
     <div class="container">
       <div class="about-grid">
         <div class="about-image">
-          <img src="/images/team.webp" alt="Manchester Gutters team" class="about-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <img src="/images/team.webp" alt="Manchester Gutters team" class="about-photo" data-fallback />
           <div class="about-placeholder" style="display:none;">
             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
             <span>Our Team</span>
           </div>
         </div>
         <div class="about-content">
-          <h2>A Family-Run Roofing Company You Can Trust</h2>
+          <h2>Local Gutter and Roofing Work in Manchester</h2>
           <div class="red-line"></div>
-          <p>Manchester Gutters was founded over a decade ago with a simple mission: to provide honest, high-quality roofing services at fair prices. What started as a small family operation has grown into one of Manchester's most trusted roofing companies.</p>
-          <p>We've built our reputation on doing things properly — no shortcuts, no cowboy tactics, just solid workmanship that lasts. Every member of our team is fully trained, time-served, and shares our commitment to excellence.</p>
-          <p>As a local business, we understand the unique challenges Manchester weather throws at our roofs. From driving rain and high winds to freezing temperatures, we know exactly how to protect your property for the long term.</p>
+          <p>Manchester Gutters repairs, replaces and cleans gutters, downpipes, fascias and soffits, and carries out roof repairs, for homes and businesses across Greater Manchester.</p>
+          <p>Manchester gets a lot of rain, and blocked or failing gutters are one of the most common causes of damp walls and roof-edge damage. Manchester Gutters finds the cause of the problem before quoting, so you pay for the repair the job needs.</p>
         </div>
       </div>
     </div>
@@ -80,14 +79,14 @@ const aboutSchema = {
             <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
           </div>
           <h3>Quality</h3>
-          <p>We never cut corners. Premium materials, skilled tradespeople, and a 10-year guarantee on every job — that's our quality promise.</p>
+          <p>We never cut corners: the right materials for the job and work done properly{guaranteeLabel ? `, with a ${guaranteeLabel} on every job` : ''}.</p>
         </div>
         <div class="value-card">
           <div class="value-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
           </div>
           <h3>Community</h3>
-          <p>We're proud Mancunians. We live and work here, and we treat every home in our community as if it were our own.</p>
+          <p>We work across Greater Manchester and treat every home as if it were our own.</p>
         </div>
         <div class="value-card">
           <div class="value-icon">
@@ -100,58 +99,40 @@ const aboutSchema = {
     </div>
   </section>
 
-  <!-- Stats -->
-  <section class="section stats-section">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat-block">
-          <span class="stat-num">10+</span>
-          <span class="stat-lbl">Years Experience</span>
-        </div>
-        <div class="stat-block">
-          <span class="stat-num">2,500+</span>
-          <span class="stat-lbl">Roofs Completed</span>
-        </div>
-        <div class="stat-block">
-          <span class="stat-num">4.8</span>
-          <span class="stat-lbl">Google Rating</span>
-        </div>
-        <div class="stat-block">
-          <span class="stat-num">£5M</span>
-          <span class="stat-lbl">Public Liability Cover</span>
+  <!-- Stats and credentials: confirmed facts only (src/data/facts.json) -->
+  {stats.length > 0 && (
+    <section class="section stats-section">
+      <div class="container">
+        <div class="stats-grid">
+          {stats.map((stat) => (
+            <div class="stat-block">
+              <span class="stat-num">{stat.value}</span>
+              <span class="stat-lbl">{stat.label}</span>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  )}
 
-  <!-- Credentials -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Our Credentials</h2>
-        <div class="red-line"></div>
-        <p>Fully accredited and insured for your peace of mind</p>
-      </div>
-      <div class="credentials-grid">
-        <div class="credential">
-          <strong>TrustMark Registered</strong>
-          <p>Government-endorsed quality standards for tradespeople</p>
+  {trustItems.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our Credentials</h2>
+          <div class="red-line"></div>
         </div>
-        <div class="credential">
-          <strong>Checkatrade Approved</strong>
-          <p>Vetted, monitored, and reviewed by real customers</p>
-        </div>
-        <div class="credential">
-          <strong>£5M Public Liability</strong>
-          <p>Full insurance cover on every job for your protection</p>
-        </div>
-        <div class="credential">
-          <strong>10-Year Guarantee</strong>
-          <p>Written workmanship warranty on all completed work</p>
+        <div class="credentials-grid">
+          {trustItems.map((item) => (
+            <div class="credential">
+              <strong>{item.title}</strong>
+              <p>{item.detail}</p>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  )}
 
   <!-- CTA -->
   <section class="cta-banner">

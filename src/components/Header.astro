@@ -1,5 +1,7 @@
 ---
 import business from '../data/business.json';
+import reviews from '../data/reviews.json';
+import gallery from '../data/gallery.json';
 
 const currentPath = Astro.url.pathname;
 
@@ -7,8 +9,9 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/services/", label: "Services" },
   { href: "/about/", label: "About" },
-  { href: "/reviews/", label: "Reviews" },
-  { href: "/gallery/", label: "Gallery" },
+  // Reviews and Gallery stay out of the menu until they hold real records.
+  ...(reviews.length ? [{ href: "/reviews/", label: "Reviews" }] : []),
+  ...(gallery.length ? [{ href: "/gallery/", label: "Gallery" }] : []),
   { href: "/contact/", label: "Contact" },
 ];
 ---
