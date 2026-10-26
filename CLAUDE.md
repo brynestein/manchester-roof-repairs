@@ -3,6 +3,7 @@
 ## Project Overview
 - **Domain**: manchestergutters.co.uk
 - **GitHub Repo**: https://github.com/brynestein/manchester-roof-repairs
+- **Repo name is legacy**: this repo is the website for manchestergutters.co.uk. The name `manchester-roof-repairs` dates from the original "Roof Repairs Manchester" build, before the rebrand. It is referenced by Site Manager (`sites.ts`), Cloudflare Pages and command-center, so do not rename it on its own; if the site is ever rebuilt on the base theme, create a correctly named repo and move all three together.
 - **Hosting**: Cloudflare Pages (auto-deploys from GitHub on push)
 - **Pages.dev URL**: https://manchester-roof-repairs.pages.dev
 - **Framework**: Astro (static site, no React/Tailwind — pure Astro + scoped CSS)
@@ -56,7 +57,7 @@ Every claim about the business (years trading, jobs completed, Google rating, in
 
 ## Status / TODO
 - [x] Domain connection fixed (manchestergutters.co.uk serves the site)
-- [ ] Submit `sitemap.xml` in Google Search Console (the sitemap exists; it had not been submitted as of 2026-10-23)
+- [x] `sitemap.xml` submitted in Google Search Console (2026-10-24, status Success, 6 pages discovered)
 - [ ] Replace placeholder images with real project photos (then remove the `P-img-missing` override in `site-checks.config.json`)
 - [ ] Update phone number, email, and WhatsApp with real details (also `public/llms.txt`)
 - [ ] Wire the quote forms to a real destination (GHL webhook in `tracking.json` or email). The contact form posts to `#` and the home form sends details to `/contact/` in the URL, so no enquiry is delivered today

@@ -67,7 +67,7 @@ The checker fails on `block` findings and only prints `warn` findings. `P-img-mi
 - [ ] Privacy and cookie policy page, linked from the banner and footer
 - [ ] Banner wording reviewed once Meta Pixel and Google Ads tags are added (ad consent is denied by default today)
 - [x] Domain connection: manchestergutters.co.uk serves the site (verified 2026-10-24)
-- [ ] Submit `https://manchestergutters.co.uk/sitemap.xml` in Google Search Console (nothing was submitted as of 2026-10-23)
+- [x] `https://manchestergutters.co.uk/sitemap.xml` submitted in Google Search Console (2026-10-24, Success, 6 pages discovered)
 - [ ] Replace placeholder images with real photos, then remove the `P-img-missing` override from `site-checks.config.json`
 - [ ] Update contact details with real phone/email/WhatsApp (also fill `llms.txt` and `business.json`)
 - [ ] Choose and set up a CMS (TinaCMS, Decap CMS, etc.)
