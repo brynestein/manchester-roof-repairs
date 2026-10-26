@@ -510,7 +510,11 @@
    "money_page": "/gutter-replacement/",
    "volume": 240,
    "stage": "Launch",
-   "sister_site": ""
+   "sister_site": "",
+   "overlap_passed": [
+    "20% vs \"gutter replacement manchester\" (/gutter-replacement/)",
+    "40% vs \"gutter replacement cost\" (/blog/gutter-replacement-cost/)"
+   ]
   },
   {
    "slug": "what-are-fascias-and-soffits",
@@ -862,7 +866,10 @@
    "money_page": "/downpipes/",
    "volume": 990,
    "stage": "Launch",
-   "sister_site": ""
+   "sister_site": "",
+   "overlap_passed": [
+    "0% vs \"downpipe repairs manchester\" (/downpipes/)"
+   ]
   },
   {
    "slug": "rotten-fascia-boards",
@@ -946,7 +953,11 @@
    "money_page": "/fascias-and-soffits/",
    "volume": 980,
    "stage": "Launch",
-   "sister_site": ""
+   "sister_site": "",
+   "overlap_passed": [
+    "10% vs \"fascias and soffits manchester\" (/fascias-and-soffits/)",
+    "10% vs \"fascia and soffit replacement cost\" (/blog/fascia-and-soffit-replacement-cost/)"
+   ]
   },
   {
    "slug": "box-gutter-leaking",
@@ -983,7 +994,11 @@
    "money_page": "/gutter-repairs/",
    "volume": 380,
    "stage": "Launch",
-   "sister_site": ""
+   "sister_site": "",
+   "overlap_passed": [
+    "0% vs \"gutter repairs manchester\" (/gutter-repairs/)",
+    "10% vs \"gutter leaking\" (/blog/why-is-my-gutter-leaking/)"
+   ]
   },
   {
    "slug": "gutters-overflowing",
@@ -1010,7 +1025,11 @@
    "money_page": "/gutter-repairs/",
    "volume": 340,
    "stage": "Launch",
-   "sister_site": ""
+   "sister_site": "",
+   "overlap_passed": [
+    "0% vs \"gutter repairs manchester\" (/gutter-repairs/)",
+    "10% vs \"gutter leaking\" (/blog/why-is-my-gutter-leaking/)"
+   ]
   },
   {
    "slug": "gutter-fall-and-bracket-spacing",
@@ -1122,7 +1141,11 @@
    "money_page": "/gutter-replacement/",
    "volume": 2480,
    "stage": "Launch",
-   "sister_site": ""
+   "sister_site": "",
+   "overlap_passed": [
+    "0% vs \"gutter replacement manchester\" (/gutter-replacement/)",
+    "0% vs \"how to replace guttering\" (/blog/how-to-replace-guttering/)"
+   ]
   },
   {
    "slug": "how-to-replace-guttering",
@@ -1207,7 +1230,11 @@
    "money_page": "/gutter-replacement/",
    "volume": 1290,
    "stage": "Launch",
-   "sister_site": "Munster step-by-step installation guide: 68 clicks"
+   "sister_site": "Munster step-by-step installation guide: 68 clicks",
+   "overlap_passed": [
+    "0% vs \"gutter replacement manchester\" (/gutter-replacement/)",
+    "0% vs \"gutter replacement cost\" (/blog/gutter-replacement-cost/)"
+   ]
   },
   {
    "slug": "are-gutter-guards-worth-it",
@@ -1249,7 +1276,10 @@
    "money_page": "/gutter-replacement/",
    "sister_site": "",
    "volume": 350,
-   "stage": "Launch"
+   "stage": "Launch",
+   "overlap_passed": [
+    "0% vs \"gutter replacement manchester\" (/gutter-replacement/)"
+   ]
   },
   {
    "slug": "rogue-roofers",
@@ -1297,7 +1327,7 @@
   }
  ],
  "overlap_tests": {
-  "run": "2026-10-25",
+  "run": "2026-10-25 (first 10 searches); 2026-10-26 (9 more)",
   "source": "DataForSEO Google organic, United Kingdom, desktop; top-10 organic hostnames",
   "raw": "manchester-gutters-serps-raw.json",
   "table": "manchester-gutters-overlap.md",
@@ -1400,6 +1430,162 @@
     "searches": [
      "what are soffits and fascias",
      "fascias and soffits manchester"
+    ],
+    "shared_hostnames": [],
+    "overlap_pct": 0,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "concrete gutter replacement cost",
+     "gutter replacement manchester"
+    ],
+    "shared_hostnames": [
+     "checkatrade.com",
+     "facebook.com"
+    ],
+    "overlap_pct": 20,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "concrete gutter replacement cost",
+     "gutter replacement cost"
+    ],
+    "shared_hostnames": [
+     "checkatrade.com",
+     "myjobquote.co.uk",
+     "puresealservices.co.uk",
+     "reddit.com"
+    ],
+    "overlap_pct": 40,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "downpipe blocked",
+     "downpipe repairs manchester"
+    ],
+    "shared_hostnames": [],
+    "overlap_pct": 0,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "fixing soffits and fascias",
+     "fascias and soffits manchester"
+    ],
+    "shared_hostnames": [
+     "checkatrade.com"
+    ],
+    "overlap_pct": 10,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "fixing soffits and fascias",
+     "fascia and soffit replacement cost"
+    ],
+    "shared_hostnames": [
+     "checkatrade.com"
+    ],
+    "overlap_pct": 10,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "conservatory box gutter leaking",
+     "gutter repairs manchester"
+    ],
+    "shared_hostnames": [],
+    "overlap_pct": 0,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "conservatory box gutter leaking",
+     "gutter leaking"
+    ],
+    "shared_hostnames": [
+     "reddit.com"
+    ],
+    "overlap_pct": 10,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "gutters overflowing",
+     "gutter repairs manchester"
+    ],
+    "shared_hostnames": [],
+    "overlap_pct": 0,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "gutters overflowing",
+     "gutter leaking"
+    ],
+    "shared_hostnames": [
+     "reddit.com"
+    ],
+    "overlap_pct": 10,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "gutter brackets rise and fall",
+     "gutter replacement manchester"
+    ],
+    "shared_hostnames": [],
+    "overlap_pct": 0,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "gutter brackets rise and fall",
+     "how to replace guttering"
+    ],
+    "shared_hostnames": [],
+    "overlap_pct": 0,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "how to replace guttering",
+     "gutter replacement manchester"
+    ],
+    "shared_hostnames": [],
+    "overlap_pct": 0,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "how to replace guttering",
+     "gutter replacement cost"
+    ],
+    "shared_hostnames": [],
+    "overlap_pct": 0,
+    "verdict": "different searches",
+    "action": "Under 60%: the article stands as its own page"
+   },
+   {
+    "searches": [
+     "best gutter guards",
+     "gutter replacement manchester"
     ],
     "shared_hostnames": [],
     "overlap_pct": 0,
