@@ -24,6 +24,7 @@ Do not carry the checkable rules in your head. Write the page, run the checks, f
 | Choosing which hubs and towns get pages (places from ONS wards and Wikidata, Keyword Planner volumes, stages) | [references/location-research.md](references/location-research.md); scripts in `scripts/` |
 | Choosing which articles get written (topics from Keyword Planner, Google autocomplete, a trade seed list and Search Console; groups, volumes, titles, the overlap test against money pages) | [references/topic-research.md](references/topic-research.md); scripts in `scripts/` |
 | Writing the site's URL map (every page, its type, stage, title, H1, sections, links) | [references/url-map.md](references/url-map.md); layouts in `assets/layouts/` |
+| Building the site in Site Manager: brief, URL map import, landmarks, Search Console town check, plan | [references/site-manager-build.md](references/site-manager-build.md) |
 | Building any page: the blocks it carries, in order | [references/page-templates.md](references/page-templates.md) |
 | Choosing what a page targets, its URL, or whether it should exist | [references/search-intent.md](references/search-intent.md) |
 | Title, H1, headings, opening, paragraphs, tables, length | [references/headings-and-structure.md](references/headings-and-structure.md) |
@@ -47,7 +48,8 @@ Do not carry the checkable rules in your head. Write the page, run the checks, f
 3. **Approve the ontology** for the trade before it drives content (ontology).
 4. **Build the chrome once**: nav, footer, credentials strip, CTA with form, consent, `<main>`.
 5. **Build pages by type** from the templates, in this order: home, services, hubs, towns in batches as briefs are ready, proof pages, articles staged by topic research (topic-research).
-6. **Run all four layers** before and after launch (measurement). The off-site gate (Google Business Profile, citations, reviews) clears before DNS flips.
+6. **Or build steps 4 and 5 in Site Manager**, following site-manager-build: Claude asks for the client brief and the search data in turn, does the research and the URL map, and stops for approval of the Brief, the research, the URL list, the landmarks, the towns and the plan.
+7. **Run all four layers** before and after launch (measurement). The off-site gate (Google Business Profile, citations, reviews) clears before DNS flips.
 
 ## The process for a page
 

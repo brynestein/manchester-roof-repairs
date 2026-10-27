@@ -2,6 +2,8 @@
 
 Every site plan includes a URL map. It lists each page that will exist, why, and how it links, in the same columns as a Screaming Frog "Internal: HTML" export. That way the plan can be compared line by line with a crawl of the built site. Worked example: `assets/manchester-gutters-url-map.xlsx` (Manchester Gutters, proposed, October 2026; hubs and towns from `assets/location-research/`, services and proof pages to be confirmed by the client brief).
 
+
+Site Manager imports the Internal HTML sheet as the site's approved page list (site-manager-build, "Import URL map").
 ## Columns
 
 | Column | What goes in it |
