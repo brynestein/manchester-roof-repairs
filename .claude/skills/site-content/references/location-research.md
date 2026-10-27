@@ -29,7 +29,7 @@ Worked example: `assets/location-research/` (Manchester Gutters, 270 places, two
    - **Exclusions:** take out searches that are not about the place. "guttering sale" is 210 a month of people shopping for guttering on sale.
    - **Bots:** whether Planner removes rank-tracker queries is not documented. A seasonal monthly pattern points to people; a flat line could be either. Treat the figures as a relative ranking, not as counts of searchers.
    - **"Near me" searches:** most people type "near me" with no town and Google supplies the place, so town figures understate local demand. The map pack takes most of those searches.
-6. **Record it in the URL map.** Every hub and every Launch and Wave 2 town is a row, and its stage and searches go in the Notes column. Hold towns stay in the ranking sheet, not the map. A Hold town is built when the client has done jobs there or Search Console shows impressions for it. Every town page, at any stage, is written from a place brief (place-brief).
+6. **Record it in the URL map.** Every hub and every Launch and Wave 2 town is a row, and its stage and searches go in the Notes column. Hold towns stay in the ranking sheet, not the map. A Hold town is built when the client has done jobs there or Search Console shows impressions for it. In Site Manager, the Plan screen's Search Console town check finds these (site-manager-build). Every town page, at any stage, is written from a place brief (place-brief).
 7. **Re-run after launch.** Run it once a year, or when Search Console shows queries naming a town the site has no page for. After launch, pages are judged on clicks (measurement), not on these volumes.
 
 ## What Manchester Gutters showed (October 2026, UK, average monthly searches)
